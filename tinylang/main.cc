@@ -11,6 +11,16 @@ try
 
     Lexer lexer = Lexer{argv[1]};
     cout << "Program file: " << argv[1] << endl;
+
+    while (true)
+    {
+        Token token = lexer.getNextToken();
+
+        if (token.isEof())
+            break;
+        
+        cout << token.value() << endl;
+    }
 }
 catch (exception &ex)
 {
