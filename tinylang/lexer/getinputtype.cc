@@ -12,6 +12,10 @@ Lexer::InputType Lexer::getInputType(char val) const
         return UNDSCR;
     else if (isspace(val))
         return SPACE;
+    else if (val == '\'')
+        return QUOTE;
+    else if (isprint(val))
+        return PRINT;
     else
         return OTHER;
 }
