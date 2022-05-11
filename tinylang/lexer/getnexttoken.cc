@@ -7,14 +7,13 @@ Lexer::TransitionTable Lexer::s_transitions;
 Token Lexer::getNextToken()
 {
     d_currentState = S0;
-    // TODO: Ignore comments
     if (d_currentLine.empty())
     {   
         // If we are done reading from file return end of file token
         if (d_programFile.eof())
             return Token {"", Token::EOF_TK};
         else 
-            getline(d_programFile, d_currentLine);
+            d_currentLine = getNextLine();
     }      
 
     char currentVal;
@@ -31,7 +30,7 @@ Token Lexer::getNextToken()
 
         if (d_currentState == Serr)
         {
-            // Removing whitespace if we encountered whitespace
+            // Removing whitespace
             while (input == SPACE)
             {
                 d_currentLine.erase(0, 1);
@@ -67,5 +66,5 @@ Token Lexer::getNextToken()
         return Token {tokenValue, tokenType};
     } 
     else
-        throw runtime_error("Syntax error");
+        throw runtime_error("lexical error");
 }

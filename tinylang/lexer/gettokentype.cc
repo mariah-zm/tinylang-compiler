@@ -21,6 +21,6 @@ Token::TokenType Lexer::getTokenType(State state)
     case S12:
         return Token::PUNCT;
     default:
-        throw runtime_error("Unknown token type")   ;
+        throw runtime_error("lexical error - unknown token type");
     }
 }

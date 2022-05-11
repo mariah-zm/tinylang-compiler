@@ -92,7 +92,8 @@ class Lexer
     private:
         Token::TokenType getTokenType(State state);
         InputType getInputType(char val) const;
-
+        std::string getNextLine();
+        void trimLine(std::string *str) const;
 };
 
 #endif
