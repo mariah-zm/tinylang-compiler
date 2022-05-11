@@ -16,7 +16,8 @@ class Lexer
         LETTER,
         UNDSCR,
         SPACE,
-        PRINT
+        PRINT,
+        OTHER
     };
 
     enum State
@@ -37,12 +38,12 @@ class Lexer
     struct TransitionTable
     {
         State d_starting = S0;
-        State d_transitions[11][4] = { //  DIGIT  DOT    LETTER  UNDSCR  PRINT
-                                /*S0*/   { S1,    S2,    S3,     S3   },
-                                /*S1*/   { S1,    S2,    Serr,   Serr },
-                                /*S2*/   { S2,    Serr,  Serr,   Serr },
-                                /*S3*/   { S3,    Serr,  S3,     S3   },
-                                /*Serr*/ { Serr,  Serr,  Serr,   Serr }};
+        State d_transitions[11][5] = { //  DIGIT  DOT    LETTER  UNDSCR  SPACE  PRINT
+                                /*S0*/   { S1,    S2,    S3,     S3,     Serr },
+                                /*S1*/   { S1,    S2,    Serr,   Serr,   Serr },
+                                /*S2*/   { S2,    Serr,  Serr,   Serr,   Serr },
+                                /*S3*/   { S3,    Serr,  S3,     S3,     Serr },
+                                /*Serr*/ { Serr,  Serr,  Serr,   Serr,   Serr }};
 
         std::set<State> d_accepting = {S1, S2, S3};
 

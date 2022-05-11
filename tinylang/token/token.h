@@ -12,6 +12,7 @@ class Token
             NUMBER, 
             IDENTIFIER,
             KEYWORD,
+            OTHER,
             EOF_TK
         };
 

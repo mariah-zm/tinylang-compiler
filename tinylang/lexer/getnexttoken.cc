@@ -6,9 +6,15 @@ Lexer::TransitionTable Lexer::s_transitions;
 
 Token Lexer::getNextToken()
 {
+    d_currentState = S0;
     // TODO: Ignore comments
     if (d_currentLine.empty())
-        d_programFile >> d_currentLine;
+    {   
+        if (d_programFile.eof())
+            return Token {"", Token::EOF_TK};
+        else 
+            getline(d_programFile, d_currentLine);
+    }      
 
     char currentVal;
 
@@ -23,7 +29,11 @@ Token Lexer::getNextToken()
         d_currentState = s_transitions.d_transitions[d_currentState][input];
 
         if (d_currentState == Serr)
+        {
+            if (input == SPACE)
+                d_currentLine.erase(0, 1);
             break;
+        }
         else 
         {
             ValueStatePair pair;
@@ -49,5 +59,7 @@ Token Lexer::getNextToken()
         Token::TokenType tokenType = getTokenType(topState);
 
         return Token {tokenValue, tokenType};
-    }
+    } 
+    else
+        throw runtime_error("Syntax error");
 }

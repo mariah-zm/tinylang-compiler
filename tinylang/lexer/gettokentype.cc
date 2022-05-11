@@ -7,8 +7,9 @@ Token::TokenType Lexer::getTokenType(State state)
     case S1:
     case S2:
         return Token::NUMBER;
-    
     case S3:
         return Token::IDENTIFIER;
+    default:
+        return Token::OTHER;    
     }
 }
