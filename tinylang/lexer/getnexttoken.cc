@@ -10,6 +10,7 @@ Token Lexer::getNextToken()
     // TODO: Ignore comments
     if (d_currentLine.empty())
     {   
+        // If we are done reading from file return end of file token
         if (d_programFile.eof())
             return Token {"", Token::EOF_TK};
         else 

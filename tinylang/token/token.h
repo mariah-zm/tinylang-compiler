@@ -12,6 +12,9 @@ class Token
             NUMBER, 
             IDENTIFIER,
             KEYWORD,
+            CHAR_LITERAL,
+            ASSIGNMENT,
+            REL_OP,
             OTHER,
             EOF_TK
         };
@@ -31,12 +34,6 @@ class Token
         std::string const &value() const;
         bool isEof() const;
 };
-
-inline Token::Token(std::string value, TokenType type)
-:
-    d_value(value),
-    d_type(type)
-{}
 
 inline std::string const &Token::value() const
 {

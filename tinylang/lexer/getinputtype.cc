@@ -14,6 +14,12 @@ Lexer::InputType Lexer::getInputType(char val) const
         return SPACE;
     else if (val == '\'')
         return QUOTE;
+    else if (val == '=')
+        return EQ_SIGN;
+    else if (val == '<' || val == '>')
+        return ANGLE_B;
+    else if (val == '!')
+        return EXCLM;
     else if (isprint(val))
         return PRINT;
     else
