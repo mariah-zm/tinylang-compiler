@@ -16,6 +16,8 @@ Token::TokenType Lexer::getTokenType(State state)
     case S9:
     case S10:
         return Token::REL_OP;
+    case S11:
+        return Token::MATH_OP;
     default:
         return Token::OTHER;    
     }

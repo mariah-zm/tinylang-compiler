@@ -1,7 +1,10 @@
-#include "lexer.h"
+#include "lexer.ih"
 
 Lexer::InputType Lexer::getInputType(char val) const
 {
+    string mathOp = "+-*/";
+    string angleB = "><";
+
     if (isdigit(val))
         return DIGIT;
     else if (val == '.')
@@ -16,10 +19,12 @@ Lexer::InputType Lexer::getInputType(char val) const
         return QUOTE;
     else if (val == '=')
         return EQ_SIGN;
-    else if (val == '<' || val == '>')
+    else if (angleB.find(val) != std::string::npos)
         return ANGLE_B;
     else if (val == '!')
         return EXCLM;
+    else if (mathOp.find(val) != std::string::npos)
+        return MATH;
     else if (isprint(val))
         return PRINT;
     else

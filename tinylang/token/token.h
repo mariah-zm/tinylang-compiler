@@ -15,6 +15,7 @@ class Token
             CHAR_LITERAL,
             ASSIGNMENT,
             REL_OP,
+            MATH_OP,
             OTHER,
             EOF_TK
         };
