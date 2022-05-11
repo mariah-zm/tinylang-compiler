@@ -30,8 +30,13 @@ Token Lexer::getNextToken()
 
         if (d_currentState == Serr)
         {
-            if (input == SPACE)
+            // Removing whitespace if we encountered whitespace
+            while (input == SPACE)
+            {
                 d_currentLine.erase(0, 1);
+                currentVal = d_currentLine.at(0);
+                input = getInputType(currentVal);
+            }   
             break;
         }
         else 
