@@ -16,7 +16,7 @@ class Token
             ASSIGNMENT,
             REL_OP,
             MATH_OP,
-            OTHER,
+            PUNCT,
             EOF_TK
         };
 

@@ -18,7 +18,9 @@ Token::TokenType Lexer::getTokenType(State state)
         return Token::REL_OP;
     case S11:
         return Token::MATH_OP;
+    case S12:
+        return Token::PUNCT;
     default:
-        return Token::OTHER;    
+        throw runtime_error("Unknown token type")   ;
     }
 }

@@ -4,6 +4,7 @@ Lexer::InputType Lexer::getInputType(char val) const
 {
     string mathOp = "+-*/";
     string angleB = "><";
+    string punctuation = "{}():;,";
 
     if (isdigit(val))
         return DIGIT;
@@ -25,6 +26,8 @@ Lexer::InputType Lexer::getInputType(char val) const
         return EXCLM;
     else if (mathOp.find(val) != std::string::npos)
         return MATH;
+    else if (punctuation.find(val) != std::string::npos)
+        return PUNCT;
     else if (isprint(val))
         return PRINT;
     else
