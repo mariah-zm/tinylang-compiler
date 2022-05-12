@@ -6,26 +6,44 @@
 #include <fstream>
 #include <set>
 #include <stack>
+#include <map>
 
 class Lexer
 {
-    enum InputType
+    struct Input
     {
-        DIGIT,
-        DOT,
-        LETTER,
-        UNDSCR,
-        SPACE,
-        QUOTE,
-        EQ_SIGN,
-        ANGLE_B,
-        EXCLM,
-        ADD,
-        MINUS,
-        MUL,
-        DIV,
-        PUNCT,
-        PRINT  // this includes chars which are not the above but printable
+        enum InputType
+        {
+            DIGIT,
+            DOT,
+            LETTER,
+            UNDSCR,
+            SPACE,
+            QUOTE,
+            EQ_SIGN,
+            ANGLE_B,
+            EXCLM,
+            ADD,
+            MINUS,
+            MUL,
+            DIV,
+            PUNCT,
+            PRINT  // this includes chars which are not the above but printable
+        };
+
+        std::string d_angleB = "><";
+        std::string d_punctuation = "{}():;,";
+        std::map<char, InputType> d_charInputs = {{'.',  DOT},
+                                                  {'_',  UNDSCR},
+                                                  {'\'', QUOTE},
+                                                  {'=',  EQ_SIGN},
+                                                  {'!',  EXCLM},
+                                                  {'+',  ADD},
+                                                  {'-',  MINUS},
+                                                  {'*',  MUL},
+                                                  {'/',  DIV}};
+
+        InputType getInputType(char val) const ;
     };
 
     enum State
@@ -99,6 +117,7 @@ class Lexer
     };
 
     static TransitionTable s_transitions;
+    static Input s_inputHelper;
 
     std::stack<ValueStatePair> d_tokenStack;
     std::ifstream d_programFile;
@@ -112,7 +131,6 @@ class Lexer
 
     private:
         Token::TokenType getTokenType(State state);
-        InputType getInputType(char val) const;
 };
 
 #endif

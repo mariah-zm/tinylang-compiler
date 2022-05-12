@@ -3,6 +3,7 @@
 #include <iostream>
 
 Lexer::TransitionTable Lexer::s_transitions;
+Lexer::Input Lexer::s_inputHelper;
 
 Token Lexer::getNextToken()
 {
@@ -29,17 +30,17 @@ Token Lexer::getNextToken()
         else 
             break;
 
-        InputType input = getInputType(currentVal);   
+        Input::InputType input = s_inputHelper.getInputType(currentVal);   
         d_currentState = s_transitions.d_transitions[d_currentState][input];
 
         if (d_currentState == Serr)
         {
             // Removing whitespace
-            while (input == SPACE)
+            while (input == Input::SPACE)
             {
                 d_currentLine.erase(0, 1);
                 currentVal = d_currentLine.at(0);
-                input = getInputType(currentVal);
+                input = s_inputHelper.getInputType(currentVal);
             }   
             break;
         }
