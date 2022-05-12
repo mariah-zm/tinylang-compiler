@@ -8,8 +8,6 @@ Lexer::Input::InputType Lexer::Input::getInputType(char val) const
         return LETTER;
     else if (isspace(val))
         return SPACE;
-    if (d_angleB.find(val) != std::string::npos)
-        return ANGLE_B;
     else if (d_punctuation.find(val) != std::string::npos)
         return PUNCT;
     else
