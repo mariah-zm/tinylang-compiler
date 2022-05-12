@@ -1,10 +1,12 @@
-hi
-44
-13.6    '%^*&12.5'
-//
+//ONE LINE COMMENT
+fn XGreaterY2(x : float, y : float) -> bool {
+return x > y;
+}
+
+
 /*
- *
- */
-< > <= >= != == =
-+ - */
-{}();:,
+* MULTILINE COMMENT
+*/
+fn AverageOfThree2(x : float, y : float, z : float) -> float {
+return (x + y + z) / 3;
+}

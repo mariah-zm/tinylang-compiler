@@ -6,14 +6,18 @@ Lexer::TransitionTable Lexer::s_transitions;
 
 Token Lexer::getNextToken()
 {
-    d_currentState = S0;
-    if (d_currentLine.empty())
+    while (d_currentLine.empty())
     {   
         // If we are done reading from file return end of file token
         if (d_programFile.eof())
-            return Token {"", Token::EOF_TK};
+        {    
+            if (d_tokenStack.empty())
+                return Token {"", Token::EOF_TK};
+            else 
+                throw runtime_error("lexical error - unexpected end of file");
+        }
         else 
-            d_currentLine = getNextLine();
+            getline(d_programFile, d_currentLine);
     }      
 
     char currentVal;
@@ -25,7 +29,7 @@ Token Lexer::getNextToken()
         else 
             break;
 
-        InputType input = getInputType(currentVal);
+        InputType input = getInputType(currentVal);   
         d_currentState = s_transitions.d_transitions[d_currentState][input];
 
         if (d_currentState == Serr)
@@ -61,10 +65,14 @@ Token Lexer::getNextToken()
             tokenValue.insert(0, 1, pair.d_val);
         }
 
-        Token::TokenType tokenType = getTokenType(topState);
+        // Resetting current state after token has been removed from stack
+        d_currentState = S0;
 
+        Token::TokenType tokenType = getTokenType(topState);
         return Token {tokenValue, tokenType};
     } 
-    else
+    else if (s_transitions.isCommentState(topState))
+        return getNextToken();
+    else 
         throw runtime_error("lexical error");
 }

@@ -17,8 +17,14 @@ Token::TokenType Lexer::getTokenType(State state)
     case S10:
         return Token::REL_OP;
     case S11:
-        return Token::MATH_OP;
     case S12:
+    case S13:
+    case S14:
+        return Token::MATH_OP;
+    case S16:
+    case S18:
+        return Token::COMMENT;
+    case S19:
         return Token::PUNCT;
     default:
         throw runtime_error("lexical error - unknown token type");

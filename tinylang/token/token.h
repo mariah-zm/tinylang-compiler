@@ -17,6 +17,7 @@ class Token
             REL_OP,
             MATH_OP,
             PUNCT,
+            COMMENT,
             EOF_TK
         };
 

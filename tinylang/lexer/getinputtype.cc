@@ -2,7 +2,6 @@
 
 Lexer::InputType Lexer::getInputType(char val) const
 {
-    string mathOp = "+-*/";
     string angleB = "><";
     string punctuation = "{}():;,";
 
@@ -24,12 +23,18 @@ Lexer::InputType Lexer::getInputType(char val) const
         return ANGLE_B;
     else if (val == '!')
         return EXCLM;
-    else if (mathOp.find(val) != std::string::npos)
-        return MATH;
+    else if (val == '+')
+        return ADD;
+    else if (val == '-')
+        return MINUS;
+    else if (val == '*')
+        return MUL;
+    else if (val == '/')
+        return DIV;
     else if (punctuation.find(val) != std::string::npos)
         return PUNCT;
     else if (isprint(val))
         return PRINT;
     else
-        return OTHER;
+        throw runtime_error("lexical error - input not accepted");
 }
