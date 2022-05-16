@@ -3,5 +3,6 @@
 #include <string>
 #include <fstream>
 #include <stdexcept>
+#include "../exceptions/lexicalerror.h"
 
 using namespace std;

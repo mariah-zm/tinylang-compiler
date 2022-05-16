@@ -21,7 +21,7 @@ Lexer::Input::InputType Lexer::Input::getInputType(char val) const
             if (isprint(val))
                 return PRINT;
             else
-                throw runtime_error("lexical error - input not accepted");
+                throw lexical_error("character not accepted");
         }
     }
 }

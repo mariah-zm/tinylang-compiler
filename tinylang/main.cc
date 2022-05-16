@@ -22,7 +22,7 @@ try
         cout << token.value() << endl;
     }
 }
-catch (exception &ex)
+catch (lexical_error &ex)
 {
-    cerr << "ERR: " << ex.what() << endl;
+    cerr << "LEXICAL ERR: " << ex.what() << endl;
 }

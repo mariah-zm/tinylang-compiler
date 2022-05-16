@@ -15,7 +15,7 @@ Token Lexer::getNextToken()
             if (d_tokenStack.empty())
                 return Token {"", Token::EOF_TK};
             else 
-                throw runtime_error("lexical error - unexpected end of file");
+                throw lexical_error("unexpected end of file");
         }
         else 
             getline(d_programFile, d_currentLine);
@@ -35,7 +35,7 @@ Token Lexer::getNextToken()
 
         if (d_currentState == Serr)
         {
-            // Removing whitespace
+            // Removing whitespaces
             while (input == Input::SPACE)
             {
                 d_currentLine.erase(0, 1);
@@ -70,10 +70,15 @@ Token Lexer::getNextToken()
         d_currentState = S0;
 
         Token::TokenType tokenType = getTokenType(topState);
-        return Token {tokenValue, tokenType};
+
+        // Ignore tokens that are comments
+        if (tokenType == Token::COMMENT)
+            return getNextToken();
+        else
+            return Token {tokenValue, tokenType};
     } 
     else if (s_transitions.isCommentState(topState))
         return getNextToken();
     else 
-        throw runtime_error("lexical error");
+        throw lexical_error("unknown token type");
 }
