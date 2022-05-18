@@ -2,11 +2,26 @@
 
 Token::Token(string value, TokenType type)
 :
-    d_value(value)
+    d_value(value)  
 {
-    // Checking if an entered word is a keyword
-    if (type == IDENTIFIER && s_keywords.find(value) != s_keywords.end())
-        d_type = KEYWORD;
-    else
+    // Assigning type as necessary
+    if (type == REL_OP)
+        d_type = d_relOpMap.at(value);
+    else if (type == PUNCT)
+        d_type = d_punctMap.at(value);
+    else if (type == IDENTIFIER)
+        try 
+        {
+            // Checking if an entered word is a keyword
+            d_type = d_keywordsMap.at(value);
+        } 
+        catch (out_of_range &ex)
+        {
+            d_type = type;
+        }
+    else 
         d_type = type;
+    
+    if (type == NUM_FLOAT || type == NUM_INT)
+        d_numVal = stof(value);
 }
