@@ -58,12 +58,12 @@ Token Lexer::getNextToken()
             
     if (s_transitions.isAccepting(topState))
     {
-        string tokenValue = "";
+        string lexeme = "";
         while (!d_tokenStack.empty())
         {
             ValueStatePair pair = d_tokenStack.top();
             d_tokenStack.pop();
-            tokenValue.insert(0, 1, pair.d_val);
+            lexeme.insert(0, 1, pair.d_val);
         }
 
         // Resetting current state after token has been removed from stack
@@ -75,10 +75,10 @@ Token Lexer::getNextToken()
         if (tokenType == Token::COMMENT)
             return getNextToken();
         else
-            return Token {tokenValue, tokenType};
+            return Token {lexeme, tokenType};
     } 
     else if (s_transitions.isCommentState(topState))
         return getNextToken();
     else 
-        throw lexical_error("unknown token type");
+        throw lexical_error("unexpected end of token");
 }

@@ -9,24 +9,25 @@ Token::TokenType Lexer::getTokenType(State state)
         return Token::NUMBER;
     case S3:
         return Token::IDENTIFIER;
-    case S6:
-        return Token::CHAR_LITERAL;
     case S7:
-        return Token::ASSIGNMENT;
+    case S8:
+        return Token::CHAR_LITERAL;
     case S9:
-    case S10:
-        return Token::REL_OP;
+        return Token::ASSIGNMENT;
     case S11:
     case S12:
+        return Token::REL_OP;
     case S13:
     case S14:
-        return Token::MATH_OP;
+    case S15:
     case S16:
+        return Token::MATH_OP;
     case S18:
-        return Token::COMMENT;
-    case S19:
-        return Token::ARROW;
     case S20:
+        return Token::COMMENT;
+    case S21:
+        return Token::ARROW;
+    case S22:
         return Token::PUNCT;
     default:
         throw lexical_error("unknown token type");
