@@ -135,6 +135,7 @@ class Lexer
     State d_currentState = s_transitions.d_starting;
 
     public:
+        Lexer(const Lexer &lexer);      // Copy constructor
         Lexer(std::string fileName);
 
         Token getNextToken();
