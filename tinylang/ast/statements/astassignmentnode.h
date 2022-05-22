@@ -7,19 +7,18 @@
 
 class AstAssignmentNode: public AstStatementNode
 {
-    AstIdentifierNode *d_left;
+    std::string d_idenName;
     AstExprNode *d_right;
 
     public:
-        AstAssignmentNode(AstIdentifierNode *left, AstExprNode *right);
+        AstAssignmentNode(std::string &name, AstExprNode *right);
         virtual ~AstAssignmentNode() = default;
 
 };
 
-inline AstAssignmentNode::AstAssignmentNode
-                (AstIdentifierNode *left, AstExprNode *right)
+inline AstAssignmentNode::AstAssignmentNode(std::string &name, AstExprNode *right)
 :
-    d_left(left),
+    d_idenName(name),
     d_right(right)
 {}
 
