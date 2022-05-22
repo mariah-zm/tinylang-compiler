@@ -69,6 +69,7 @@ class Token
         TokenType type() const;
         std::string const &value() const;
         bool isEof() const;
+        bool isType() const;
 };
 
 inline Token::TokenType Token::type() const
@@ -84,6 +85,11 @@ inline std::string const &Token::value() const
 inline bool Token::isEof() const
 {
     return d_type == EOF_TK;
+}
+
+inline bool Token::isType() const
+{
+    return d_type == INT || d_type == FLOAT || d_type == BOOL || d_type == CHAR;
 }
 
 #endif

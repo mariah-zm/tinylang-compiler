@@ -1,5 +1,6 @@
 #include "parser.h"
 
 #include "../ast/astprogramnode.h"
+#include "../exceptions/syntaxerror.h"
 
 using namespace std;

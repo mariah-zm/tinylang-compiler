@@ -7,7 +7,7 @@
 class lexical_error: virtual public std::exception
 {
     protected:
-        std::string error_message;      ///< Error message
+        std::string error_message;
     
     public:
         lexical_error(std::string const &msg);

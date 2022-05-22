@@ -1,5 +1,5 @@
-#ifndef INCLUDED_ASTFORSTMTNODE_
-#define INCLUDED_ASTFORSTMTNODE_
+#ifndef INCLUDED_ASTIFSTMTNODE_
+#define INCLUDED_ASTIFSTMTNODE_
 
 #include "aststatementnode.h"
 #include "../expressions/astexprnode.h"
