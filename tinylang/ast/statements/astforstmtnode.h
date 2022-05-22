@@ -9,55 +9,26 @@
 
 class AstForStmtNode: public AstStatementNode
 {
-    AstVarDeclNode *d_varDecl = nullptr;
+    AstVarDeclNode *d_varDecl;
     AstExprNode *d_condition;
-    AstAssignmentNode *d_assignment = nullptr;
+    AstAssignmentNode *d_assignment;
     AstBlockNode *d_body;
 
     public:
-        AstForStmtNode(AstExprNode *condition, AstBlockNode *body);
         AstForStmtNode(AstVarDeclNode *varDecl, AstExprNode *condition, 
-                        AstBlockNode *body);
-        AstForStmtNode(AstExprNode *condition, AstBlockNode *body, 
-                        AstAssignmentNode *assignment);
-        AstForStmtNode(AstVarDeclNode *varDecl, AstExprNode *condition, 
-                        AstBlockNode *body, AstAssignmentNode *assignment);
+                        AstAssignmentNode *assignment, AstBlockNode *body);
         virtual ~AstForStmtNode() = default;
 };
 
-inline AstForStmtNode::AstForStmtNode(AstExprNode *condition, AstBlockNode *body)
-:
-    d_condition(condition),
-    d_body(body)
-{}
-
 inline AstForStmtNode::AstForStmtNode(AstVarDeclNode *varDecl, 
                                         AstExprNode *condition, 
+                                        AstAssignmentNode *assignment,
                                         AstBlockNode *body)
-:
-    d_varDecl(varDecl),
-    d_condition(condition),
-    d_body(body)
-{}
-
-inline AstForStmtNode::AstForStmtNode(AstExprNode *condition, 
-                                        AstBlockNode *body,
-                                        AstAssignmentNode *assignment)
-:
-    d_condition(condition),
-    d_body(body),
-    d_assignment(assignment)
-{}
-
-inline AstForStmtNode::AstForStmtNode(AstVarDeclNode *varDecl, 
-                                        AstExprNode *condition, 
-                                        AstBlockNode *body, 
-                                        AstAssignmentNode *assignment)
 :
     d_varDecl(varDecl), 
     d_condition(condition),
-    d_body(body),
-    d_assignment(assignment)
+    d_assignment(assignment),
+    d_body(body)
 {}
 
 #endif

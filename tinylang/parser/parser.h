@@ -41,6 +41,9 @@ class Parser
         AstForStmtNode *parseFor();
         AstWhileStmtNode *parseWhile();
         AstAssignmentNode *parseAssignment();
+        AstExprNode *parseExpr();
+
+        void parseSemiColon();
 };
 
 inline Parser::Parser(Lexer &lexer)

@@ -2,23 +2,51 @@
 
 AstStatementNode *Parser::parseStatement()
 {
+    AstStatementNode *node;
     switch (d_currentTok.type())
     {
         case Token::LET:
-            return parseVarDecl();
-        case Token::PRINT:
-            return parsePrint();
-        case Token::RETURN:
-            return parseReturn();
-        case Token::IF:
-            return parseIf();
-        case Token::FOR:
-            return parseFor();
-        case Token::WHILE:
-            return parseWhile();
+        {
+            node = parseVarDecl();
+            parseSemiColon();
+            break;
+        }
         case Token::IDENTIFIER:
-            return parseAssignment();
+        {
+            node = parseAssignment();
+            parseSemiColon();
+            break;
+        }
+        case Token::PRINT:
+        {
+            node = parsePrint();
+            parseSemiColon();
+            break;
+        }
+        case Token::IF:
+        {
+            node = parseIf();
+            break;
+        }
+        case Token::FOR:
+        {
+            node = parseFor();
+            break;
+        }
+        case Token::WHILE:
+        {
+            node = parseWhile();
+            break;
+        }
+        case Token::RETURN:
+        {
+            node = parseReturn();
+            parseSemiColon();
+            break;
+        }
         default:
             throw syntax_error("unexpected token");
     }
+
+    return node;
 }

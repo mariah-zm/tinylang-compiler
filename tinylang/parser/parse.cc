@@ -14,8 +14,6 @@ AstNode *Parser::parse()
             AstStatementNode *stmt = parseStatement();
             rootNode->addStatementChild(stmt);
         }
-
-        d_currentTok = d_lexer.getNextToken();
     }
 
     return rootNode;

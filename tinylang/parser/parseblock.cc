@@ -3,7 +3,8 @@
 AstBlockNode *Parser::parseBlock()
 {
     AstBlockNode *body = new AstBlockNode;
-    // Skipping {
+
+    // Consuming {
     d_currentTok = d_lexer.getNextToken();
 
     if (d_currentTok.type() != Token::OPEN_SCOPE)
