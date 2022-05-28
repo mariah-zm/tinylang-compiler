@@ -6,7 +6,7 @@
 
 #include <string>
 
-class AstAddOpNode: public AstNode
+class AstAddOpNode: public AstExprNode
 {
     AstExprNode *d_left;
     AstExprNode *d_right;

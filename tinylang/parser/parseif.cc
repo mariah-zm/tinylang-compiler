@@ -3,7 +3,7 @@
 AstIfStmtNode *Parser::parseIf()
 {
     // Consuming (
-    d_currentTok = d_lexer.getNextToken();
+    d_currentTok = getNextToken();
 
     if (d_currentTok.type() != Token::OPEN_SCOPE)
         throw syntax_error("expected \'(\'");
@@ -11,14 +11,14 @@ AstIfStmtNode *Parser::parseIf()
     AstExprNode *condition = parseExpr();
 
     // Consuming )
-    d_currentTok = d_lexer.getNextToken();
+    d_currentTok = getNextToken();
 
     if (d_currentTok.type() != Token::OPEN_SCOPE)
         throw syntax_error("expected \')\'");
 
     AstBlockNode *body = parseBlock();
 
-    d_currentTok = d_lexer.getNextToken();
+    d_currentTok = getNextToken();
 
     if (d_currentTok.type() == Token::ELSE)
     {
@@ -26,5 +26,7 @@ AstIfStmtNode *Parser::parseIf()
         return new AstIfStmtNode{condition, body, elseBody}; 
     }
     
+    // Setting as false as we looked ahead for else
+    d_isCurrentParsed = false;
     return new AstIfStmtNode{condition, body};    
 }

@@ -1,8 +1,6 @@
 #ifndef INCLUDED_PARSER_
 #define INCLUDED_PARSER_
 
-#include "symboltable/symboltable.h"
-
 #include "../token/token.h"
 #include "../lexer/lexer.h"
 
@@ -18,18 +16,20 @@
 #include "../ast/statements/astreturnstmtnode.h"
 #include "../ast/statements/astprintstmtnode.h"
 #include "../ast/statements/astassignmentnode.h"
+#include "../factors/astfunctioncallnode.h"
 
 class Parser
 {
     Token d_currentTok;
     Lexer d_lexer;
-    SymbolTable d_symbolTable = SymbolTable{};
-
+    bool d_isCurrentParsed;     // bool variable to allow lookahead
+    
     public:
         Parser(Lexer &lexer);
         AstNode *parse();
 
     private:
+        Token getNextToken();
         AstStatementNode *parseStatement();
         AstFunctionNode *parseFunctionDef();
         AstFunctionPrototypeNode *parseFunctionPrototype();
@@ -42,6 +42,11 @@ class Parser
         AstWhileStmtNode *parseWhile();
         AstAssignmentNode *parseAssignment();
         AstExprNode *parseExpr();
+        AstExprNode *parseSimpleExpr();
+        AstExprNode *parseTerm();
+        AstExprNode *parseFactor();
+        AstExprNode *parseLiteral();
+        AstFunctionCallNode *parseFunctionCall(std::string fnName);
 
         void parseSemiColon();
 };

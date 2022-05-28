@@ -9,7 +9,7 @@ class Token
     public:
         enum TokenType
         {
-            NUM_INT, NUM_FLOAT,
+            INT_LIT, FLOAT_LIT, CHAR_LIT,
             IDENTIFIER, 
             INT, FLOAT, BOOL, CHAR,
             TRUE, FALSE,
@@ -70,6 +70,11 @@ class Token
         std::string const &value() const;
         bool isEof() const;
         bool isType() const;
+        bool isRelOp() const;
+        bool isAddOp() const;
+        bool isMulOp() const;
+        bool isUnaryOp() const;
+        bool isLiteral() const;
 };
 
 inline Token::TokenType Token::type() const
@@ -85,11 +90,32 @@ inline std::string const &Token::value() const
 inline bool Token::isEof() const
 {
     return d_type == EOF_TK;
-}
+} 
 
 inline bool Token::isType() const
 {
     return d_type == INT || d_type == FLOAT || d_type == BOOL || d_type == CHAR;
+}
+
+inline bool Token::isAddOp() const
+{
+    return d_type == ADD || d_type == SUB || d_type == OR;
+}
+
+inline bool Token::isMulOp() const
+{
+    return d_type == MUL || d_type == DIV || d_type == AND;
+}
+
+inline bool Token::isUnaryOp() const
+{
+    return d_type == SUB || d_type == NOT;
+}
+
+inline bool Token::isLiteral() const
+{
+    return d_type == INT_LIT || d_type == FLOAT_LIT || d_type == CHAR_LIT 
+                    || d_type == TRUE  || d_type == FALSE;
 }
 
 #endif

@@ -3,7 +3,7 @@
 AstNode *Parser::parse()
 {
     AstProgramNode *rootNode = new AstProgramNode();
-    d_currentTok = d_lexer.getNextToken();
+    d_currentTok = getNextToken();
 
     while (!d_currentTok.isEof())
     {

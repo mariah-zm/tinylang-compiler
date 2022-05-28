@@ -3,7 +3,7 @@
 AstAssignmentNode *Parser::parseAssignment()
 {
     // Getting identifer name
-    d_currentTok = d_lexer.getNextToken();
+    d_currentTok = getNextToken();
     
     if (d_currentTok.type() != Token::IDENTIFIER)
         throw syntax_error("expected identifier name");
@@ -11,7 +11,7 @@ AstAssignmentNode *Parser::parseAssignment()
     string name = d_currentTok.value();
 
     // Consuming =
-    d_currentTok = d_lexer.getNextToken();
+    d_currentTok = getNextToken();
     
     if (d_currentTok.type() != Token::ASSIGNMENT)
         throw syntax_error("expected \'=\'");

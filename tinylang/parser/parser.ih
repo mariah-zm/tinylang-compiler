@@ -2,5 +2,9 @@
 
 #include "../ast/astprogramnode.h"
 #include "../exceptions/syntaxerror.h"
+#include "../ast/expressions/astrelopnode.h"
+#include "../ast/expressions/astaddopnode.h"
+#include "../ast/expressions/astmulopnode.h"
+#include "../ast/factors/astunarynode.h"
 
 using namespace std;

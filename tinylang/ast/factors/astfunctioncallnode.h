@@ -1,26 +1,25 @@
-#ifndef INCLUDED_ASTFUNCTIONPROTOTYPENODE_
-#define INCLUDED_ASTFUNCTIONPROTOTYPENODE_
+#ifndef INCLUDED_ASTFUNCTIONCALLNODE_
+#define INCLUDED_ASTFUNCTIONCALLNODE_
 
-#include "astfactornode.h"
-#include "../identifier/identifier.h"
+#include "../expressions/astexprnode.h"
 
 #include <vector>
 #include <string>
 
-class AstFunctionCallNode: public AstFactorNode
+class AstFunctionCallNode: public AstExprNode
 {
     std::string d_fnName;
-    std::vector<AstFactorNode *> d_args;
+    std::vector<AstExprNode *> d_args;
 
     public:
         AstFunctionCallNode() = delete;
-        AstFunctionCallNode(std::string &name, std::vector<AstFactorNode *> &args);
+        AstFunctionCallNode(std::string &name, std::vector<AstExprNode *> &args);
         virtual ~AstFunctionCallNode() = default;
 
 };
 
 inline AstFunctionCallNode::AstFunctionCallNode
-                        (std::string &name, std::vector<AstFactorNode *> &args)
+                        (std::string &name, std::vector<AstExprNode *> &args)
 :
     d_fnName(name),
     d_args(args)

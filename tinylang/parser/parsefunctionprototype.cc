@@ -2,7 +2,7 @@
 
 AstFunctionPrototypeNode *Parser::parseFunctionPrototype()
 {
-    d_currentTok = d_lexer.getNextToken();
+    d_currentTok = getNextToken();
     
     // Identifier name
     if (d_currentTok.type() != Token::IDENTIFIER)
@@ -11,7 +11,7 @@ AstFunctionPrototypeNode *Parser::parseFunctionPrototype()
     string fnName = d_currentTok.value();
 
     // Skipping (
-    d_currentTok = d_lexer.getNextToken();
+    d_currentTok = getNextToken();
 
     if (d_currentTok.type() != Token::OPEN_BR)
         throw syntax_error("expected \'(\'");
@@ -25,7 +25,7 @@ AstFunctionPrototypeNode *Parser::parseFunctionPrototype()
         Token::TokenType type;
 
         // Param Name
-        d_currentTok = d_lexer.getNextToken();
+        d_currentTok = getNextToken();
 
         if (d_currentTok.type() != Token::IDENTIFIER)
             throw syntax_error("expected parameter name");
@@ -33,13 +33,13 @@ AstFunctionPrototypeNode *Parser::parseFunctionPrototype()
         name = d_currentTok.value();
 
         // Consuming:
-        d_currentTok = d_lexer.getNextToken();
+        d_currentTok = getNextToken();
 
         if (d_currentTok.type() != Token::COLON)
             throw syntax_error("expected \':\'");
 
         // Param type
-        d_currentTok = d_lexer.getNextToken();
+        d_currentTok = getNextToken();
 
         if (!d_currentTok.isType())
             throw syntax_error("expected parameter type");
@@ -50,7 +50,7 @@ AstFunctionPrototypeNode *Parser::parseFunctionPrototype()
         params.push_back(identifier);
 
         // Consuming comma or )
-        d_currentTok = d_lexer.getNextToken();
+        d_currentTok = getNextToken();
 
         if (d_currentTok.type() == Token::COMMA)
             continue;
@@ -61,7 +61,7 @@ AstFunctionPrototypeNode *Parser::parseFunctionPrototype()
     }   
 
     // Consuming -> 
-    d_currentTok = d_lexer.getNextToken();
+    d_currentTok = getNextToken();
 
     if (d_currentTok.type() != Token::ARROW)
         throw syntax_error("expected \'->\'");

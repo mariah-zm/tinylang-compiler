@@ -3,7 +3,7 @@
 AstWhileStmtNode *Parser::parseWhile()
 {
     // Consuming (
-    d_currentTok = d_lexer.getNextToken();
+    d_currentTok = getNextToken();
 
     if (d_currentTok.type() != Token::OPEN_SCOPE)
         throw syntax_error("expected \'(\'");
@@ -11,7 +11,7 @@ AstWhileStmtNode *Parser::parseWhile()
     AstExprNode *expr = parseExpr();
 
     // Consuming )
-    d_currentTok = d_lexer.getNextToken();
+    d_currentTok = getNextToken();
 
     if (d_currentTok.type() != Token::OPEN_SCOPE)
         throw syntax_error("expected \')\'");

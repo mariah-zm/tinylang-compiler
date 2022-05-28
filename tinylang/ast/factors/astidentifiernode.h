@@ -1,28 +1,28 @@
 #ifndef INCLUDED_ASTIDENTIFIERNODE_
 #define INCLUDED_ASTIDENTIFIERNODE_
 
-#include "astfactornode.h"
+#include "../expressions/astexprnode.h"
 #include "../identifier/identifier.h"
 
-class AstIdentifierNode: public AstFactorNode
+class AstIdentifierNode: public AstExprNode
 {
-    Identifier d_iden;
+    std::string d_name;
 
     public:
-        AstIdentifierNode(Identifier iden);
+        AstIdentifierNode(std::string name);
         virtual ~AstIdentifierNode() = default;
 
-        Identifier const &value() const;
+        std::string const &name() const;
 };
 
-inline AstIdentifierNode::AstIdentifierNode(Identifier iden)
+inline AstIdentifierNode::AstIdentifierNode(std::string name)
 :
-    d_iden(iden)
+    d_name(name)
 {}
 
-inline Identifier const &AstIdentifierNode::value() const
+inline std::string const &AstIdentifierNode::name() const
 {
-    return d_iden;
+    return d_name;
 }
 
 #endif

@@ -1,9 +1,9 @@
 #ifndef INCLUDED_ASTCHARLITERALNODE_
 #define INCLUDED_ASTCHARLITERALNODE_
 
-#include "astfactornode.h"
+#include "astliteralnode.h"
 
-class AstCharLiteralNode: public AstFactorNode
+class AstCharLiteralNode: public AstLiteralNode
 {
     char d_value;
 

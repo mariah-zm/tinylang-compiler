@@ -5,14 +5,14 @@ Token::TokenType Lexer::getTokenType(State state)
     switch (state)
     {
     case S1:
-        return Token::NUM_INT;
+        return Token::INT_LIT;
     case S2:
-        return Token::NUM_FLOAT;
+        return Token::FLOAT_LIT;
     case S3:
         return Token::IDENTIFIER;
     case S7:
     case S8:
-        return Token::CHAR;
+        return Token::CHAR_LIT;
     case S9:
         return Token::ASSIGNMENT;
     case S11:

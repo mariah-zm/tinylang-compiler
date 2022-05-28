@@ -8,18 +8,18 @@ AstForStmtNode *Parser::parseFor()
     AstBlockNode *block;
 
     // Consuming (
-    d_currentTok = d_lexer.getNextToken();
+    d_currentTok = getNextToken();
 
     if (d_currentTok.type() != Token::OPEN_SCOPE)
         throw syntax_error("expected \'(\'");
 
     // Checking if var decl was skipped
-    d_currentTok = d_lexer.getNextToken();
+    d_currentTok = getNextToken();
 
     if (d_currentTok.type() == Token::LET)
     {
         varDecl = parseVarDecl();
-        d_currentTok = d_lexer.getNextToken();
+        d_currentTok = getNextToken();
     }
 
     // Consuming ;
@@ -32,12 +32,12 @@ AstForStmtNode *Parser::parseFor()
     parseSemiColon();
 
     // Checking if  assignmnet was skipped
-    d_currentTok = d_lexer.getNextToken();
+    d_currentTok = getNextToken();
 
     if (d_currentTok.type() == Token::IDENTIFIER)
     {
         assignment = parseAssignment();
-        d_currentTok = d_lexer.getNextToken();
+        d_currentTok = getNextToken();
     }
 
     // Consuming )

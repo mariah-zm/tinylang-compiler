@@ -1,9 +1,9 @@
 #ifndef INCLUDED_ASTFLOATLITERALNODE_
 #define INCLUDED_ASTFLOATLITERALNODE_
 
-#include "astfactornode.h"
+#include "astliteralnode.h"
 
-class AstFloatLiteralNode: public AstFactorNode
+class AstFloatLiteralNode: public AstLiteralNode
 {
     float d_value;
 

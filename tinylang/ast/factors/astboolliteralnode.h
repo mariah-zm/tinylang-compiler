@@ -1,9 +1,9 @@
 #ifndef INCLUDED_ASTBOOLLITERALNODE_
 #define INCLUDED_ASTBOOLLITERALNODE_
 
-#include "astfactornode.h"
+#include "astliteralnode.h"
 
-class AstBoolLiteralNode: public AstFactorNode
+class AstBoolLiteralNode: public AstLiteralNode
 {
     bool d_value;
 
