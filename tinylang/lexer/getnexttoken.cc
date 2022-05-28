@@ -9,6 +9,9 @@ Token Lexer::getNextToken()
 {
     while (d_currentLine.empty())
     {   
+        d_charNum = 0;
+        cout << "line " << ++d_lineNum << endl;
+
         // If we are done reading from file return end of file token
         if (d_programFile.eof())
         {    

@@ -2,12 +2,6 @@
 
 AstAssignmentNode *Parser::parseAssignment()
 {
-    // Getting identifer name
-    d_currentTok = getNextToken();
-    
-    if (d_currentTok.type() != Token::IDENTIFIER)
-        throw syntax_error("expected identifier name");
-
     string name = d_currentTok.value();
 
     // Consuming =

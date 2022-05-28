@@ -107,7 +107,7 @@ class Lexer
                                 /*S22*/  { Serr,  Serr,  Serr,   Serr,   Serr,  Serr,   Serr,  Serr,    Serr,    Serr,    Serr,  Serr,  Serr,  Serr,  Serr,  Serr,  Serr },
                                 /*Serr*/ { Serr,  Serr,  Serr,   Serr,   Serr,  Serr,   Serr,  Serr,    Serr,    Serr,    Serr,  Serr,  Serr,  Serr,  Serr,  Serr,  Serr }};
 
-        std::set<State> d_accepting = {S1, S2, S3, S7, S8, S11, S12, S13, S14, S15, S16, S18, S20, S21, S22};
+        std::set<State> d_accepting = {S1, S2, S3, S7, S8, S9, S11, S12, S13, S14, S15, S16, S18, S20, S21, S22};
 
         bool isAccepting(State state)
         {
@@ -133,6 +133,9 @@ class Lexer
     std::ifstream d_programFile;
     std::string d_currentLine;
     State d_currentState = s_transitions.d_starting;
+
+    size_t d_lineNum = 0;
+    size_t d_charNum = 0;
 
     public:
         Lexer(const Lexer &lexer);      // Copy constructor

@@ -5,6 +5,7 @@ AstFunctionCallNode *Parser::parseFunctionCall(std::string fnName)
     vector<AstExprNode *> args;
 
     d_currentTok = getNextToken();
+    d_isCurrentParsed = false;
     
     // Checking if the function has no arguments
     if (d_currentTok.type() != Token::CLOSE_BR)
