@@ -3,6 +3,8 @@
 #include <stdexcept>
 
 #include "lexer/lexer.h"
+#include "parser/parser.h"
 #include "exceptions/lexicalerror.h"
+#include "exceptions/syntaxerror.h"
 
 using namespace std;

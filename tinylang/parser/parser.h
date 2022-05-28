@@ -16,16 +16,17 @@
 #include "../ast/statements/astreturnstmtnode.h"
 #include "../ast/statements/astprintstmtnode.h"
 #include "../ast/statements/astassignmentnode.h"
-#include "../factors/astfunctioncallnode.h"
+#include "../ast/factors/astfunctioncallnode.h"
+#include "../ast/factors/astliteralnode.h"
 
 class Parser
 {
     Token d_currentTok;
-    Lexer d_lexer;
-    bool d_isCurrentParsed;     // bool variable to allow lookahead
+    Lexer *d_lexer;
+    bool d_isCurrentParsed = true;     // bool variable to allow lookahead
     
     public:
-        Parser(Lexer &lexer);
+        Parser(Lexer *lexer);
         AstNode *parse();
 
     private:
@@ -45,13 +46,13 @@ class Parser
         AstExprNode *parseSimpleExpr();
         AstExprNode *parseTerm();
         AstExprNode *parseFactor();
-        AstExprNode *parseLiteral();
+        AstLiteralNode *parseLiteral();
         AstFunctionCallNode *parseFunctionCall(std::string fnName);
 
         void parseSemiColon();
 };
 
-inline Parser::Parser(Lexer &lexer)
+inline Parser::Parser(Lexer *lexer)
 :
     d_lexer(lexer)
 {}

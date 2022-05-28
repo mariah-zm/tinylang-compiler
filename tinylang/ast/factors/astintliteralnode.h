@@ -1,9 +1,9 @@
 #ifndef INCLUDED_ASTINTLITERALNODE_
 #define INCLUDED_ASTINTLITERALNODE_
 
-#include "../expressions/astexprnode.h"
+#include "astliteralnode.h"
 
-class AstIntLiteralNode: public AstExprNode
+class AstIntLiteralNode: public AstLiteralNode
 {
     int d_value;
 

@@ -6,19 +6,28 @@
 
 class Identifier
 {
-    enum IdentifierType
-    {
-        INT,
-        FLOAT,
-        CHAR,
-        BOOL
-    };
+    public:
+        enum Type
+        {
+            INT,
+            FLOAT,
+            CHAR,
+            BOOL
+        };
 
-    std::string d_name;
-    IdentifierType d_type;
+    private:
+        std::string d_name;
+        Type d_type;
 
     public:
         Identifier(std::string name, Token::TokenType type);
+        static Type getType(Token::TokenType tokType);
 };
+
+inline Identifier::Identifier(std::string name, Token::TokenType type)
+:
+    d_name(name),
+    d_type(getType(type))
+{}
 
 #endif

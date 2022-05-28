@@ -6,7 +6,7 @@
 class AstExprNode: public AstNode
 {
     public:
-        AstExprNode();
+        AstExprNode() = default;
         virtual ~AstExprNode() = default;
 };
 

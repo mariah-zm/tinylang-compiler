@@ -20,7 +20,7 @@ AstBlockNode *Parser::parseBlock()
         // Checking for }
         d_currentTok = getNextToken();
 
-        if (d_currentTok.type() != Token::CLOSE_SCOPE)
+        if (d_currentTok.type() == Token::CLOSE_SCOPE)
             break;
     }
 

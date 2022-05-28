@@ -22,6 +22,6 @@ Token::Token(string value, TokenType type)
     else 
         d_type = type;
     
-    if (type == NUM_FLOAT || type == NUM_INT)
+    if (type == FLOAT_LIT || type == INT_LIT)
         d_numVal = stof(value);
 }

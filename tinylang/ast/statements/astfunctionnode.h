@@ -13,6 +13,7 @@ class AstFunctionNode: public AstStatementNode
     public:
         AstFunctionNode(AstFunctionPrototypeNode *prototype, AstBlockNode *body);
         virtual ~AstFunctionNode() = default;
+        AstFunctionPrototypeNode *prototype();
 
 };
 
@@ -22,5 +23,10 @@ inline AstFunctionNode::AstFunctionNode
     d_prototype(prototype),
     d_body(body)
 {}
+
+inline AstFunctionPrototypeNode *AstFunctionNode::prototype()
+{
+    return d_prototype;
+}
 
 #endif

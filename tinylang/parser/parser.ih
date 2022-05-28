@@ -6,5 +6,11 @@
 #include "../ast/expressions/astaddopnode.h"
 #include "../ast/expressions/astmulopnode.h"
 #include "../ast/factors/astunarynode.h"
+#include "../ast/factors/astboolliteralnode.h"
+#include "../ast/factors/astcharliteralnode.h"
+#include "../ast/factors/astfloatliteralnode.h"
+#include "../ast/factors/astintliteralnode.h"
+
+#include <iostream>
 
 using namespace std;

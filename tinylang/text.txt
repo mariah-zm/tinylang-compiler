@@ -1,6 +1,6 @@
 //ONE LINE COMMENT
 fn XGreaterY2(x : float, y : float) -> bool {
-return x > '\'';
+return x > y;
 }
 
 

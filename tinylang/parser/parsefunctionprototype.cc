@@ -65,6 +65,14 @@ AstFunctionPrototypeNode *Parser::parseFunctionPrototype()
 
     if (d_currentTok.type() != Token::ARROW)
         throw syntax_error("expected \'->\'");
+    
+    // Gettin return type
+    d_currentTok = getNextToken();
 
-    return new AstFunctionPrototypeNode{fnName, params};
+    if (!d_currentTok.isType())
+        throw syntax_error("expected \'type\'");
+
+    Identifier::Type type = Identifier::getType(d_currentTok.type());
+
+    return new AstFunctionPrototypeNode{fnName, params, type};
 }

@@ -7,7 +7,7 @@
 class AstLiteralNode: public AstExprNode
 {
     public:
-        AstLiteralNode();
+        AstLiteralNode() = default;
         virtual ~AstLiteralNode() = default;
 
 };

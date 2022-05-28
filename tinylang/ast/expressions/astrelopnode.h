@@ -9,8 +9,8 @@
 class AstRelOpNode: public AstExprNode
 {
     AstExprNode *d_left;
-    AstExprNode *d_right;
     std::string d_value; 
+    AstExprNode *d_right;    
 
     public:
         AstRelOpNode(AstExprNode *left, std::string &value, AstExprNode *right);
@@ -18,6 +18,14 @@ class AstRelOpNode: public AstExprNode
 
         std::string const &value() const;
 };
+
+inline AstRelOpNode::AstRelOpNode(AstExprNode *left, std::string &value, 
+                                    AstExprNode *right)
+:
+    d_left(left),
+    d_value(value),
+    d_right(right)
+{}
 
 inline std::string const &AstRelOpNode::value() const
 {

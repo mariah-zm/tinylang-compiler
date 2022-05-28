@@ -16,6 +16,7 @@ AstExprNode *Parser::parseFactor()
         if (d_currentTok.type() == Token::OPEN_BR)
             return parseFunctionCall(idenName);        
 
+        d_isCurrentParsed = false;
         return new AstIdentifierNode{idenName};
     }
     else if (d_currentTok.type() == Token::OPEN_BR)     // SubExpression

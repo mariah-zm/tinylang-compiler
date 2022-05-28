@@ -10,7 +10,7 @@ AstExprNode *Parser::parseTerm()
     if (d_currentTok.isMulOp())
     {
         string mulOpVal = d_currentTok.value();
-        AstExprNode *factorRight = parseFactor();
+        AstExprNode *factorRight = parseTerm();
 
         return new AstMulOpNode{factorLeft, mulOpVal, factorRight};
     }

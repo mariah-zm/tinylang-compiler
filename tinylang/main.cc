@@ -10,19 +10,14 @@ try
         throw runtime_error(string("too many arguments provided"));
 
     Lexer lexer = Lexer{argv[1]};
-    cout << "Program file: " << argv[1] << endl;
-
-    while (true)
-    {
-        Token token = lexer.getNextToken();
-
-        if (token.isEof())
-            break;
-        
-        cout << token.value() << endl;
-    }
+    Parser parser = Parser{&lexer};
+    parser.parse();
 }
 catch (lexical_error &ex)
 {
     cerr << "LEXICAL ERR: " << ex.what() << endl;
+}
+catch (syntax_error &ex)
+{
+    cerr << "SYNTAX ERR: " << ex.what() << endl;
 }

@@ -11,7 +11,6 @@ class AstWhileStmtNode: public AstStatementNode
     AstBlockNode *d_body;
 
     public:
-        AstWhileStmtNode() = delete;
         AstWhileStmtNode(AstExprNode *condition, AstBlockNode *body);
         virtual ~AstWhileStmtNode() = default;
 };

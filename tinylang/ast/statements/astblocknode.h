@@ -10,7 +10,7 @@ class AstBlockNode: public AstStatementNode
     std::vector<AstStatementNode *> d_statements;
 
     public:
-        AstBlockNode();
+        AstBlockNode() = default;
         virtual ~AstBlockNode() = default;
 
         void addStatementChild(AstStatementNode *statement);

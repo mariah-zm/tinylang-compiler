@@ -10,7 +10,7 @@ AstExprNode *Parser::parseSimpleExpr()
     if (d_currentTok.isAddOp())
     {
         string addOpVal = d_currentTok.value();
-        AstExprNode *termRight = parseTerm();
+        AstExprNode *termRight = parseSimpleExpr();
 
         return new AstAddOpNode{termLeft, addOpVal, termRight};
     }
