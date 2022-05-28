@@ -2,8 +2,6 @@
 
 Token Parser::getNextToken()
 {
-    cout << d_currentTok.value() << endl;
-
     if (d_isCurrentParsed)
         return d_lexer->getNextToken();
     else 

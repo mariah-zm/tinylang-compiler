@@ -11,6 +11,4 @@
 #include "../ast/factors/astfloatliteralnode.h"
 #include "../ast/factors/astintliteralnode.h"
 
-#include <iostream>
-
 using namespace std;
