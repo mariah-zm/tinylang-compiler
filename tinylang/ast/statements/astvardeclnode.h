@@ -2,7 +2,7 @@
 #define INCLUDED_ASTVARDECLNODE_
 
 #include "aststatementnode.h"
-#include "../factors/astidentifiernode.h"
+#include "../expressions/astidentifiernode.h"
 #include "../expressions/astexprnode.h"
 #include "../../token/token.h"
 

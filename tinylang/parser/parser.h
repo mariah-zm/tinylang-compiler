@@ -16,8 +16,8 @@
 #include "../ast/statements/astreturnstmtnode.h"
 #include "../ast/statements/astprintstmtnode.h"
 #include "../ast/statements/astassignmentnode.h"
-#include "../ast/factors/astfunctioncallnode.h"
-#include "../ast/factors/astliteralnode.h"
+#include "../ast/expressions/astfunctioncallnode.h"
+#include "../ast/literals/astliteralnode.h"
 
 class Parser
 {

@@ -7,8 +7,11 @@ class AstStatementNode: public AstNode
 {
     public:
         AstStatementNode() = default;
-        virtual ~AstStatementNode() = default;
+        virtual ~AstStatementNode() = 0;
 
 };
+
+inline AstStatementNode::~AstStatementNode()
+{}
 
 #endif

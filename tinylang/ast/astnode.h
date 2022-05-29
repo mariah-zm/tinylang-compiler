@@ -5,8 +5,11 @@ class AstNode
 {
     public:
         AstNode() = default;
-        virtual ~AstNode() = default;
+        virtual ~AstNode() = 0;
 
 };
+
+inline AstNode::~AstNode()
+{}
 
 #endif

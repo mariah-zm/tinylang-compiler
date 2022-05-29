@@ -1,7 +1,7 @@
 #ifndef INCLUDED_ASTFUNCTIONCALLNODE_
 #define INCLUDED_ASTFUNCTIONCALLNODE_
 
-#include "../expressions/astexprnode.h"
+#include "astexprnode.h"
 
 #include <vector>
 #include <string>

@@ -1,8 +1,7 @@
 #ifndef INCLUDED_ASTUNARYNODE_
 #define INCLUDED_ASTUNARYNODE_
 
-#include "../astnode.h"
-#include "../expressions/astexprnode.h"
+#include "astexprnode.h"
 
 #include <string>
 

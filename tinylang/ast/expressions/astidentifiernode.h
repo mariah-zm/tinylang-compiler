@@ -1,7 +1,9 @@
 #ifndef INCLUDED_ASTIDENTIFIERNODE_
 #define INCLUDED_ASTIDENTIFIERNODE_
 
-#include "../expressions/astexprnode.h"
+#include <string>
+
+#include "astexprnode.h"
 
 class AstIdentifierNode: public AstExprNode
 {

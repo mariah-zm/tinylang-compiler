@@ -12,7 +12,7 @@ AstExprNode *Parser::parseTerm()
         string mulOpVal = d_currentTok.value();
         AstExprNode *factorRight = parseTerm();
 
-        return new AstMulOpNode{factorLeft, mulOpVal, factorRight};
+        return new AstBinaryOpNode{factorLeft, mulOpVal, factorRight};
     }
     else
     {    

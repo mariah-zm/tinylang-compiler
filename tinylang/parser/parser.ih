@@ -2,13 +2,11 @@
 
 #include "../ast/astprogramnode.h"
 #include "../exceptions/syntaxerror.h"
-#include "../ast/expressions/astrelopnode.h"
-#include "../ast/expressions/astaddopnode.h"
-#include "../ast/expressions/astmulopnode.h"
-#include "../ast/factors/astunarynode.h"
-#include "../ast/factors/astboolliteralnode.h"
-#include "../ast/factors/astcharliteralnode.h"
-#include "../ast/factors/astfloatliteralnode.h"
-#include "../ast/factors/astintliteralnode.h"
+#include "../ast/expressions/astbinaryopnode.h"
+#include "../ast/expressions/astunarynode.h"
+#include "../ast/literals/astboolliteralnode.h"
+#include "../ast/literals/astcharliteralnode.h"
+#include "../ast/literals/astfloatliteralnode.h"
+#include "../ast/literals/astintliteralnode.h"
 
 using namespace std;

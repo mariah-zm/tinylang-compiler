@@ -12,7 +12,7 @@ AstExprNode *Parser::parseExpr()
         string relOpVal = d_currentTok.value();
         AstExprNode *simpleExprRight = parseExpr();
 
-        return new AstRelOpNode{simpleExprLeft, relOpVal, simpleExprRight};
+        return new AstBinaryOpNode{simpleExprLeft, relOpVal, simpleExprRight};
     }
     else
     {
