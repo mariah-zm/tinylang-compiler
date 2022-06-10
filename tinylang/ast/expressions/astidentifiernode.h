@@ -4,6 +4,7 @@
 #include <string>
 
 #include "astexprnode.h"
+#include "../../visitor/visitor.h"
 
 class AstIdentifierNode: public AstExprNode
 {
@@ -13,7 +14,9 @@ class AstIdentifierNode: public AstExprNode
         AstIdentifierNode(std::string name);
         virtual ~AstIdentifierNode() = default;
 
-        std::string const &name() const;
+        virtual void acceptVisitor(Visitor *vis);
+
+        std::string name() const;
 };
 
 inline AstIdentifierNode::AstIdentifierNode(std::string name)
@@ -21,7 +24,7 @@ inline AstIdentifierNode::AstIdentifierNode(std::string name)
     d_name(name)
 {}
 
-inline std::string const &AstIdentifierNode::name() const
+inline std::string AstIdentifierNode::name() const
 {
     return d_name;
 }

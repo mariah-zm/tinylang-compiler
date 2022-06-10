@@ -2,6 +2,7 @@
 #define INCLUDED_ASTBINARYOPNODE_
 
 #include "astexprnode.h"
+#include "../../visitor/visitor.h"
 
 #include <string>
 
@@ -15,7 +16,11 @@ class AstBinaryOpNode: public AstExprNode
         AstBinaryOpNode(AstExprNode *left, std::string &value, AstExprNode *right);
         virtual ~AstBinaryOpNode() = default;
 
-        std::string const &value() const;
+        virtual void acceptVisitor(Visitor *vis);
+
+        AstExprNode *left() const;
+        std::string value() const;
+        AstExprNode *right() const;
 };
 
 inline AstBinaryOpNode::AstBinaryOpNode(AstExprNode *left, std::string &value, 
@@ -26,9 +31,21 @@ inline AstBinaryOpNode::AstBinaryOpNode(AstExprNode *left, std::string &value,
     d_right(right)
 {}
 
-inline std::string const &AstBinaryOpNode::value() const
+inline AstExprNode *AstBinaryOpNode::left() const
+{
+    return d_left;
+}
+
+
+inline std::string AstBinaryOpNode::value() const
 {
     return d_value;
 }
+
+inline AstExprNode *AstBinaryOpNode::right() const
+{
+    return d_right;
+}
+
 
 #endif

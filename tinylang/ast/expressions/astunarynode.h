@@ -2,6 +2,7 @@
 #define INCLUDED_ASTUNARYNODE_
 
 #include "astexprnode.h"
+#include "../../visitor/visitor.h"
 
 #include <string>
 
@@ -14,7 +15,10 @@ class AstUnaryNode: public AstExprNode
         AstUnaryNode(std::string &value, AstExprNode *expr);
         virtual ~AstUnaryNode() = default;
 
-        std::string const &value() const;
+        virtual void acceptVisitor(Visitor *vis);
+        
+        std::string value() const;
+        AstExprNode *expr() const;
 };
 
  inline AstUnaryNode::AstUnaryNode(std::string &value, AstExprNode *expr)
@@ -23,9 +27,14 @@ class AstUnaryNode: public AstExprNode
     d_expr(expr)
 {}
 
-inline std::string const &AstUnaryNode::value() const
+inline std::string AstUnaryNode::value() const
 {
     return d_value;
+}
+
+inline AstExprNode *AstUnaryNode::expr() const
+{
+    return d_expr;
 }
 
 #endif

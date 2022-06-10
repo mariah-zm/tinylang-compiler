@@ -2,6 +2,7 @@
 #define INCLUDED_ASTBOOLLITERALNODE_
 
 #include "astliteralnode.h"
+#include "../../visitor/visitor.h"
 
 class AstBoolLiteralNode: public AstLiteralNode
 {
@@ -10,6 +11,8 @@ class AstBoolLiteralNode: public AstLiteralNode
     public:
         AstBoolLiteralNode(bool value);
         virtual ~AstBoolLiteralNode() = default;
+
+        virtual void acceptVisitor(Visitor *vis);
 
         bool value() const;
 };

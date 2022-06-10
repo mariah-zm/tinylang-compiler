@@ -6,5 +6,7 @@
 #include "parser/parser.h"
 #include "exceptions/lexicalerror.h"
 #include "exceptions/syntaxerror.h"
+#include "visitor/xmlvisitor/xmlvisitor.h"
+#include "visitor/visitor.h"
 
 using namespace std;

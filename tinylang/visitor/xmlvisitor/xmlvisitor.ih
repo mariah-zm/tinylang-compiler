@@ -1,0 +1,3 @@
+#include "xmlvisitor.h"
+
+using namespace std;

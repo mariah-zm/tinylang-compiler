@@ -2,6 +2,7 @@
 #define INCLUDED_ASTFLOATLITERALNODE_
 
 #include "astliteralnode.h"
+#include "../../visitor/visitor.h"
 
 class AstFloatLiteralNode: public AstLiteralNode
 {
@@ -10,6 +11,8 @@ class AstFloatLiteralNode: public AstLiteralNode
     public:
         AstFloatLiteralNode(float value);
         virtual ~AstFloatLiteralNode() = default;
+
+        virtual void acceptVisitor(Visitor *vis);
 
         float value() const;
 };

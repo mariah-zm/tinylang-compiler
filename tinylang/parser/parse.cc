@@ -1,6 +1,6 @@
 #include "parser.ih"
 
-AstNode *Parser::parse()
+AstProgramNode *Parser::parse()
 {
     AstProgramNode *rootNode = new AstProgramNode();
     d_currentTok = getNextToken();

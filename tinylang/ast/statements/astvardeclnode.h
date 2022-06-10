@@ -5,6 +5,8 @@
 #include "../expressions/astidentifiernode.h"
 #include "../expressions/astexprnode.h"
 #include "../../token/token.h"
+#include "../../identifier/identifier.h"
+#include "../../visitor/visitor.h"
 
 class AstVarDeclNode: public AstStatementNode
 {
@@ -16,15 +18,36 @@ class AstVarDeclNode: public AstStatementNode
         AstVarDeclNode(AstIdentifierNode *left, Token::TokenType type, AstExprNode *right);
         virtual ~AstVarDeclNode() = default;
 
+        virtual void acceptVisitor(Visitor *vis);
+
+        AstIdentifierNode *left() const;
+        Identifier::Type type() const;
+        AstExprNode *right() const;
+
 };
 
 inline AstVarDeclNode::AstVarDeclNode
                 (AstIdentifierNode *left, Token::TokenType type, AstExprNode *right)
 :
     d_left(left),
-    d_type(Identifier::getType(type)),
     d_right(right)
-{}
+{
+    d_type = Identifier::getType(type);
+}
 
+inline AstIdentifierNode *AstVarDeclNode::left() const
+{
+    return d_left;
+}
+
+inline Identifier::Type AstVarDeclNode::type() const
+{
+    return d_type;
+}
+
+inline AstExprNode *AstVarDeclNode::right() const
+{
+    return d_right;
+}
 
 #endif

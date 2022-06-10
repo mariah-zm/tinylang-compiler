@@ -2,6 +2,7 @@
 #define INCLUDED_ASTBLOCKNODE_
 
 #include "aststatementnode.h"
+#include "../../visitor/visitor.h"
 
 #include <vector>
 
@@ -14,11 +15,8 @@ class AstBlockNode: public AstStatementNode
         virtual ~AstBlockNode() = default;
 
         void addStatementChild(AstStatementNode *statement);
-};
 
-inline void AstBlockNode::addStatementChild(AstStatementNode *statement)
-{
-    d_statements.push_back(statement);
-}
+        virtual void acceptVisitor(Visitor *vis);
+};
 
 #endif

@@ -2,6 +2,7 @@
 #define INCLUDED_ASTINTLITERALNODE_
 
 #include "astliteralnode.h"
+#include "../../visitor/visitor.h"
 
 class AstIntLiteralNode: public AstLiteralNode
 {
@@ -10,6 +11,8 @@ class AstIntLiteralNode: public AstLiteralNode
     public:
         AstIntLiteralNode(int value);
         virtual ~AstIntLiteralNode() = default;
+
+        virtual void acceptVisitor(Visitor *vis);
 
         int value() const;
 };

@@ -16,7 +16,10 @@ Token Lexer::getNextToken()
         if (d_programFile.eof())
         {    
             if (d_tokenStack.empty())
+            {    
+                d_programFile.close();              // close file once all read
                 return Token {"", Token::EOF_TK};
+            }
             else 
                 throw lexical_error("unexpected end of file");
         }

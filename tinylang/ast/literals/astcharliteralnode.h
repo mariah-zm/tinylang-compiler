@@ -2,6 +2,7 @@
 #define INCLUDED_ASTCHARLITERALNODE_
 
 #include "astliteralnode.h"
+#include "../../visitor/visitor.h"
 
 class AstCharLiteralNode: public AstLiteralNode
 {
@@ -10,6 +11,8 @@ class AstCharLiteralNode: public AstLiteralNode
     public:
         AstCharLiteralNode(char value);
         virtual ~AstCharLiteralNode() = default;
+
+        virtual void acceptVisitor(Visitor *vis);
 
         char value() const;
 };

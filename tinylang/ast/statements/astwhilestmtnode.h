@@ -4,6 +4,7 @@
 #include "aststatementnode.h"
 #include "../expressions/astexprnode.h"
 #include "astblocknode.h"
+#include "../../visitor/visitor.h"
 
 class AstWhileStmtNode: public AstStatementNode
 {
@@ -13,6 +14,11 @@ class AstWhileStmtNode: public AstStatementNode
     public:
         AstWhileStmtNode(AstExprNode *condition, AstBlockNode *body);
         virtual ~AstWhileStmtNode() = default;
+
+        virtual void acceptVisitor(Visitor *vis);
+
+        AstExprNode *condition() const;
+        AstBlockNode *body() const;
 };
 
 inline AstWhileStmtNode::AstWhileStmtNode(AstExprNode *condition, AstBlockNode *body)
@@ -20,5 +26,15 @@ inline AstWhileStmtNode::AstWhileStmtNode(AstExprNode *condition, AstBlockNode *
     d_condition(condition),
     d_body(body)
 {}
+
+inline AstExprNode *AstWhileStmtNode::condition() const
+{
+    return d_condition;
+}
+
+inline AstBlockNode *AstWhileStmtNode::body() const
+{
+    return d_body;
+}
 
 #endif

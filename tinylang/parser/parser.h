@@ -27,7 +27,7 @@ class Parser
     
     public:
         Parser(Lexer *lexer);
-        AstNode *parse();
+        AstProgramNode *parse();
 
     private:
         Token getNextToken();

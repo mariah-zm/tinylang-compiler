@@ -6,6 +6,7 @@
 #include "aststatementnode.h"
 #include "../expressions/astidentifiernode.h"
 #include "../expressions/astexprnode.h"
+#include "../../visitor/visitor.h"
 
 class AstAssignmentNode: public AstStatementNode
 {
@@ -16,6 +17,12 @@ class AstAssignmentNode: public AstStatementNode
         AstAssignmentNode(std::string &name, AstExprNode *right);
         virtual ~AstAssignmentNode() = default;
 
+        virtual void acceptVisitor(Visitor *vis);
+
+        // Getters
+        std::string idenName() const;
+        AstExprNode *right();
+
 };
 
 inline AstAssignmentNode::AstAssignmentNode(std::string &name, AstExprNode *right)
@@ -24,5 +31,14 @@ inline AstAssignmentNode::AstAssignmentNode(std::string &name, AstExprNode *righ
     d_right(right)
 {}
 
+inline std::string AstAssignmentNode::idenName() const
+{
+    return d_idenName;
+}
+
+inline AstExprNode *AstAssignmentNode::right()
+{
+    return d_right;
+}
 
 #endif

@@ -3,6 +3,8 @@
 
 #include "astnode.h"
 #include "statements/aststatementnode.h"
+#include "statements/astfunctionprototypenode.h"
+#include "../visitor/visitor.h"
 
 #include <vector>
 
@@ -17,6 +19,8 @@ class AstProgramNode: public AstNode
 
         void addStatementChild(AstStatementNode *statement);
         void addFunction(AstFunctionPrototypeNode *function);
+
+        virtual void acceptVisitor(Visitor *vis);
 
 };
 

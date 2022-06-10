@@ -4,6 +4,7 @@
 #include "aststatementnode.h"
 #include "astfunctionprototypenode.h"
 #include "astblocknode.h"
+#include "../../visitor/visitor.h"
 
 class AstFunctionNode: public AstStatementNode
 {
@@ -13,7 +14,12 @@ class AstFunctionNode: public AstStatementNode
     public:
         AstFunctionNode(AstFunctionPrototypeNode *prototype, AstBlockNode *body);
         virtual ~AstFunctionNode() = default;
+
+        virtual void acceptVisitor(Visitor *vis);
+
+        // Getters
         AstFunctionPrototypeNode *prototype();
+        AstBlockNode *body();
 
 };
 
@@ -27,6 +33,11 @@ inline AstFunctionNode::AstFunctionNode
 inline AstFunctionPrototypeNode *AstFunctionNode::prototype()
 {
     return d_prototype;
+}
+
+inline AstBlockNode *AstFunctionNode::body()
+{
+    return d_body;
 }
 
 #endif

@@ -2,14 +2,12 @@
 
 Identifier::Type Identifier::getType(Token::TokenType tokType)
 {
-    if (tokType == Token::FLOAT)
-        return FLOAT;
-    else if (tokType == Token::INT)
-        return INT;
-    else if (tokType == Token::CHAR)
-        return CHAR;
-    else if (tokType == Token::BOOL)
-        return BOOL;
-    else
-        throw syntax_error("not a type");
+    switch (tokType)
+    {
+        case Token::FLOAT: return FLOAT;
+        case Token::INT: return INT;
+        case Token::BOOL: return BOOL;
+        case Token::CHAR: return CHAR;
+        default: throw syntax_error("not a type");;
+    }
 }
