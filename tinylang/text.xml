@@ -1,43 +1,91 @@
 <Program>
+	<FunctionDecl Name="XGreaterY" ReturnType="bool">
+		<Params>
+			<Param Type="float">x</Param>
+			<Param Type="float">y</Param>
+		</Params>
+		<Block>
+			<Decl>
+				<Id Type="bool">ans</Id>
+				<Bool>true</Bool>
+			</Decl>
+			<If>
+				<Condition>
+					<BinExpr Op=">">
+						<Id>y</Id>
+						<Id>x</Id>
+					</BinExpr>
+				</Condition>
+				<IfTrue>
+					<Block>
+						<Assignment>
+							<Id>ans</Id>
+							<Bool>false</Bool>
+						</Assignment>
+					</Block>
+				</IfTrue>
+			</If>
+			<Return>
+				<Id>ans</Id>
+			</Return>
+		</Block>
+	</FunctionDecl>
 	<Decl>
-		<Id Type="float">x</Id>		<FloatLiteral>2.4</FloatLiteral>
+		<Id Type="float">x</Id>
+		<FloatLiteral>2.4</FloatLiteral>
 	</Decl>
 	<Decl>
-		<Id Type="float">y</Id>		<FunctionCall Name="Sq">
-		<Args>
-		<FloatLiteral>2.5</FloatLiteral>
-		</Args>
+		<Id Type="float">y</Id>
+		<FunctionCall Name="Sq">
+			<Args>
+				<FloatLiteral>2.5</FloatLiteral>
+			</Args>
+		</FunctionCall>
 	</Decl>
 	<Decl>
-		<Id Type="float">z</Id>		<FunctionCall Name="Sq">
-		<Args>
-		<Id>x</Id>		</Args>
+		<Id Type="float">z</Id>
+		<FunctionCall Name="Sq">
+			<Args>
+				<Id>x</Id>
+			</Args>
+		</FunctionCall>
 	</Decl>
 	<Print>
-		<Id>y</Id>	</Print>
+		<Id>y</Id>
+	</Print>
 	<Print>
 		<BinExpr Op="*">
-			<Id>x</Id>			<Id>z</Id>		</BinExpr>
+			<Id>x</Id>
+			<Id>z</Id>
+		</BinExpr>
 	</Print>
 	<Print>
 		<FunctionCall Name="XGreaterY">
-		<Args>
-		<Id>x</Id>		<FloatLiteral>2.3</FloatLiteral>
-		</Args>
+			<Args>
+				<Id>x</Id>
+				<FloatLiteral>2.3</FloatLiteral>
+			</Args>
+		</FunctionCall>
 	</Print>
 	<Print>
 		<FunctionCall Name="XGreaterY2">
-		<Args>
-		<FunctionCall Name="Sq">
-		<Args>
-		<FloatLiteral>1.5</FloatLiteral>
-		</Args>
-		<Id>y</Id>		</Args>
+			<Args>
+				<FunctionCall Name="Sq">
+					<Args>
+						<FloatLiteral>1.5</FloatLiteral>
+					</Args>
+				</FunctionCall>
+				<Id>y</Id>
+			</Args>
+		</FunctionCall>
 	</Print>
 	<Print>
 		<FunctionCall Name="AverageOfThree">
-		<Args>
-		<Id>x</Id>		<Id>y</Id>		<FloatLiteral>1.2</FloatLiteral>
-		</Args>
+			<Args>
+				<Id>x</Id>
+				<Id>y</Id>
+				<FloatLiteral>1.2</FloatLiteral>
+			</Args>
+		</FunctionCall>
 	</Print>
 </Program>

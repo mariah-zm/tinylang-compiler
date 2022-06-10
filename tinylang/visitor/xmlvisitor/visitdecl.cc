@@ -9,7 +9,7 @@ void XmlVisitor::visit(AstVarDeclNode *node)
 
     d_file << tabs << "<Decl>" << endl;
     d_file << tabs << "\t<Id Type=\"" << Identifier::typeToString(node->type())
-        << "\">" << node->left()->name() << "</Id>";
+        << "\">" << node->left()->name() << "</Id>" << endl;
 
     ++d_indent;
     node->right()->acceptVisitor(this);

@@ -11,6 +11,7 @@ AstProgramNode *Parser::parse()
         {    
             AstFunctionNode *fn = parseFunctionDef();
             rootNode->addFunction(fn->prototype());
+            rootNode->addStatementChild(fn);
         }
         else
         {

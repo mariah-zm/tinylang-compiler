@@ -9,7 +9,10 @@ void XmlVisitor::visit(AstBlockNode *node)
 
     d_file << tabs << "<Block>" << endl;
     ++d_indent;
-    node->acceptVisitor(this);
+
+    for (auto stmt: node->statements())
+        stmt->acceptVisitor(this);
+        
     --d_indent;
     d_file << tabs << "</Block>" << endl;
 }

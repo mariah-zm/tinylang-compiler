@@ -9,7 +9,7 @@ void XmlVisitor::visit(AstFunctionNode *node)
 
     Identifier::Type retType = node->prototype()->returnType();
 
-    d_file << tabs << "<Function Name=\"" << node->prototype()->name() 
+    d_file << tabs << "<FunctionDecl Name=\"" << node->prototype()->name() 
             << "\" ReturnType=\"" << Identifier::typeToString(retType)
                 << "\">" << endl;
 
@@ -18,5 +18,5 @@ void XmlVisitor::visit(AstFunctionNode *node)
     node->body()->acceptVisitor(this);
     --d_indent;
 
-    d_file << tabs << "</Function>" << endl;
+    d_file << tabs << "</FunctionDecl>" << endl;
 }

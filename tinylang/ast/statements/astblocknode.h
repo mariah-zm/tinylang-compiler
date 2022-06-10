@@ -19,6 +19,8 @@ class AstBlockNode: public AstStatementNode
         void addStatementChild(AstStatementNode *statement);
 
         virtual void acceptVisitor(Visitor *vis);
+
+        std::vector<AstStatementNode *> &statements();
 };
 
 inline AstBlockNode::~AstBlockNode() = default;
@@ -26,6 +28,11 @@ inline AstBlockNode::~AstBlockNode() = default;
 inline void AstBlockNode::addStatementChild(AstStatementNode *statement)
 {
     d_statements.push_back(statement);
+}
+
+inline std::vector<AstStatementNode *> &AstBlockNode::statements()
+{
+    return d_statements;
 }
 
 #endif

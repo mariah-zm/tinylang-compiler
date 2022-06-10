@@ -25,7 +25,9 @@ try
     XmlVisitor xmlVis = XmlVisitor{fileName};
     xmlVis.visit(program);
 
-    cout << "XML Generation Complete." << endl;
+    cout << "XML Generation Complete. Written to: " << xmlVis.fileName() << endl;
+
+    xmlVis.close();
 }
 catch (lexical_error &ex)
 {

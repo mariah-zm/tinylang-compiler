@@ -9,10 +9,15 @@ void XmlVisitor::visit(AstFunctionCallNode *node)
 
     d_file << tabs << "<FunctionCall Name=\"" << node->fnName() << "\">" << endl;
 
-    d_file << tabs << "<Args>" << endl;
+    d_file << tabs << "\t<Args>" << endl;
+
+    d_indent += 2;
 
     for (auto arg : node->args())
         arg->acceptVisitor(this);
+    
+    d_indent -= 2;
 
-    d_file << tabs << "</Args>" << endl;
+    d_file << tabs << "\t</Args>" << endl;
+    d_file << tabs << "</FunctionCall>" << endl;
 }

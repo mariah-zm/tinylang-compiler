@@ -4,6 +4,5 @@
 
 void AstBlockNode::acceptVisitor(Visitor *vis)
 {
-    for (auto stmt: d_statements)
-        stmt->acceptVisitor(vis);
+    vis->visit(this);
 }
