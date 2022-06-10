@@ -6,7 +6,9 @@
 #include "aststatementnode.h"
 #include "../expressions/astidentifiernode.h"
 #include "../expressions/astexprnode.h"
-#include "../../visitor/visitor.h"
+
+// Forward-declaration due to cyclic dependency
+class Visitor;
 
 class AstAssignmentNode: public AstStatementNode
 {
@@ -15,7 +17,7 @@ class AstAssignmentNode: public AstStatementNode
 
     public:
         AstAssignmentNode(std::string &name, AstExprNode *right);
-        virtual ~AstAssignmentNode() = default;
+        virtual ~AstAssignmentNode();
 
         virtual void acceptVisitor(Visitor *vis);
 
@@ -24,6 +26,8 @@ class AstAssignmentNode: public AstStatementNode
         AstExprNode *right();
 
 };
+
+inline AstAssignmentNode::~AstAssignmentNode() = default;
 
 inline AstAssignmentNode::AstAssignmentNode(std::string &name, AstExprNode *right)
 :

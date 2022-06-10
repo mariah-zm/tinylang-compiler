@@ -3,7 +3,9 @@
 
 #include "../astnode.h"
 #include "../../identifier/identifier.h"
-#include "../../visitor/visitor.h"
+
+// Forward-declaration due to cyclic dependency
+class Visitor;
 
 #include <vector>
 
@@ -15,7 +17,7 @@ class AstFunctionPrototypeNode: public AstNode
 
     public:
         AstFunctionPrototypeNode(std::string &name, std::vector<Identifier> &params, Identifier::Type retType);
-        virtual ~AstFunctionPrototypeNode() = default;
+        virtual ~AstFunctionPrototypeNode();
 
         virtual void acceptVisitor(Visitor *vis);
 
@@ -25,6 +27,8 @@ class AstFunctionPrototypeNode: public AstNode
         Identifier::Type returnType();
 
 };
+
+inline AstFunctionPrototypeNode::~AstFunctionPrototypeNode() = default;
 
 inline AstFunctionPrototypeNode::AstFunctionPrototypeNode
                         (std::string &name, std::vector<Identifier> &params,

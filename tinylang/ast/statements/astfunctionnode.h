@@ -1,10 +1,11 @@
 #ifndef INCLUDED_ASTFUNCTIONNODE_
 #define INCLUDED_ASTFUNCTIONNODE_
 
-#include "aststatementnode.h"
 #include "astfunctionprototypenode.h"
 #include "astblocknode.h"
-#include "../../visitor/visitor.h"
+
+// Forward-declaration due to cyclic dependency
+class Visitor;
 
 class AstFunctionNode: public AstStatementNode
 {
@@ -13,7 +14,7 @@ class AstFunctionNode: public AstStatementNode
 
     public:
         AstFunctionNode(AstFunctionPrototypeNode *prototype, AstBlockNode *body);
-        virtual ~AstFunctionNode() = default;
+        virtual ~AstFunctionNode();
 
         virtual void acceptVisitor(Visitor *vis);
 
@@ -22,6 +23,8 @@ class AstFunctionNode: public AstStatementNode
         AstBlockNode *body();
 
 };
+
+inline AstFunctionNode::~AstFunctionNode() = default;
 
 inline AstFunctionNode::AstFunctionNode
                 (AstFunctionPrototypeNode *prototype, AstBlockNode *body)

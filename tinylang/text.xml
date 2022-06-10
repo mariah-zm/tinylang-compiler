@@ -1,0 +1,43 @@
+<Program>
+	<Decl>
+		<Id Type="float">x</Id>		<FloatLiteral>2.4</FloatLiteral>
+	</Decl>
+	<Decl>
+		<Id Type="float">y</Id>		<FunctionCall Name="Sq">
+		<Args>
+		<FloatLiteral>2.5</FloatLiteral>
+		</Args>
+	</Decl>
+	<Decl>
+		<Id Type="float">z</Id>		<FunctionCall Name="Sq">
+		<Args>
+		<Id>x</Id>		</Args>
+	</Decl>
+	<Print>
+		<Id>y</Id>	</Print>
+	<Print>
+		<BinExpr Op="*">
+			<Id>x</Id>			<Id>z</Id>		</BinExpr>
+	</Print>
+	<Print>
+		<FunctionCall Name="XGreaterY">
+		<Args>
+		<Id>x</Id>		<FloatLiteral>2.3</FloatLiteral>
+		</Args>
+	</Print>
+	<Print>
+		<FunctionCall Name="XGreaterY2">
+		<Args>
+		<FunctionCall Name="Sq">
+		<Args>
+		<FloatLiteral>1.5</FloatLiteral>
+		</Args>
+		<Id>y</Id>		</Args>
+	</Print>
+	<Print>
+		<FunctionCall Name="AverageOfThree">
+		<Args>
+		<Id>x</Id>		<Id>y</Id>		<FloatLiteral>1.2</FloatLiteral>
+		</Args>
+	</Print>
+</Program>

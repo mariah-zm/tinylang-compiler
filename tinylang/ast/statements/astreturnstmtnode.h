@@ -3,7 +3,9 @@
 
 #include "aststatementnode.h"
 #include "../expressions/astexprnode.h"
-#include "../../visitor/visitor.h"
+
+// Forward-declaration due to cyclic dependency
+class Visitor;
 
 class AstReturnStmtNode: public AstStatementNode
 {
@@ -11,12 +13,14 @@ class AstReturnStmtNode: public AstStatementNode
 
     public:
         AstReturnStmtNode(AstExprNode *expr);
-        virtual ~AstReturnStmtNode() = default;
+        virtual ~AstReturnStmtNode();
 
         virtual void acceptVisitor(Visitor *vis);
 
         AstExprNode *expr();    // Getter
 };
+
+inline AstReturnStmtNode::~AstReturnStmtNode() = default;
 
 inline AstReturnStmtNode::AstReturnStmtNode(AstExprNode *expr)
 :

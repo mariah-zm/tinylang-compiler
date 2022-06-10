@@ -4,7 +4,9 @@
 #include "aststatementnode.h"
 #include "../expressions/astexprnode.h"
 #include "astblocknode.h"
-#include "../../visitor/visitor.h"
+
+// Forward-declaration due to cyclic dependency
+class Visitor;
 
 class AstWhileStmtNode: public AstStatementNode
 {
@@ -13,13 +15,15 @@ class AstWhileStmtNode: public AstStatementNode
 
     public:
         AstWhileStmtNode(AstExprNode *condition, AstBlockNode *body);
-        virtual ~AstWhileStmtNode() = default;
+        virtual ~AstWhileStmtNode();
 
         virtual void acceptVisitor(Visitor *vis);
 
         AstExprNode *condition() const;
         AstBlockNode *body() const;
 };
+
+inline AstWhileStmtNode::~AstWhileStmtNode() = default;
 
 inline AstWhileStmtNode::AstWhileStmtNode(AstExprNode *condition, AstBlockNode *body)
 :

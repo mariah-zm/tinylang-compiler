@@ -2,13 +2,15 @@
 #define INCLUDED_ASTLITERALNODE_
 
 #include "../expressions/astexprnode.h"
-#include "../../visitor/visitor.h"
+
+// Forward-declaration due to cyclic dependency
+class Visitor;
 
 class AstLiteralNode: public AstExprNode
 {
     public:
         AstLiteralNode() = default;
-        virtual ~AstLiteralNode() = 0;
+        virtual ~AstLiteralNode() = default;
 
         virtual void acceptVisitor(Visitor *vis) = 0;
 

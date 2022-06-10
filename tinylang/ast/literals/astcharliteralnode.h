@@ -2,7 +2,9 @@
 #define INCLUDED_ASTCHARLITERALNODE_
 
 #include "astliteralnode.h"
-#include "../../visitor/visitor.h"
+
+// Forward-declaration due to cyclic dependency
+class Visitor;
 
 class AstCharLiteralNode: public AstLiteralNode
 {
@@ -10,12 +12,14 @@ class AstCharLiteralNode: public AstLiteralNode
 
     public:
         AstCharLiteralNode(char value);
-        virtual ~AstCharLiteralNode() = default;
+        virtual ~AstCharLiteralNode();
 
         virtual void acceptVisitor(Visitor *vis);
 
         char value() const;
 };
+
+inline AstCharLiteralNode::~AstCharLiteralNode() = default;
 
 inline AstCharLiteralNode::AstCharLiteralNode(char value)
 :

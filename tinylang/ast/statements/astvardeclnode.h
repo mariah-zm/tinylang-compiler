@@ -6,7 +6,9 @@
 #include "../expressions/astexprnode.h"
 #include "../../token/token.h"
 #include "../../identifier/identifier.h"
-#include "../../visitor/visitor.h"
+
+// Forward-declaration due to cyclic dependency
+class Visitor;
 
 class AstVarDeclNode: public AstStatementNode
 {
@@ -16,7 +18,7 @@ class AstVarDeclNode: public AstStatementNode
 
     public:
         AstVarDeclNode(AstIdentifierNode *left, Token::TokenType type, AstExprNode *right);
-        virtual ~AstVarDeclNode() = default;
+        virtual ~AstVarDeclNode();
 
         virtual void acceptVisitor(Visitor *vis);
 
@@ -25,6 +27,8 @@ class AstVarDeclNode: public AstStatementNode
         AstExprNode *right() const;
 
 };
+
+inline AstVarDeclNode::~AstVarDeclNode() = default;
 
 inline AstVarDeclNode::AstVarDeclNode
                 (AstIdentifierNode *left, Token::TokenType type, AstExprNode *right)

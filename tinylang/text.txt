@@ -1,26 +1,8 @@
-fn Sq(x : float) -> float {
-return x*x ;
-}
-
 fn XGreaterY(x : float, y : float) -> bool {
 let ans : bool = true;
 if (y > x) { ans = false; }
 return ans;
 }
-
-fn XGreaterY2( x : float, y : float) -> bool {
-return x > y ;
-}
-
-fn AverageOfThree ( x : float, y : float, z : float) -> float {
-let total : float = x + y + z;
-return total/3 ;
-}
-
-fn AverageOfThree2(x : float, y : float, z : float) -> float {
-return (x + y + z)/3 ;
-}
-
 
 let x : float = 2.4;
 let y : float = Sq(2.5);

@@ -1,7 +1,8 @@
 #ifndef INCLUDED_ASTNODE_
 #define INCLUDED_ASTNODE_
 
-#include "../visitor/visitor.h"
+// Forward-declaration due to cyclic dependency
+class Visitor;
 
 class AstNode
 {

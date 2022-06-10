@@ -1,10 +1,11 @@
 #ifndef INCLUDED_ASTIFSTMTNODE_
 #define INCLUDED_ASTIFSTMTNODE_
 
-#include "aststatementnode.h"
 #include "../expressions/astexprnode.h"
 #include "astblocknode.h"
-#include "../../visitor/visitor.h"
+
+// Forward-declaration due to cyclic dependency
+class Visitor;
 
 class AstIfStmtNode: public AstStatementNode
 {
@@ -16,7 +17,7 @@ class AstIfStmtNode: public AstStatementNode
         AstIfStmtNode(AstExprNode *condition, AstBlockNode *body);
         AstIfStmtNode(AstExprNode *condition, AstBlockNode *body, 
                         AstBlockNode *elseBody);
-        virtual ~AstIfStmtNode() = default;
+        virtual ~AstIfStmtNode();
 
         virtual void acceptVisitor(Visitor *vis);
 
@@ -26,12 +27,13 @@ class AstIfStmtNode: public AstStatementNode
         AstBlockNode *elseBody();
 };
 
+inline AstIfStmtNode::~AstIfStmtNode() = default;
+
 inline AstIfStmtNode::AstIfStmtNode(AstExprNode *condition, AstBlockNode *body)
 :
     d_condition(condition),
     d_body(body)
 {}
-
 
 inline AstIfStmtNode::AstIfStmtNode(AstExprNode *condition, AstBlockNode *body,
                                     AstBlockNode *elseBody)

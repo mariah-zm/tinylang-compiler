@@ -4,7 +4,7 @@
 #include "../token/token.h"
 #include "../lexer/lexer.h"
 
-#include "../ast/astnode.h"
+#include "../ast/astprogramnode.h"
 #include "../ast/statements/aststatementnode.h"
 #include "../ast/statements/astfunctionnode.h"
 #include "../ast/statements/astfunctionprototypenode.h"

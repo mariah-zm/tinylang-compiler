@@ -1,14 +1,16 @@
 #ifndef INCLUDED_ASTPROGRAMNODE_
 #define INCLUDED_ASTPROGRAMNODE_
 
+#include <vector>
+
 #include "astnode.h"
 #include "statements/aststatementnode.h"
 #include "statements/astfunctionprototypenode.h"
-#include "../visitor/visitor.h"
 
-#include <vector>
+// Forward-declaration due to cyclic dependency
+class Visitor;
 
-class AstProgramNode: public AstNode
+class AstProgramNode: public virtual AstNode
 {
     std::vector<AstStatementNode *> d_childNodes;
     std::vector<AstFunctionPrototypeNode *> d_progFunctions;

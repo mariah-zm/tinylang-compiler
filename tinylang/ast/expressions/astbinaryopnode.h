@@ -1,10 +1,12 @@
 #ifndef INCLUDED_ASTBINARYOPNODE_
 #define INCLUDED_ASTBINARYOPNODE_
 
-#include "astexprnode.h"
-#include "../../visitor/visitor.h"
-
 #include <string>
+
+#include "astexprnode.h"
+
+// Forward-declaration due to cyclic dependency
+class Visitor;
 
 class AstBinaryOpNode: public AstExprNode
 {
@@ -14,7 +16,7 @@ class AstBinaryOpNode: public AstExprNode
 
     public:
         AstBinaryOpNode(AstExprNode *left, std::string &value, AstExprNode *right);
-        virtual ~AstBinaryOpNode() = default;
+        virtual ~AstBinaryOpNode();
 
         virtual void acceptVisitor(Visitor *vis);
 
@@ -22,6 +24,8 @@ class AstBinaryOpNode: public AstExprNode
         std::string value() const;
         AstExprNode *right() const;
 };
+
+inline AstBinaryOpNode::~AstBinaryOpNode() = default;
 
 inline AstBinaryOpNode::AstBinaryOpNode(AstExprNode *left, std::string &value, 
                                     AstExprNode *right)

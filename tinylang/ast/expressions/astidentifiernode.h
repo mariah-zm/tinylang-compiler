@@ -4,7 +4,9 @@
 #include <string>
 
 #include "astexprnode.h"
-#include "../../visitor/visitor.h"
+
+// Forward-declaration due to cyclic dependency
+class Visitor;
 
 class AstIdentifierNode: public AstExprNode
 {
@@ -12,12 +14,14 @@ class AstIdentifierNode: public AstExprNode
 
     public:
         AstIdentifierNode(std::string name);
-        virtual ~AstIdentifierNode() = default;
+        virtual ~AstIdentifierNode();
 
         virtual void acceptVisitor(Visitor *vis);
 
         std::string name() const;
 };
+
+inline AstIdentifierNode::~AstIdentifierNode() = default;
 
 inline AstIdentifierNode::AstIdentifierNode(std::string name)
 :

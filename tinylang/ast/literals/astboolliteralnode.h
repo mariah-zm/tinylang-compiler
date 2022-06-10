@@ -2,7 +2,9 @@
 #define INCLUDED_ASTBOOLLITERALNODE_
 
 #include "astliteralnode.h"
-#include "../../visitor/visitor.h"
+
+// Forward-declaration due to cyclic dependency
+class Visitor;
 
 class AstBoolLiteralNode: public AstLiteralNode
 {
@@ -10,12 +12,14 @@ class AstBoolLiteralNode: public AstLiteralNode
 
     public:
         AstBoolLiteralNode(bool value);
-        virtual ~AstBoolLiteralNode() = default;
+        virtual ~AstBoolLiteralNode();
 
         virtual void acceptVisitor(Visitor *vis);
 
         bool value() const;
 };
+
+inline AstBoolLiteralNode::~AstBoolLiteralNode() = default;
 
 inline AstBoolLiteralNode::AstBoolLiteralNode(bool value)
 :

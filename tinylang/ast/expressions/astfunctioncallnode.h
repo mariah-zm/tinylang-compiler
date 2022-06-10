@@ -1,11 +1,13 @@
 #ifndef INCLUDED_ASTFUNCTIONCALLNODE_
 #define INCLUDED_ASTFUNCTIONCALLNODE_
 
-#include "astexprnode.h"
-#include "../../visitor/visitor.h"
-
 #include <vector>
 #include <string>
+
+#include "astexprnode.h"
+
+// Forward-declaration due to cyclic dependency
+class Visitor;
 
 class AstFunctionCallNode: public AstExprNode
 {
@@ -15,7 +17,7 @@ class AstFunctionCallNode: public AstExprNode
     public:
         AstFunctionCallNode() = delete;
         AstFunctionCallNode(std::string &name, std::vector<AstExprNode *> &args);
-        virtual ~AstFunctionCallNode() = default;
+        virtual ~AstFunctionCallNode();
 
         virtual void acceptVisitor(Visitor *vis);
 
@@ -23,6 +25,8 @@ class AstFunctionCallNode: public AstExprNode
         std::vector<AstExprNode *> &args();
 
 };
+
+inline AstFunctionCallNode::~AstFunctionCallNode() = default;
 
 inline AstFunctionCallNode::AstFunctionCallNode
                         (std::string &name, std::vector<AstExprNode *> &args)

@@ -1,17 +1,20 @@
-#ifndef INCLUDED_ASTEXPRESSIONNODE_
-#define INCLUDED_ASTEXPRESSIONNODE_
+#ifndef INCLUDED_ASTEXPRNODE_
+#define INCLUDED_ASTEXPRNODE_
 
 #include "../astnode.h"
-#include "../../visitor/visitor.h"
+
+// Forward-declaration due to cyclic dependency
+class Visitor;
+class AstNode;
 
 class AstExprNode: public AstNode
 {
     public:
         AstExprNode() = default;
-        virtual ~AstExprNode() = 0;
+        virtual ~AstExprNode() = default;
 
         virtual void acceptVisitor(Visitor *vis) = 0;
-        
+
 };
 
 #endif

@@ -1,10 +1,12 @@
 #ifndef INCLUDED_ASTUNARYNODE_
 #define INCLUDED_ASTUNARYNODE_
 
-#include "astexprnode.h"
-#include "../../visitor/visitor.h"
-
 #include <string>
+
+#include "astexprnode.h"
+
+// Forward-declaration due to cyclic dependency
+class Visitor;
 
 class AstUnaryNode: public AstExprNode
 {
@@ -13,13 +15,15 @@ class AstUnaryNode: public AstExprNode
 
     public:
         AstUnaryNode(std::string &value, AstExprNode *expr);
-        virtual ~AstUnaryNode() = default;
+        virtual ~AstUnaryNode();
 
         virtual void acceptVisitor(Visitor *vis);
         
         std::string value() const;
         AstExprNode *expr() const;
 };
+
+inline AstUnaryNode::~AstUnaryNode() = default;
 
  inline AstUnaryNode::AstUnaryNode(std::string &value, AstExprNode *expr)
  :

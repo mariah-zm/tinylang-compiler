@@ -1,10 +1,12 @@
 #ifndef INCLUDED_ASTBLOCKNODE_
 #define INCLUDED_ASTBLOCKNODE_
 
-#include "aststatementnode.h"
-#include "../../visitor/visitor.h"
-
 #include <vector>
+
+#include "aststatementnode.h"
+
+// Forward-declaration due to cyclic dependency
+class Visitor;
 
 class AstBlockNode: public AstStatementNode
 {
@@ -12,11 +14,18 @@ class AstBlockNode: public AstStatementNode
 
     public:
         AstBlockNode() = default;
-        virtual ~AstBlockNode() = default;
+        virtual ~AstBlockNode();
 
         void addStatementChild(AstStatementNode *statement);
 
         virtual void acceptVisitor(Visitor *vis);
 };
+
+inline AstBlockNode::~AstBlockNode() = default;
+
+inline void AstBlockNode::addStatementChild(AstStatementNode *statement)
+{
+    d_statements.push_back(statement);
+}
 
 #endif

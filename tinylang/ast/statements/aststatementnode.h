@@ -2,7 +2,9 @@
 #define INCLUDED_ASTSTATEMENTNODE_
 
 #include "../astnode.h"
-#include "../../visitor/visitor.h"
+
+// Forward-declaration due to cyclic dependency
+class Visitor;
 
 class AstStatementNode: public AstNode
 {
