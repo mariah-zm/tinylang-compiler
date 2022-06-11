@@ -2,6 +2,7 @@
 #define INCLUDED_SYMBOLTABLE_
 
 #include "../type/type.h"
+#include "../ast/statements/astfunctionprototypenode.h"
 
 #include <string>
 #include <vector>
@@ -10,28 +11,38 @@
 
 class SymbolTable
 {
-    class Identifier;
-    class FunctionIdentifier;
-    class VariableIdentifer;
+    typedef std::map<std::string, AstFunctionPrototypeNode *> function_t;
+    typedef std::map<std::string, Type> scope_t;
 
-    typedef std::map<std::string, Identifier> scope_t;
-
-    class Identfier
-    {
-        
-    };
-
-    private:
-        std::stack<scope_t> d_scopeStack;    
-        scope_t d_globalScope;
+    std::vector<scope_t> d_scopeStack;      // to be implemented as stack
+    function_t d_declaredFunctions;
 
     public:
         SymbolTable() = default;
-        void openScope(std::string fnName);     // push
-        void addIdentifier(std::string &fnName, Identifier &Identifier);
-        void endScope();                        // pop 
-        bool isInScope(std::string identifierName);
 
+        void openScope();          // push
+        void endScope();           // pop 
+
+        bool addIdentifier(std::string name, Type type);
+        bool addFunction(AstFunctionPrototypeNode *fn);
+
+        Type getIdentifierType(std::string identifierName);
+        AstFunctionPrototypeNode *getFnDef(std::string fnName);
 };
+
+inline SymbolTable::SymbolTable()
+{
+    openScope(); // adding global scope
+}
+
+inline void SymbolTable::openScope() 
+{
+    d_scopeStack.push_back(scope_t{});
+}
+
+inline void SymbolTable::endScope() 
+{
+    d_scopeStack.pop_back();
+}
 
 #endif

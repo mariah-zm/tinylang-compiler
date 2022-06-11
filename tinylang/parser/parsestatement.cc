@@ -5,6 +5,11 @@ AstStatementNode *Parser::parseStatement()
     AstStatementNode *node;
     switch (d_currentTok.type())
     {
+        case Token::FN:
+        {
+            node = parseFunctionDef();
+            break;
+        }
         case Token::LET:
         {
             node = parseVarDecl();

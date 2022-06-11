@@ -7,19 +7,10 @@ AstProgramNode *Parser::parse()
 
     while (!d_currentTok.isEof())
     {
-        if (d_currentTok.type() == Token::FN)
-        {    
-            AstFunctionNode *fn = parseFunctionDef();
-            rootNode->addFunction(fn->prototype());
-            rootNode->addStatementChild(fn);
-        }
-        else
-        {
-            AstStatementNode *stmt = parseStatement();
-            rootNode->addStatementChild(stmt);
-        }
+        AstStatementNode *stmt = parseStatement();
+        rootNode->addStatementChild(stmt);
 
-         d_currentTok = getNextToken();
+        d_currentTok = getNextToken();
     }
 
     return rootNode;

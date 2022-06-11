@@ -13,7 +13,6 @@ class Visitor;
 class AstProgramNode: public virtual AstNode
 {
     std::vector<AstStatementNode *> d_childNodes;
-    std::vector<AstFunctionPrototypeNode *> d_progFunctions;
 
     public:
         AstProgramNode() = default;
@@ -29,11 +28,6 @@ class AstProgramNode: public virtual AstNode
 inline void AstProgramNode::addStatementChild(AstStatementNode *statement)
 {
     d_childNodes.push_back(statement);
-}
-
-inline void AstProgramNode::addFunction(AstFunctionPrototypeNode *function)
-{
-    d_progFunctions.push_back(function);
 }
 
 #endif
