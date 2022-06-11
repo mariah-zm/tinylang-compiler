@@ -7,10 +7,8 @@ void XmlVisitor::visit(AstFunctionNode *node)
     for (int t = 0; t < d_indent; ++t) 
         tabs.append("\t");
 
-    Identifier::Type retType = node->prototype()->returnType();
-
     d_file << tabs << "<FunctionDecl Name=\"" << node->prototype()->name() 
-            << "\" ReturnType=\"" << Identifier::typeToString(retType)
+            << "\" ReturnType=\"" << node->prototype()->returnType()
                 << "\">" << endl;
 
     ++d_indent;

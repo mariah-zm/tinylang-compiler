@@ -17,7 +17,7 @@ AstFunctionPrototypeNode *Parser::parseFunctionPrototype()
         throw syntax_error("expected \'(\'");
     
     // Reading parameters
-    vector<Identifier> params;
+    vector<AstFunctionPrototypeNode::Param> params;
 
     while (true)
     {
@@ -46,8 +46,7 @@ AstFunctionPrototypeNode *Parser::parseFunctionPrototype()
 
         type = d_currentTok.type();
 
-        Identifier identifier = Identifier{name, type};
-        params.push_back(identifier);
+        params.push_back(AstFunctionPrototypeNode::Param{name, Type{type}});
 
         // Consuming comma or )
         d_currentTok = getNextToken();
@@ -72,7 +71,7 @@ AstFunctionPrototypeNode *Parser::parseFunctionPrototype()
     if (!d_currentTok.isType())
         throw syntax_error("expected \'type\'");
 
-    Identifier::Type type = Identifier::getType(d_currentTok.type());
+    Type retType = Type{d_currentTok.type()};
 
-    return new AstFunctionPrototypeNode{fnName, params, type};
+    return new AstFunctionPrototypeNode{fnName, params, retType};
 }

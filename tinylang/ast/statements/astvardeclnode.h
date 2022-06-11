@@ -5,7 +5,7 @@
 #include "../expressions/astidentifiernode.h"
 #include "../expressions/astexprnode.h"
 #include "../../token/token.h"
-#include "../../identifier/identifier.h"
+#include "../../type/type.h"
 
 // Forward-declaration due to cyclic dependency
 class Visitor;
@@ -13,7 +13,7 @@ class Visitor;
 class AstVarDeclNode: public AstStatementNode
 {
     AstIdentifierNode *d_left;
-    Identifier::Type d_type;
+    Type d_type;
     AstExprNode *d_right;
 
     public:
@@ -23,7 +23,7 @@ class AstVarDeclNode: public AstStatementNode
         virtual void acceptVisitor(Visitor *vis);
 
         AstIdentifierNode *left() const;
-        Identifier::Type type() const;
+        Type type() const;
         AstExprNode *right() const;
 
 };
@@ -34,17 +34,16 @@ inline AstVarDeclNode::AstVarDeclNode
                 (AstIdentifierNode *left, Token::TokenType type, AstExprNode *right)
 :
     d_left(left),
+    d_type(type),
     d_right(right)
-{
-    d_type = Identifier::getType(type);
-}
+{}
 
 inline AstIdentifierNode *AstVarDeclNode::left() const
 {
     return d_left;
 }
 
-inline Identifier::Type AstVarDeclNode::type() const
+inline Type AstVarDeclNode::type() const
 {
     return d_type;
 }

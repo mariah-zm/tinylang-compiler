@@ -1,36 +1,37 @@
 #ifndef INCLUDED_SYMBOLTABLE_
 #define INCLUDED_SYMBOLTABLE_
 
-#include "../identifier/identifier.h"
+#include "../type/type.h"
 
 #include <string>
 #include <vector>
 #include <stack>
+#include <map>
 
 class SymbolTable
 {
-    private:
-        struct Scope 
-        {
-            std::string d_fnName;
-            std::vector<Identifier> d_identifiers;
-        };
+    class Identifier;
+    class FunctionIdentifier;
+    class VariableIdentifer;
 
-        std::stack<Scope> d_scopeStack;
-        Scope d_globalScope;
+    typedef std::map<std::string, Identifier> scope_t;
+
+    class Identfier
+    {
+        
+    };
+
+    private:
+        std::stack<scope_t> d_scopeStack;    
+        scope_t d_globalScope;
 
     public:
-        SymbolTable();
-        void openScope(std::string fnName);
+        SymbolTable() = default;
+        void openScope(std::string fnName);     // push
         void addIdentifier(std::string &fnName, Identifier &Identifier);
-        void endScope();
+        void endScope();                        // pop 
         bool isInScope(std::string identifierName);
 
 };
-
-inline SymbolTable::SymbolTable()
-{
-    d_globalScope.d_fnName = "global";
-}
 
 #endif

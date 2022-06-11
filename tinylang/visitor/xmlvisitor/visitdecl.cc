@@ -8,7 +8,7 @@ void XmlVisitor::visit(AstVarDeclNode *node)
         tabs.append("\t");
 
     d_file << tabs << "<Decl>" << endl;
-    d_file << tabs << "\t<Id Type=\"" << Identifier::typeToString(node->type())
+    d_file << tabs << "\t<Id Type=\"" << node->type()
         << "\">" << node->left()->name() << "</Id>" << endl;
 
     ++d_indent;
