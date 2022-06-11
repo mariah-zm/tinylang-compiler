@@ -9,7 +9,7 @@ class SemanticVisitor: public Visitor
     SymbolTable d_symbolTable;
 
     public:
-        SemanticVisitor();
+        SemanticVisitor(SymbolTable symbolTable);
 
         virtual void visit(AstProgramNode *node) override;
         virtual void visit(AstAssignmentNode *node) override;
@@ -32,5 +32,10 @@ class SemanticVisitor: public Visitor
         virtual void visit(AstIntLiteralNode *node) override;
 
 };
+
+inline SemanticVisitor::SemanticVisitor(SymbolTable symbolTable)
+:
+    d_symbolTable(symbolTable)
+{}
 
 #endif

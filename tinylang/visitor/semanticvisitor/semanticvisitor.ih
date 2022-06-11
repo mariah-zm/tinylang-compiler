@@ -1,0 +1,5 @@
+#include "semanticvisitor.h"
+
+#include "../../exceptions/semanticerror.h"
+
+using namespace std;
