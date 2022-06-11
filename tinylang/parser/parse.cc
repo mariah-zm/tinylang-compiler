@@ -8,7 +8,7 @@ AstProgramNode *Parser::parse()
     while (!d_currentTok.isEof())
     {
         AstStatementNode *stmt = parseStatement();
-        rootNode->addStatementChild(stmt);
+        rootNode->addStatement(stmt);
 
         d_currentTok = getNextToken();
     }

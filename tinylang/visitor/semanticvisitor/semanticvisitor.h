@@ -2,11 +2,15 @@
 #define INCLUDED_SEMANTICVISITOR_
 
 #include "../visitor.h"
-#include "../symboltable/symboltable.h"
+#include "../../symboltable/symboltable.h"
+#include "../../type/type.h"
 
 class SemanticVisitor: public Visitor
 {
     SymbolTable d_symbolTable;
+
+    Type d_typeToReturn;
+    Type d_typeToMatch;
 
     public:
         SemanticVisitor(SymbolTable symbolTable);

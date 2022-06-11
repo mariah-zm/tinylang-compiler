@@ -18,10 +18,10 @@ class SymbolTable
     function_t d_declaredFunctions;
 
     public:
-        SymbolTable() = default;
+        SymbolTable();
 
         void openScope();          // push
-        void endScope();           // pop 
+        void closeScope();         // pop 
 
         bool addIdentifier(std::string name, Type type);
         bool addFunction(AstFunctionPrototypeNode *fn);
@@ -40,7 +40,7 @@ inline void SymbolTable::openScope()
     d_scopeStack.push_back(scope_t{});
 }
 
-inline void SymbolTable::endScope() 
+inline void SymbolTable::closeScope() 
 {
     d_scopeStack.pop_back();
 }

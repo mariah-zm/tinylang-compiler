@@ -1,3 +1,7 @@
+fn Sq(x : float) -> float {
+return x*x;
+}
+
 fn XGreaterY(x : float, y : float) -> bool {
 let ans : bool = true;
 if (y > x) { ans = false; }

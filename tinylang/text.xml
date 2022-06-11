@@ -1,4 +1,17 @@
 <Program>
+	<FunctionDecl Name="Sq" ReturnType="float">
+		<Params>
+			<Param Type="float">x</Param>
+		</Params>
+		<Block>
+			<Return>
+				<BinExpr Op="*">
+					<Id>x</Id>
+					<Id>x</Id>
+				</BinExpr>
+			</Return>
+		</Block>
+	</FunctionDecl>
 	<FunctionDecl Name="XGreaterY" ReturnType="bool">
 		<Params>
 			<Param Type="float">x</Param>

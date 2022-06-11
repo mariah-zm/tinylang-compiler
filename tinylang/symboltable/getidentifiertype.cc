@@ -2,7 +2,7 @@
 
 Type SymbolTable::getIdentifierType(string identifierName)
 {
-    for (size_t idx = d_scopeStack.size()-1; ; --idx)
+    for (size_t idx = d_scopeStack.size()-1; --idx;)
     {
         try
         {
@@ -10,7 +10,8 @@ Type SymbolTable::getIdentifierType(string identifierName)
         }
         catch (out_of_range &ex)
         {
-            throw ex;
         }
     }
+
+    throw out_of_range("");
 }

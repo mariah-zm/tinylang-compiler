@@ -2,7 +2,7 @@
 
 ostream &operator<<(ostream &out, Type const &type)
 {
-    switch (type.type())
+    switch (type.d_type)
     {
         case Type::FLOAT: 
             out << "float";

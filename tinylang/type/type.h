@@ -22,18 +22,29 @@ class Type
 
     public:
         Type() = default;
-        Type(Type const &type) = default;
+        Type(Type const &type) = default; // copy constructor
+        Type(TypeEnum typeEnum);
         Type(Token::TokenType type);
 
         friend std::ostream &operator<<(std::ostream &out, Type const &type);
-
-        TypeEnum type() const;
+        friend bool operator==(Type const &lhs, Type const &rhs);
+        friend bool operator!=(Type const &lhs, Type const &rhs);
    
 };
 
-inline Type::TypeEnum Type::type() const
+inline Type::Type(Type::TypeEnum typeEnum)
+:
+    d_type(typeEnum)
+{}
+
+inline bool operator==(Type const &lhs, Type const &rhs)
 {
-    return d_type;
+    return lhs.d_type == rhs.d_type;
+}
+
+inline bool operator!=(Type const &lhs, Type const &rhs)
+{
+    return lhs.d_type != rhs.d_type;
 }
 
 #endif
