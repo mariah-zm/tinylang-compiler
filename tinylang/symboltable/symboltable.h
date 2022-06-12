@@ -11,11 +11,27 @@
 
 class SymbolTable
 {
-    typedef std::map<std::string, AstFunctionPrototypeNode *> function_t;
-    typedef std::map<std::string, Type> scope_t;
+    public:
+        struct Identifier
+        {
+            union Value
+            {
+                int intVal;
+                float floatVal;
+                char charVal;
+                bool boolVal;
+            };
 
-    std::vector<scope_t> d_scopeStack;      // to be implemented as stack
-    function_t d_declaredFunctions;
+            Type d_type;
+            Value d_val;
+        };
+
+    private:
+        typedef std::map<std::string, AstFunctionPrototypeNode *> function_t;
+        typedef std::map<std::string, Identifier> scope_t;
+
+        std::vector<scope_t> d_scopeStack;      // to be implemented as stack
+        function_t d_declaredFunctions;
 
     public:
         SymbolTable();
@@ -26,8 +42,13 @@ class SymbolTable
         bool addIdentifier(std::string name, Type type);
         bool addFunction(AstFunctionPrototypeNode *fn);
 
-        Type getIdentifierType(std::string identifierName);
-        AstFunctionPrototypeNode *getFnDef(std::string fnName);
+        Identifier *findIdentifier(std::string idenName);
+        AstFunctionPrototypeNode *findFnDef(std::string fnName);
+        void updateIdentifier(std::string idenName, float newVal);
+        void updateIdentifier(std::string idenName, int newVal);
+        void updateIdentifier(std::string idenName, char newVal);
+        void updateIdentifier(std::string idenName, bool newVal);
+
 };
 
 inline SymbolTable::SymbolTable()

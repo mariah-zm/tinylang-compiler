@@ -5,7 +5,7 @@ void SemanticVisitor::visit(AstFunctionCallNode *node)
     try
     {
         AstFunctionPrototypeNode *protNode 
-                        = d_symbolTable.getFnDef(node->fnName());
+                        = d_symbolTable.findFnDef(node->fnName());
 
         size_t argSize = node->args().size();
         size_t paramSize = protNode->params().size();

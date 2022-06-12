@@ -7,7 +7,7 @@ void SemanticVisitor::visit(AstIdentifierNode *node)
     {
         // Setting type to match in expression
         d_typeToMatch = 
-                    d_symbolTable.getIdentifierType(node->name());
+                    d_symbolTable.findIdentifier(node->name())->d_type;
     }
     catch (out_of_range &ex)
     {
