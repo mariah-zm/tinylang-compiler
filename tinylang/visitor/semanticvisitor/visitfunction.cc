@@ -15,5 +15,5 @@ void SemanticVisitor::visit(AstFunctionNode *node)
                             + node->prototype()->name());
 
     // Closing scope for function def
-    d_symbolTable.openScope();
+    d_symbolTable.closeScope();
 }

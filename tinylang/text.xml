@@ -80,25 +80,4 @@
 			</Args>
 		</FunctionCall>
 	</Print>
-	<Print>
-		<FunctionCall Name="XGreaterY2">
-			<Args>
-				<FunctionCall Name="Sq">
-					<Args>
-						<FloatLiteral>1.5</FloatLiteral>
-					</Args>
-				</FunctionCall>
-				<Id>y</Id>
-			</Args>
-		</FunctionCall>
-	</Print>
-	<Print>
-		<FunctionCall Name="AverageOfThree">
-			<Args>
-				<Id>x</Id>
-				<Id>y</Id>
-				<FloatLiteral>1.2</FloatLiteral>
-			</Args>
-		</FunctionCall>
-	</Print>
 </Program>

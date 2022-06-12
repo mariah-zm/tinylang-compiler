@@ -15,5 +15,3 @@ let z : float = Sq(x);
 print y; //6.25
 print x * z; //13.824
 print XGreaterY(x, 2.3); // true
-print XGreaterY2(Sq(1.5), y); //false
-print AverageOfThree (x, y, 1.2); //3.28

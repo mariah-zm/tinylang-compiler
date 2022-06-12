@@ -2,7 +2,9 @@
 
 Type SymbolTable::getIdentifierType(string identifierName)
 {
-    for (size_t idx = d_scopeStack.size()-1; --idx;)
+    size_t scopeSize = d_scopeStack.size();
+
+    for (size_t idx = scopeSize - 1; idx >= 0; idx--)
     {
         try
         {
