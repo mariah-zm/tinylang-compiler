@@ -11,7 +11,8 @@ AstForStmtNode *Parser::parseFor()
     d_currentTok = getNextToken();
 
     if (d_currentTok.type() != Token::OPEN_BR)
-        throw syntax_error("expected \'(\'");
+        throw syntax_error("expected \'(\' in line " 
+                + to_string(d_lexer->lineNumber()));
 
     // Checking if var decl was skipped
     d_currentTok = getNextToken();
@@ -24,7 +25,8 @@ AstForStmtNode *Parser::parseFor()
 
     // Consuming ;
     if (d_currentTok.type() != Token::SEMI_COLON)
-        throw syntax_error("expected \';\'");
+        throw syntax_error("expected \';\' in line "
+                + to_string(d_lexer->lineNumber()));
 
     // Parsing expression
     expr = parseExpr();
@@ -42,7 +44,8 @@ AstForStmtNode *Parser::parseFor()
 
     // Consuming )
     if (d_currentTok.type() != Token::CLOSE_BR)
-        throw syntax_error("expected \')\'");
+        throw syntax_error("expected \')\' in line " 
+                + to_string(d_lexer->lineNumber()));
 
     block = parseBlock();
 

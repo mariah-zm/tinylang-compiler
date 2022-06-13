@@ -34,6 +34,7 @@ Token::TokenType Lexer::getTokenType(State state)
     case S22:
         return Token::PUNCT;
     default:
-        throw lexical_error("unknown token type");
+        throw lexical_error("unknown token type in line " 
+                + to_string(d_lineNumber));
     }
 }

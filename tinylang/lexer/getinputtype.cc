@@ -1,27 +1,28 @@
 #include "lexer.ih"
 
-Lexer::Input::InputType Lexer::Input::getInputType(char val) const
+Lexer::Input::InputType Lexer::getInputType(char val) const
 {
     if (isdigit(val))
-        return DIGIT;
+        return Input::DIGIT;
     else if (isalpha(val))
-        return LETTER;
+        return Input::LETTER;
     else if (isspace(val))
-        return SPACE;
-    else if (d_punctuation.find(val) != std::string::npos)
-        return PUNCT;
+        return Input::SPACE;
+    else if (s_inputHelper.d_punctuation.find(val) != string::npos)
+        return Input::PUNCT;
     else
     {
         try 
         {
-            return d_charInputs.at(val);
+            return s_inputHelper.d_charInputs.at(val);
         } 
         catch (out_of_range &e) 
         {
             if (isprint(val))
-                return PRINT;
+                return Input::PRINT;
             else
-                throw lexical_error("character not accepted");
+                throw lexical_error("character not accepted in line " 
+                        + to_string(d_lineNumber));
         }
     }
 }

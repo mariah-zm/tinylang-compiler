@@ -50,7 +50,8 @@ AstStatementNode *Parser::parseStatement()
             break;
         }
         default:
-            throw syntax_error("unexpected token");
+            throw syntax_error("unexpected token in line " 
+                    + to_string(d_lexer->lineNumber()));
     }
 
     return node;

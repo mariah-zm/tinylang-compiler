@@ -46,8 +46,6 @@ class Lexer
                                                   {'-',  MINUS},
                                                   {'*',  MUL},
                                                   {'/',  DIV}};
-
-        InputType getInputType(char val) const ;
     };
 
     enum State
@@ -134,17 +132,24 @@ class Lexer
     std::string d_currentLine;
     State d_currentState = s_transitions.d_starting;
 
-    size_t d_lineNum = 0;
+    size_t d_lineNumber = 0;
 
     public:
         Lexer(const Lexer &lexer);      // Copy constructor
         Lexer(std::string fileName);
 
         Token getNextToken();
+        size_t lineNumber() const;
 
     private:
         Token::TokenType getTokenType(State state);
         void trimCurrentLine();
+        Input::InputType getInputType(char val) const;
 };
+
+inline size_t Lexer::lineNumber() const
+{
+    return d_lineNumber;
+}
 
 #endif

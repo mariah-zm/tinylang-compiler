@@ -20,7 +20,7 @@ Token Lexer::getNextToken()
         }
         else 
         {
-            ++d_lineNum;
+            ++d_lineNumber;
             getline(d_programFile, d_currentLine);
             trimCurrentLine();
         }    
@@ -35,7 +35,7 @@ Token Lexer::getNextToken()
         else 
             break;
 
-        Input::InputType input = s_inputHelper.getInputType(currentVal);   
+        Input::InputType input = getInputType(currentVal);   
         d_currentState = s_transitions.d_transitions[d_currentState][input];
 
         if (d_currentState == Serr)
@@ -45,7 +45,7 @@ Token Lexer::getNextToken()
             {
                 d_currentLine.erase(0, 1);
                 currentVal = d_currentLine.at(0);
-                input = s_inputHelper.getInputType(currentVal);
+                input = getInputType(currentVal);
             }   
             break;
         }
@@ -85,5 +85,6 @@ Token Lexer::getNextToken()
     else if (s_transitions.isCommentState(topState))
         return getNextToken();
     else 
-        throw lexical_error("unexpected end of token");
+        throw lexical_error("unexpected end of token in line " 
+                + to_string(d_lineNumber));
 }

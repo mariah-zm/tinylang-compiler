@@ -6,7 +6,8 @@ AstFunctionPrototypeNode *Parser::parseFunctionPrototype()
     
     // Identifier name
     if (d_currentTok.type() != Token::IDENTIFIER)
-        throw syntax_error("expected function identifier");
+        throw syntax_error("expected function identifier in line " 
+                + to_string(d_lexer->lineNumber()));
     
     string fnName = d_currentTok.value();
 
@@ -14,8 +15,9 @@ AstFunctionPrototypeNode *Parser::parseFunctionPrototype()
     d_currentTok = getNextToken();
 
     if (d_currentTok.type() != Token::OPEN_BR)
-        throw syntax_error("expected \'(\'");
-    
+        throw syntax_error("expected \'(\' in line " 
+                + to_string(d_lexer->lineNumber()));
+
     // Reading parameters
     vector<AstFunctionPrototypeNode::Param> params;
 
@@ -28,7 +30,8 @@ AstFunctionPrototypeNode *Parser::parseFunctionPrototype()
         d_currentTok = getNextToken();
 
         if (d_currentTok.type() != Token::IDENTIFIER)
-            throw syntax_error("expected parameter name");
+            throw syntax_error("expected parameter name in line " 
+                    + to_string(d_lexer->lineNumber()));
             
         name = d_currentTok.value();
 
@@ -36,13 +39,15 @@ AstFunctionPrototypeNode *Parser::parseFunctionPrototype()
         d_currentTok = getNextToken();
 
         if (d_currentTok.type() != Token::COLON)
-            throw syntax_error("expected \':\'");
+            throw syntax_error("expected \':\' in line " 
+                    + to_string(d_lexer->lineNumber()));
 
         // Param type
         d_currentTok = getNextToken();
 
         if (!d_currentTok.isType())
-            throw syntax_error("expected parameter type");
+            throw syntax_error("expected parameter type in line " 
+                    + to_string(d_lexer->lineNumber()));
 
         type = d_currentTok.type();
 
@@ -56,20 +61,23 @@ AstFunctionPrototypeNode *Parser::parseFunctionPrototype()
          else if (d_currentTok.type() == Token::CLOSE_BR)
             break;
         else
-            throw syntax_error("expected \',\' OR \')\'");
+            throw syntax_error("expected \',\' OR \')\' in line " 
+                    + to_string(d_lexer->lineNumber()));
     }   
 
     // Consuming -> 
     d_currentTok = getNextToken();
 
     if (d_currentTok.type() != Token::ARROW)
-        throw syntax_error("expected \'->\'");
+        throw syntax_error("expected \'->\' in line " 
+                + to_string(d_lexer->lineNumber()));
     
     // Gettin return type
     d_currentTok = getNextToken();
 
     if (!d_currentTok.isType())
-        throw syntax_error("expected \'type\'");
+        throw syntax_error("expected \'type\' in line " 
+                + to_string(d_lexer->lineNumber()));
 
     Type retType = Type{d_currentTok.type()};
 

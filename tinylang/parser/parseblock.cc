@@ -8,7 +8,8 @@ AstBlockNode *Parser::parseBlock()
     d_currentTok = getNextToken();
 
     if (d_currentTok.type() != Token::OPEN_SCOPE)
-        throw syntax_error("expected \'{\'");
+        throw syntax_error("expected \'{\' in line " 
+                + to_string(d_lexer->lineNumber()));
 
     d_currentTok = getNextToken();
 

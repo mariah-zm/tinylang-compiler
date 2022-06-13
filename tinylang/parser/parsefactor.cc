@@ -27,7 +27,8 @@ AstExprNode *Parser::parseFactor()
         d_currentTok = getNextToken();
 
         if (d_currentTok.type() != Token::CLOSE_BR)
-            throw syntax_error("expected \')\'");
+            throw syntax_error("expected \')\' in line " 
+                    + to_string(d_lexer->lineNumber()));
 
         return expr;
     }
@@ -38,5 +39,5 @@ AstExprNode *Parser::parseFactor()
         return new AstUnaryNode{val, expr};;
     }
     else
-        throw syntax_error("unexpected token");
+        throw syntax_error("unexpected token in line " + d_lexer->lineNumber());
 }

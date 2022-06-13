@@ -23,5 +23,6 @@ AstLiteralNode *Parser::parseLiteral()
     else if (type == Token::FALSE)
         return new AstBoolLiteralNode{false};
     else 
-        throw syntax_error("expected a literal type");
+        throw syntax_error("expected a literal type in line " 
+                + to_string(d_lexer->lineNumber()));
 }
