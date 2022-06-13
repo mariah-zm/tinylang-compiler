@@ -25,10 +25,16 @@ try
     xmlVis.close();
 
     cout << "\nBegin Semantic Analysis..." << endl;
-    SymbolTable symbolTable = SymbolTable{};
-    SemanticVisitor semVis = SemanticVisitor{symbolTable};
+    SymbolTable symbolTable1 = SymbolTable{};
+    SemanticVisitor semVis = SemanticVisitor{&symbolTable1};
     program->acceptVisitor(&semVis);
     cout << "Semantic Analysis Complete." << endl;
+
+    cout << "\nBegin Interpretation Execution Pass...\n" << endl;
+    SymbolTable symbolTable2 = SymbolTable{};
+    InterpreterVisitor intVis = InterpreterVisitor{&symbolTable2};
+    program->acceptVisitor(&intVis);
+    cout << "\nInterpretation Execution Pass Complete." << endl;
 }
 catch (lexical_error &ex)
 {

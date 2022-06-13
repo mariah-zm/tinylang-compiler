@@ -2,6 +2,6 @@
 
 void InterpreterVisitor::visit(AstCharLiteralNode *node)
 {
-    // Setting type to match in expression
-    d_typeToMatch = Type::CHAR;
+    // Setting current value (iden) to value in node
+    d_currentIden = Identifier{node->value()};
 }

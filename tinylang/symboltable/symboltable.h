@@ -2,7 +2,8 @@
 #define INCLUDED_SYMBOLTABLE_
 
 #include "../type/type.h"
-#include "../ast/statements/astfunctionprototypenode.h"
+#include "../ast/statements/astfunctionnode.h"
+#include "../identifier/identifier.h"
 
 #include <string>
 #include <vector>
@@ -11,23 +12,8 @@
 
 class SymbolTable
 {
-    public:
-        struct Identifier
-        {
-            union Value
-            {
-                int intVal;
-                float floatVal;
-                char charVal;
-                bool boolVal;
-            };
-
-            Type d_type;
-            Value d_val;
-        };
-
     private:
-        typedef std::map<std::string, AstFunctionPrototypeNode *> function_t;
+        typedef std::map<std::string, AstFunctionNode *> function_t;
         typedef std::map<std::string, Identifier> scope_t;
 
         std::vector<scope_t> d_scopeStack;      // to be implemented as stack
@@ -39,15 +25,13 @@ class SymbolTable
         void openScope();          // push
         void closeScope();         // pop 
 
+        bool addIdentifier(std::string name, Identifier iden);
         bool addIdentifier(std::string name, Type type);
-        bool addFunction(AstFunctionPrototypeNode *fn);
+        bool addFunction(AstFunctionNode *fn);
 
         Identifier *findIdentifier(std::string idenName);
-        AstFunctionPrototypeNode *findFnDef(std::string fnName);
-        void updateIdentifier(std::string idenName, float newVal);
-        void updateIdentifier(std::string idenName, int newVal);
-        void updateIdentifier(std::string idenName, char newVal);
-        void updateIdentifier(std::string idenName, bool newVal);
+        AstFunctionNode *findFnDef(std::string fnName);
+        void updateIdentifier(std::string idenName, Identifier newVal);
 
 };
 

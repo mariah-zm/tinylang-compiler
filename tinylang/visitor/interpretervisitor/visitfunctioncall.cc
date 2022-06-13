@@ -2,26 +2,29 @@
 
 void InterpreterVisitor::visit(AstFunctionCallNode *node)
 {
-    try
+    AstFunctionNode *fnNode = d_symbolTable->findFnDef(node->fnName());
+
+    // Opening scope for function call
+    d_symbolTable->openScope();
+
+    fnNode->prototype()->acceptVisitor(this);
+    vector<string> paramNames;
+
+    // Getting param names to update their values at the beginning of scope
+    for (auto param: fnNode->prototype()->params())
+        paramNames.push_back(param.d_name);
+    
+    // Updating param values with arg values
+    for (auto arg: node->args())
     {
-        AstFunctionPrototypeNode *protNode 
-                        = d_symbolTable.getFnDef(node->fnName());
-
-        size_t argSize = node->args().size();
-        size_t paramSize = protNode->params().size();
-
-
-        // Type checking params and args
-        for (size_t idx = 0; idx < argSize; ++idx)
-        {
-            node->args().at(idx)->acceptVisitor(this);
-
-            Type expectedType = protNode->params().at(idx).d_type;
-        }
-
-        d_typeToMatch = protNode->returnType();
+        arg->acceptVisitor(this);
+        d_symbolTable->updateIdentifier(paramNames.at(0), d_currentIden);
+        paramNames.erase(paramNames.begin());
     }
-    catch (out_of_range &ex)
-    {
-    }
+
+    // Interpret body
+    fnNode->body()->acceptVisitor(this);
+
+    // Closing scope for function call
+    d_symbolTable->closeScope();
 }

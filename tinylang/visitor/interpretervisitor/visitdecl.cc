@@ -2,9 +2,9 @@
 
 void InterpreterVisitor::visit(AstVarDeclNode *node)
 {
-    string varName = node->left()->name();
-    Type varType = node->type();
-
-    // Semantic Analysis on expression on RHS
+    // Visting RHS to get current val
     node->right()->acceptVisitor(this);
+
+    string varName = node->left()->name();
+    d_symbolTable->addIdentifier(varName, d_currentIden);
 }

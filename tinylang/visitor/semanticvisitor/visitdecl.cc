@@ -6,7 +6,7 @@ void SemanticVisitor::visit(AstVarDeclNode *node)
     Type varType = node->type();
     
     // Adding Identifier declaration to symbol table
-    if (!d_symbolTable.addIdentifier(varName, varType))
+    if (!d_symbolTable->addIdentifier(varName, varType))
         throw semantic_error("variable " + varName + " is already defined in this scope");
 
     // Semantic Analysis on expression on RHS

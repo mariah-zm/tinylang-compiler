@@ -26,6 +26,8 @@ class Type
         Type(TypeEnum typeEnum);
         Type(Token::TokenType type);
 
+        TypeEnum type() const;
+
         friend std::ostream &operator<<(std::ostream &out, Type const &type);
         friend bool operator==(Type const &lhs, Type const &rhs);
         friend bool operator!=(Type const &lhs, Type const &rhs);
@@ -36,6 +38,11 @@ inline Type::Type(Type::TypeEnum typeEnum)
 :
     d_type(typeEnum)
 {}
+
+inline Type::TypeEnum Type::type() const
+{
+    return d_type;
+}
 
 inline bool operator==(Type const &lhs, Type const &rhs)
 {

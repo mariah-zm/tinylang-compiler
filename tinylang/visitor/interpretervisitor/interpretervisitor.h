@@ -4,16 +4,16 @@
 #include "../visitor.h"
 #include "../../symboltable/symboltable.h"
 #include "../../type/type.h"
+#include "../../identifier/identifier.h"
 
 class InterpreterVisitor: public Visitor
 {
-    SymbolTable d_symbolTable;
-
-    Type d_typeToReturn;
-    Type d_typeToMatch;
+    SymbolTable *d_symbolTable;
+    
+    Identifier d_currentIden;
 
     public:
-        InterpreterVisitor(SymbolTable symbolTable);
+        InterpreterVisitor(SymbolTable *symbolTable);
 
         virtual void visit(AstProgramNode *node) override;
         virtual void visit(AstAssignmentNode *node) override;
@@ -37,7 +37,7 @@ class InterpreterVisitor: public Visitor
 
 };
 
-inline InterpreterVisitor::InterpreterVisitor(SymbolTable symbolTable)
+inline InterpreterVisitor::InterpreterVisitor(SymbolTable *symbolTable)
 :
     d_symbolTable(symbolTable)
 {}

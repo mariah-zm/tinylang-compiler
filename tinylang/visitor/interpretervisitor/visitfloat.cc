@@ -2,6 +2,6 @@
 
 void InterpreterVisitor::visit(AstFloatLiteralNode *node)
 {
-    // Setting type to match in expression
-    d_typeToMatch = Type::FLOAT;
+    // Setting current value (iden) to value in node
+    d_currentIden = Identifier{node->value()};
 }

@@ -1,6 +1,6 @@
 #include "symboltable.ih"
 
-AstFunctionPrototypeNode *SymbolTable::findFnDef(string fnName)
+AstFunctionNode *SymbolTable::findFnDef(string fnName)
 {
     try
     {

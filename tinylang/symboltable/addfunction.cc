@@ -1,17 +1,17 @@
 #include "symboltable.ih"
 
-bool SymbolTable::addFunction(AstFunctionPrototypeNode *fn)
+bool SymbolTable::addFunction(AstFunctionNode *fn)
 {
     try 
     {
-        // no support for function overloading 
-        d_declaredFunctions.at(fn->name());
+        // No support for function overloading 
+        d_declaredFunctions.at(fn->prototype()->name());
         return false;
     }
     catch (out_of_range &ex)
     {
         d_declaredFunctions.insert(
-            pair<string, AstFunctionPrototypeNode*>(fn->name(), fn));
+            pair<string, AstFunctionNode*>(fn->prototype()->name(), fn));
         return true;
     }
 }

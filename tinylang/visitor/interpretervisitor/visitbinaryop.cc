@@ -2,12 +2,36 @@
 
 void InterpreterVisitor::visit(AstBinaryOpNode *node)
 {
-    // Semantic Analysis on expression on LHS
+    // Resolving identifier of expression on LHS
     node->left()->acceptVisitor(this);
-    Type leftType = d_typeToMatch;
+    Identifier leftIden = d_currentIden;
 
-    // Semantic Analysis on expression on RHS
+    // Resolving identifier of expression on RHS
     node->right()->acceptVisitor(this);
-    Type rightType = d_typeToMatch;
-    
+    Identifier rightIden = d_currentIden;
+
+    if (node->value() == "+")
+        d_currentIden = leftIden + rightIden;
+    else if (node->value() == "-")
+        d_currentIden = leftIden - rightIden;
+    else if (node->value() == "*")
+        d_currentIden = leftIden * rightIden;
+    else if (node->value() == "/")
+        d_currentIden = leftIden / rightIden;
+    else if (node->value() == "and")
+        d_currentIden = Identifier{leftIden.andOp(rightIden)};
+    else if (node->value() == "or")
+        d_currentIden = Identifier{leftIden.orOp(rightIden)};
+    else if (node->value() == ">")
+        d_currentIden = Identifier{leftIden > rightIden};
+    else if (node->value() == "<")
+        d_currentIden = Identifier{leftIden < rightIden};
+    else if (node->value() == ">=")
+        d_currentIden = Identifier{leftIden >= rightIden};
+    else if (node->value() == "<=")
+        d_currentIden = Identifier{leftIden <= rightIden};
+    else if (node->value() == "==")
+        d_currentIden = Identifier{leftIden == rightIden};
+    else if (node->value() == "!=")
+        d_currentIden = Identifier{leftIden != rightIden};    
 }

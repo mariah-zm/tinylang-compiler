@@ -2,15 +2,7 @@
 
 void InterpreterVisitor::visit(AstAssignmentNode *node)
 {
-    // Checking if variable has been declared prior to use using try-catch
-    try 
-    {
-        Type leftType = d_symbolTable.getIdentifierType(node->idenName());
-       
-        node->right()->acceptVisitor(this);
-
-    }
-    catch (out_of_range &ex)
-    {
-    }
+    node->right()->acceptVisitor(this);
+    // No type checking as type checks were done using SemanticVisitor
+    d_symbolTable->updateIdentifier(node->idenName(), d_currentIden);
 }

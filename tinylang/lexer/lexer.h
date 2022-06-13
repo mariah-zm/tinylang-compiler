@@ -82,7 +82,7 @@ class Lexer
     {
         State d_starting = S0;
         State d_transitions[24][17] = { // DIGIT  DOT    LETTER  UNDSCR  SPACE  ESCAPE  QUOTE  EQ_SIGN  LT_SIGN  GT_SIGN  EXCLM  ADD    MINUS  MUL    DIV    PUNCT  PRINT
-                                /*S0*/   { S1,    S2,    S3,     S3,     Serr,  Serr,   S4,    S9,      S11,     S11,     S10,   S13,   S14,   S15,   S16,   S22,   Serr },
+                                /*S0*/   { S1,    Serr,  S3,     S3,     Serr,  Serr,   S4,    S9,      S11,     S11,     S10,   S13,   S14,   S15,   S16,   S22,   Serr },
                                 /*S1*/   { S1,    S2,    Serr,   Serr,   Serr,  Serr,   Serr,  Serr,    Serr,    Serr,    Serr,  Serr,  Serr,  Serr,  Serr,  Serr,  Serr },
                                 /*S2*/   { S2,    Serr,  Serr,   Serr,   Serr,  Serr,   Serr,  Serr,    Serr,    Serr,    Serr,  Serr,  Serr,  Serr,  Serr,  Serr,  Serr },
                                 /*S3*/   { S3,    Serr,  S3,     S3,     Serr,  Serr,   Serr,  Serr,    Serr,    Serr,    Serr,  Serr,  Serr,  Serr,  Serr,  Serr,  Serr },
@@ -96,7 +96,7 @@ class Lexer
                                 /*S11*/  { Serr,  Serr,  Serr,   Serr,   Serr,  Serr,   Serr,  S12,     Serr,    Serr,    Serr,  Serr,  Serr,  Serr,  Serr,  Serr,  Serr },
                                 /*S12*/  { Serr,  Serr,  Serr,   Serr,   Serr,  Serr,   Serr,  Serr,    Serr,    Serr,    Serr,  Serr,  Serr,  Serr,  Serr,  Serr,  Serr },
                                 /*S13*/  { Serr,  Serr,  Serr,   Serr,   Serr,  Serr,   Serr,  Serr,    Serr,    Serr,    Serr,  Serr,  Serr,  Serr,  Serr,  Serr,  Serr },
-                                /*S14*/  { Serr,  Serr,  Serr,   Serr,   Serr,  Serr,   Serr,  Serr,    Serr,    S21,     Serr,  Serr,  Serr,  Serr,  Serr,  Serr,  Serr },
+                                /*S14*/  { S1,    Serr,  Serr,   Serr,   Serr,  Serr,   Serr,  Serr,    Serr,    S21,     Serr,  Serr,  Serr,  Serr,  Serr,  Serr,  Serr },
                                 /*S15*/  { Serr,  Serr,  Serr,   Serr,   Serr,  Serr,   Serr,  Serr,    Serr,    Serr,    Serr,  Serr,  Serr,  Serr,  Serr,  Serr,  Serr },
                                 /*S16*/  { Serr,  Serr,  Serr,   Serr,   Serr,  Serr,   Serr,  Serr,    Serr,    Serr,    Serr,  Serr,  Serr,  S17,   S18,   Serr,  Serr },
                                 /*S17*/  { S17,   S17,   S17,    S17,    S17,   S17,    Serr,  S17,     S17,     S17,     S17,   S17,   S17,   S19,   S17,   S17,   S17   },

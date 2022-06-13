@@ -3,7 +3,13 @@
 void SemanticVisitor::visit(AstFunctionNode *node)
 {
     // Opening scope for function def
-    d_symbolTable.openScope();
+    d_symbolTable->openScope();
+
+    // Adding function to symbol table
+    if(!d_symbolTable->addFunction(node))
+        throw semantic_error("a function with the name " 
+            + node->prototype()->name() 
+                + "has already been defined in this scope");
 
     node->prototype()->acceptVisitor(this);
     node->body()->acceptVisitor(this);
@@ -15,5 +21,5 @@ void SemanticVisitor::visit(AstFunctionNode *node)
                             + node->prototype()->name());
 
     // Closing scope for function def
-    d_symbolTable.closeScope();
+    d_symbolTable->closeScope();
 }
