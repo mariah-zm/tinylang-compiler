@@ -85,7 +85,7 @@ class Lexer
                                 /*S2*/   { S2,    Serr,  Serr,   Serr,   Serr,  Serr,   Serr,  Serr,    Serr,    Serr,    Serr,  Serr,  Serr,  Serr,  Serr,  Serr,  Serr },
                                 /*S3*/   { S3,    Serr,  S3,     S3,     Serr,  Serr,   Serr,  Serr,    Serr,    Serr,    Serr,  Serr,  Serr,  Serr,  Serr,  Serr,  Serr },
                                 /*S4*/   { S5,    S5,    S5,     S5,     S5,    S6,     Serr,  S5,      S5,      S5,      S5,    S5,    S5,    S5,    S5,    S5,    S5   },
-                                /*S5*/   { Serr,  Serr,  Serr,   Serr,   Serr,  S8,     Serr,  Serr,    Serr,    Serr,    Serr,  Serr,  Serr,  Serr,  Serr,  Serr,  Serr },
+                                /*S5*/   { Serr,  Serr,  Serr,   Serr,   Serr,  Serr,   S8,    Serr,    Serr,    Serr,    Serr,  Serr,  Serr,  Serr,  Serr,  Serr,  Serr },
                                 /*S6*/   { Serr,  Serr,  Serr,   Serr,   Serr,  Serr,   S7,    Serr,    Serr,    Serr,    Serr,  Serr,  Serr,  Serr,  Serr,  Serr,  Serr },
                                 /*S7*/   { Serr,  Serr,  Serr,   Serr,   Serr,  Serr,   S8,    Serr,    Serr,    Serr,    Serr,  Serr,  Serr,  Serr,  Serr,  Serr,  Serr },
                                 /*S8*/   { Serr,  Serr,  Serr,   Serr,   Serr,  Serr,   Serr,  Serr,    Serr,    Serr,    Serr,  Serr,  Serr,  Serr,  Serr,  Serr,  Serr },

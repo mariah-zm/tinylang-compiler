@@ -6,12 +6,16 @@ void SemanticVisitor::visit(AstBinaryOpNode *node)
     node->left()->acceptVisitor(this);
     Type leftType = d_typeToMatch;
 
+    validateTypeOp(node);
+
     // Semantic Analysis on expression on RHS
     node->right()->acceptVisitor(this);
     Type rightType = d_typeToMatch;
 
-    // TYpe checking
+    // Type checking
     if (leftType != rightType)
         throw semantic_error("type mismatch in expression in line "
                 + to_string(node->lineNumber()));
+    
+
 }

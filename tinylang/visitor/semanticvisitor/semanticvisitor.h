@@ -34,6 +34,10 @@ class SemanticVisitor: public Visitor
         virtual void visit(AstCharLiteralNode *node) override;
         virtual void visit(AstFloatLiteralNode *node) override;
         virtual void visit(AstIntLiteralNode *node) override;
+    
+    private:
+        void validateTypeOp(AstBinaryOpNode *node) const;
+        void validateTypeOp(AstUnaryNode *node) const;
 
 };
 

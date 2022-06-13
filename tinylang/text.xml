@@ -89,7 +89,7 @@
 				<Condition>
 					<BinExpr Op=">">
 						<Id>x</Id>
-						<Bool>true</Bool>
+						<IntLiteral>0</IntLiteral>
 					</BinExpr>
 				</Condition>
 				<Body>
@@ -137,6 +137,13 @@
 				<IntLiteral>10</IntLiteral>
 			</Args>
 		</FunctionCall>
+	</Decl>
+	<Decl>
+		<Id Type="char">a</Id>
+		<BinExpr Op="*">
+			<CharLiteral>b</CharLiteral>
+			<CharLiteral>c</CharLiteral>
+		</BinExpr>
 	</Decl>
 	<Print>
 		<Id>y</Id>
