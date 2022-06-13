@@ -7,8 +7,6 @@ Token Lexer::getNextToken()
 {
     while (d_currentLine.empty())
     {   
-        d_charNum = 0;
-
         // If we are done reading from file return end of file token
         if (d_programFile.eof())
         {    
@@ -21,7 +19,11 @@ Token Lexer::getNextToken()
                 throw lexical_error("unexpected end of file");
         }
         else 
+        {
+            ++d_lineNum;
             getline(d_programFile, d_currentLine);
+            trimCurrentLine();
+        }    
     }      
 
     char currentVal;

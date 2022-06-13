@@ -8,10 +8,26 @@ if (y > x) { ans = false; }
 return ans;
 }
 
-let x : float = 2.4;
-let y : float = Sq(2.5);
-let z : float = Sq(x);
+fn Increment(x : int, y : int) -> int {
+for(let i : int = 0; i < y; i = i + 1) {
+    x = x + 1;
+}
+return x;
+}
+
+fn Decrement(x : int) -> int {
+while (x > 0) {
+    x = x - 1;
+}
+return x;
+}
+
+let x : float = 2.5;
+let y : float = Sq(x);
+let z : int = Increment(2, 10);
+let w : int = Decrement(10);
 
 print y; //6.25
-print x * z; //13.824
+print z; //12
+print w; //0
 print XGreaterY(x, 2.3); // true

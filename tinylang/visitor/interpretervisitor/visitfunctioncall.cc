@@ -7,7 +7,6 @@ void InterpreterVisitor::visit(AstFunctionCallNode *node)
     // Opening scope for function call
     d_symbolTable->openScope();
 
-    fnNode->prototype()->acceptVisitor(this);
     vector<string> paramNames;
 
     // Getting param names to update their values at the beginning of scope
@@ -18,7 +17,7 @@ void InterpreterVisitor::visit(AstFunctionCallNode *node)
     for (auto arg: node->args())
     {
         arg->acceptVisitor(this);
-        d_symbolTable->updateIdentifier(paramNames.at(0), d_currentIden);
+        d_symbolTable->addIdentifier(paramNames.at(0), d_currentIden);
         paramNames.erase(paramNames.begin());
     }
 

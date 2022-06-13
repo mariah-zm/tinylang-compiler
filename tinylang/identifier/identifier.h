@@ -30,6 +30,7 @@ class Identifier
 
         // Getter for d_type
         Type type() const;
+        bool isTrue() const;
 
         // Output Operator
         friend std::ostream &operator<<(std::ostream &out, Identifier const &iden);
@@ -67,7 +68,7 @@ inline Identifier::Identifier(int val)
 :
     d_type(Type::INT)
 {
-    d_val.boolVal = val;
+    d_val.intVal = val;
 }
 
 inline Identifier::Identifier(float val)

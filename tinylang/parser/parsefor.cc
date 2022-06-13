@@ -10,7 +10,7 @@ AstForStmtNode *Parser::parseFor()
     // Consuming (
     d_currentTok = getNextToken();
 
-    if (d_currentTok.type() != Token::OPEN_SCOPE)
+    if (d_currentTok.type() != Token::OPEN_BR)
         throw syntax_error("expected \'(\'");
 
     // Checking if var decl was skipped
@@ -41,7 +41,7 @@ AstForStmtNode *Parser::parseFor()
     }
 
     // Consuming )
-    if (d_currentTok.type() != Token::CLOSE_SCOPE)
+    if (d_currentTok.type() != Token::CLOSE_BR)
         throw syntax_error("expected \')\'");
 
     block = parseBlock();

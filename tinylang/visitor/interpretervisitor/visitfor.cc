@@ -7,8 +7,13 @@ void InterpreterVisitor::visit(AstForStmtNode *node)
 
     node->init()->acceptVisitor(this);
     node->condition()->acceptVisitor(this);
-    node->update()->acceptVisitor(this);
-    node->body()->acceptVisitor(this);
+
+    while (d_currentIden.isTrue())
+    {
+        node->body()->acceptVisitor(this);
+        node->update()->acceptVisitor(this);
+        node->condition()->acceptVisitor(this);
+    }
 
     // Closing scope for loop brackets
     d_symbolTable->closeScope();

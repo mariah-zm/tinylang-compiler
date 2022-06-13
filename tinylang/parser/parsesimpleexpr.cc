@@ -16,7 +16,7 @@ AstExprNode *Parser::parseSimpleExpr()
     }
     else
     {
-        // Setting as false as we looked ahead for ad dop
+        // Setting as false as we looked ahead for add op
         d_isCurrentParsed = false;
         return termLeft;
     }    

@@ -135,7 +135,6 @@ class Lexer
     State d_currentState = s_transitions.d_starting;
 
     size_t d_lineNum = 0;
-    size_t d_charNum = 0;
 
     public:
         Lexer(const Lexer &lexer);      // Copy constructor
@@ -145,6 +144,7 @@ class Lexer
 
     private:
         Token::TokenType getTokenType(State state);
+        void trimCurrentLine();
 };
 
 #endif

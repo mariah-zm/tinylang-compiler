@@ -3,8 +3,9 @@
 void InterpreterVisitor::visit(AstIfStmtNode *node)
 {
     node->condition()->acceptVisitor(this);
-    node->body()->acceptVisitor(this);
 
-    if (node->elseBody() != nullptr)
+    if (d_currentIden.isTrue())
+        node->body()->acceptVisitor(this);
+    else if (node->elseBody() != nullptr)
         node->elseBody()->acceptVisitor(this);
 }
