@@ -12,7 +12,7 @@ class AstPrintStmtNode: public AstStatementNode
     AstExprNode *d_expr;
 
     public:
-        AstPrintStmtNode(AstExprNode *expr);
+        AstPrintStmtNode(size_t lineNumber, AstExprNode *expr);
         virtual ~AstPrintStmtNode();
 
         virtual void acceptVisitor(Visitor *vis);
@@ -22,8 +22,9 @@ class AstPrintStmtNode: public AstStatementNode
 
 inline AstPrintStmtNode::~AstPrintStmtNode() = default;
 
-inline AstPrintStmtNode::AstPrintStmtNode(AstExprNode *expr)
+inline AstPrintStmtNode::AstPrintStmtNode(size_t lineNumber, AstExprNode *expr)
 :
+    AstStatementNode(lineNumber),
     d_expr(expr)
 {}
 

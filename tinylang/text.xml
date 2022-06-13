@@ -89,7 +89,7 @@
 				<Condition>
 					<BinExpr Op=">">
 						<Id>x</Id>
-						<IntLiteral>0</IntLiteral>
+						<Bool>true</Bool>
 					</BinExpr>
 				</Condition>
 				<Body>

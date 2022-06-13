@@ -17,7 +17,8 @@ class AstVarDeclNode: public AstStatementNode
     AstExprNode *d_right;
 
     public:
-        AstVarDeclNode(AstIdentifierNode *left, Token::TokenType type, AstExprNode *right);
+        AstVarDeclNode(size_t lineNumber, AstIdentifierNode *left, 
+                        Token::TokenType type, AstExprNode *right);
         virtual ~AstVarDeclNode();
 
         virtual void acceptVisitor(Visitor *vis);
@@ -30,9 +31,10 @@ class AstVarDeclNode: public AstStatementNode
 
 inline AstVarDeclNode::~AstVarDeclNode() = default;
 
-inline AstVarDeclNode::AstVarDeclNode
-                (AstIdentifierNode *left, Token::TokenType type, AstExprNode *right)
+inline AstVarDeclNode::AstVarDeclNode(size_t lineNumber, AstIdentifierNode *left, 
+                                      Token::TokenType type, AstExprNode *right)
 :
+    AstStatementNode(lineNumber),
     d_left(left),
     d_type(type),
     d_right(right)

@@ -13,5 +13,5 @@ AstAssignmentNode *Parser::parseAssignment()
 
     AstExprNode *expr = parseExpr();
 
-    return new AstAssignmentNode{name, expr};
+    return new AstAssignmentNode{d_lexer->lineNumber(), name, expr};
 }

@@ -17,18 +17,24 @@ class AstNode
 
         virtual void acceptVisitor(Visitor *vis) = 0;
 
-        size_t lineNumber() const;
+        size_t lineNumber() const;          // Getter
+        void lineNumber(size_t lineNumber); // Setter
 
 };
+
+inline AstNode::AstNode(size_t lineNum)
+:
+    d_lineNumber(lineNum)
+{}
 
 inline size_t AstNode::lineNumber() const
 {
     return d_lineNumber;
 }
 
-inline AstNode::AstNode(size_t lineNum)
-:
-    d_lineNumber(lineNum)
-{}
+inline void AstNode::lineNumber(size_t lineNumber)
+{
+    d_lineNumber = lineNumber;
+}
 
 #endif

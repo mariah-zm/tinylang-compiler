@@ -22,5 +22,5 @@ AstFunctionCallNode *Parser::parseFunctionCall(std::string fnName)
         throw syntax_error("expected \')\' in line " 
                 + to_string(d_lexer->lineNumber()));
 
-    return new AstFunctionCallNode(fnName, args);
+    return new AstFunctionCallNode(d_lexer->lineNumber(), fnName, args);
 }

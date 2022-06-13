@@ -11,7 +11,7 @@ void SemanticVisitor::visit(AstIdentifierNode *node)
     }
     catch (out_of_range &ex)
     {
-        throw semantic_error("variable " + node->name() 
-                                    + " is not defined in this scope");
+        throw semantic_error("variable " + node->name() + " in line "
+            + to_string(node->lineNumber()) + " is not defined in this scope");
     }
 }

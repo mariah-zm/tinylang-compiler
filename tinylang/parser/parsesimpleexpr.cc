@@ -12,7 +12,7 @@ AstExprNode *Parser::parseSimpleExpr()
         string addOpVal = d_currentTok.value();
         AstExprNode *termRight = parseSimpleExpr();
 
-        return new AstBinaryOpNode{termLeft, addOpVal, termRight};
+        return new AstBinaryOpNode{d_lexer->lineNumber(), termLeft, addOpVal, termRight};
     }
     else
     {

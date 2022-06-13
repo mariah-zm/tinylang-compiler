@@ -17,7 +17,7 @@ AstExprNode *Parser::parseFactor()
             return parseFunctionCall(idenName);        
 
         d_isCurrentParsed = false;
-        return new AstIdentifierNode{idenName};
+        return new AstIdentifierNode{d_lexer->lineNumber(), idenName};
     }
     else if (d_currentTok.type() == Token::OPEN_BR)     // SubExpression
     {
@@ -36,7 +36,7 @@ AstExprNode *Parser::parseFactor()
     {
         string val = d_currentTok.value();
         AstExprNode *expr = parseExpr();
-        return new AstUnaryNode{val, expr};;
+        return new AstUnaryNode{d_lexer->lineNumber(), val, expr};;
     }
     else
         throw syntax_error("unexpected token in line " + d_lexer->lineNumber());

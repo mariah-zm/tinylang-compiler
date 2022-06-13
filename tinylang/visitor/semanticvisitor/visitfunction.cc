@@ -8,8 +8,9 @@ void SemanticVisitor::visit(AstFunctionNode *node)
     // Adding function to symbol table
     if(!d_symbolTable->addFunction(node))
         throw semantic_error("a function with the name " 
-            + node->prototype()->name() 
-                + "has already been defined in this scope");
+            + node->prototype()->name() + " in line " 
+            + to_string(node->lineNumber())
+            + " has already been defined in this scope");
 
     node->prototype()->acceptVisitor(this);
     node->body()->acceptVisitor(this);

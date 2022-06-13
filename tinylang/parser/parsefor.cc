@@ -49,5 +49,5 @@ AstForStmtNode *Parser::parseFor()
 
     block = parseBlock();
 
-    return new AstForStmtNode{varDecl, expr, assignment, block};
+    return new AstForStmtNode{d_lexer->lineNumber(), varDecl, expr, assignment, block};
 }

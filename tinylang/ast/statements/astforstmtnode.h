@@ -17,8 +17,9 @@ class AstForStmtNode: public AstStatementNode
     AstBlockNode *d_body;
 
     public:
-        AstForStmtNode(AstVarDeclNode *init, AstExprNode *condition, 
-                        AstAssignmentNode *update, AstBlockNode *body);
+        AstForStmtNode(size_t lineNumber, AstVarDeclNode *init, 
+                        AstExprNode *condition, AstAssignmentNode *update, 
+                        AstBlockNode *body);
         virtual ~AstForStmtNode();
 
         virtual void acceptVisitor(Visitor *vis);
@@ -32,11 +33,13 @@ class AstForStmtNode: public AstStatementNode
 
 inline AstForStmtNode::~AstForStmtNode() = default;
 
-inline AstForStmtNode::AstForStmtNode(AstVarDeclNode *init, 
+inline AstForStmtNode::AstForStmtNode(size_t lineNumber,
+                                        AstVarDeclNode *init, 
                                         AstExprNode *condition, 
                                         AstAssignmentNode *update,
                                         AstBlockNode *body)
 :
+    AstStatementNode(lineNumber),
     d_init(init), 
     d_condition(condition),
     d_update(update),

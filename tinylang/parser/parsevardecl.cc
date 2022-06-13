@@ -26,7 +26,7 @@ AstVarDeclNode *Parser::parseVarDecl()
                 + to_string(d_lexer->lineNumber()));
 
     Token::TokenType type = d_currentTok.type();
-    AstIdentifierNode *idenNode = new AstIdentifierNode{name};
+    AstIdentifierNode *idenNode = new AstIdentifierNode{d_lexer->lineNumber(), name};
 
     // Consuming =
     d_currentTok = getNextToken();
@@ -37,5 +37,5 @@ AstVarDeclNode *Parser::parseVarDecl()
 
     AstExprNode *expr = parseExpr();
 
-    return new AstVarDeclNode{idenNode, type, expr};
+    return new AstVarDeclNode{d_lexer->lineNumber(), idenNode, type, expr};
 }

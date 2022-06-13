@@ -16,7 +16,7 @@ class AstAssignmentNode: public AstStatementNode
     AstExprNode *d_right;
 
     public:
-        AstAssignmentNode(std::string &name, AstExprNode *right);
+        AstAssignmentNode(size_t lineNumber, std::string &name, AstExprNode *right);
         virtual ~AstAssignmentNode();
 
         virtual void acceptVisitor(Visitor *vis);
@@ -29,8 +29,11 @@ class AstAssignmentNode: public AstStatementNode
 
 inline AstAssignmentNode::~AstAssignmentNode() = default;
 
-inline AstAssignmentNode::AstAssignmentNode(std::string &name, AstExprNode *right)
+inline AstAssignmentNode::AstAssignmentNode(size_t lineNumber, 
+                                            std::string &name, 
+                                            AstExprNode *right)
 :
+    AstStatementNode(lineNumber),
     d_idenName(name),
     d_right(right)
 {}

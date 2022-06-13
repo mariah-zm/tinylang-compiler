@@ -14,7 +14,7 @@ class AstUnaryNode: public AstExprNode
     AstExprNode *d_expr;
 
     public:
-        AstUnaryNode(std::string &value, AstExprNode *expr);
+        AstUnaryNode(size_t lineNumber, std::string &value, AstExprNode *expr);
         virtual ~AstUnaryNode();
 
         virtual void acceptVisitor(Visitor *vis);
@@ -25,8 +25,10 @@ class AstUnaryNode: public AstExprNode
 
 inline AstUnaryNode::~AstUnaryNode() = default;
 
- inline AstUnaryNode::AstUnaryNode(std::string &value, AstExprNode *expr)
+ inline AstUnaryNode::AstUnaryNode(size_t lineNumber, std::string &value, 
+                                    AstExprNode *expr)
  :
+    AstExprNode(lineNumber),
     d_value(value),
     d_expr(expr)
 {}

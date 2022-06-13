@@ -16,7 +16,8 @@ class AstFunctionCallNode: public AstExprNode
 
     public:
         AstFunctionCallNode() = delete;
-        AstFunctionCallNode(std::string &name, std::vector<AstExprNode *> &args);
+        AstFunctionCallNode(size_t lineNumber, std::string &name, 
+                            std::vector<AstExprNode *> &args);
         virtual ~AstFunctionCallNode();
 
         virtual void acceptVisitor(Visitor *vis);
@@ -28,9 +29,10 @@ class AstFunctionCallNode: public AstExprNode
 
 inline AstFunctionCallNode::~AstFunctionCallNode() = default;
 
-inline AstFunctionCallNode::AstFunctionCallNode
-                        (std::string &name, std::vector<AstExprNode *> &args)
+inline AstFunctionCallNode::AstFunctionCallNode(size_t lineNumber,
+                        std::string &name, std::vector<AstExprNode *> &args)
 :
+    AstExprNode(lineNumber),
     d_fnName(name),
     d_args(args)
 {}

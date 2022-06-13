@@ -12,7 +12,8 @@ void SemanticVisitor::visit(AstFunctionCallNode *node)
 
         if (argSize != paramSize)
             throw semantic_error("expected " + to_string(paramSize)
-                            + " arguments, but received " + to_string(argSize));
+                + " arguments, but received " + to_string(argSize) + " in line "
+                + to_string(node->lineNumber()));
 
         // Type checking params and args
         for (size_t idx = 0; idx < argSize; ++idx)
@@ -22,13 +23,15 @@ void SemanticVisitor::visit(AstFunctionCallNode *node)
             Type expectedType = fnParams.at(idx).d_type;
 
             if (d_typeToMatch != expectedType)
-                throw semantic_error("type mismatch in function call");
+                throw semantic_error("type mismatch in function call in line "
+                    + to_string(node->lineNumber()));
         }
 
         d_typeToMatch = fnNode->prototype()->returnType();
     }
     catch (out_of_range &ex)
     {
-        throw semantic_error("function " + node->fnName() + " not defined");
+        throw semantic_error("function " + node->fnName() + " in line " 
+                + to_string(node->lineNumber()) + " is not defined");
     }
 }

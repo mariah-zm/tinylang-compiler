@@ -6,5 +6,6 @@ void SemanticVisitor::visit(AstReturnStmtNode *node)
 
     // Type checking with function return type    
     if (d_typeToReturn != d_typeToMatch)
-        throw semantic_error("type mismatch in return statement");
+        throw semantic_error("type mismatch in return statement in line "
+                + to_string(node->lineNumber()));
 }

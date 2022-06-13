@@ -12,5 +12,6 @@ void SemanticVisitor::visit(AstBinaryOpNode *node)
 
     // TYpe checking
     if (leftType != rightType)
-        throw semantic_error("type mismatch in binary operation");
+        throw semantic_error("type mismatch in expression in line "
+                + to_string(node->lineNumber()));
 }

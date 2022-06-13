@@ -12,7 +12,7 @@ class AstReturnStmtNode: public AstStatementNode
     AstExprNode *d_expr;
 
     public:
-        AstReturnStmtNode(AstExprNode *expr);
+        AstReturnStmtNode(size_t lineNumber, AstExprNode *expr);
         virtual ~AstReturnStmtNode();
 
         virtual void acceptVisitor(Visitor *vis);
@@ -22,8 +22,9 @@ class AstReturnStmtNode: public AstStatementNode
 
 inline AstReturnStmtNode::~AstReturnStmtNode() = default;
 
-inline AstReturnStmtNode::AstReturnStmtNode(AstExprNode *expr)
+inline AstReturnStmtNode::AstReturnStmtNode(size_t lineNumber, AstExprNode *expr)
 :
+    AstStatementNode(lineNumber),
     d_expr(expr)
 {}
 

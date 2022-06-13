@@ -14,9 +14,10 @@ class AstIfStmtNode: public AstStatementNode
     AstBlockNode *d_elseBody = nullptr;
 
     public:
-        AstIfStmtNode(AstExprNode *condition, AstBlockNode *body);
-        AstIfStmtNode(AstExprNode *condition, AstBlockNode *body, 
-                        AstBlockNode *elseBody);
+        AstIfStmtNode(size_t lineNumber, AstExprNode *condition, 
+                        AstBlockNode *body);
+        AstIfStmtNode(size_t lineNumber, AstExprNode *condition, 
+                        AstBlockNode *body, AstBlockNode *elseBody);
         virtual ~AstIfStmtNode();
 
         virtual void acceptVisitor(Visitor *vis);
@@ -29,15 +30,18 @@ class AstIfStmtNode: public AstStatementNode
 
 inline AstIfStmtNode::~AstIfStmtNode() = default;
 
-inline AstIfStmtNode::AstIfStmtNode(AstExprNode *condition, AstBlockNode *body)
+inline AstIfStmtNode::AstIfStmtNode(size_t lineNumber, AstExprNode *condition, 
+                                    AstBlockNode *body)
 :
+    AstStatementNode(lineNumber),
     d_condition(condition),
     d_body(body)
 {}
 
-inline AstIfStmtNode::AstIfStmtNode(AstExprNode *condition, AstBlockNode *body,
-                                    AstBlockNode *elseBody)
+inline AstIfStmtNode::AstIfStmtNode(size_t lineNumber, AstExprNode *condition, 
+                                    AstBlockNode *body, AstBlockNode *elseBody)
 :
+    AstStatementNode(lineNumber),
     d_condition(condition),
     d_body(body),
     d_elseBody(elseBody)

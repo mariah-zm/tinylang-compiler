@@ -13,7 +13,7 @@ class AstIdentifierNode: public AstExprNode
     std::string d_name;
 
     public:
-        AstIdentifierNode(std::string name);
+        AstIdentifierNode(size_t lineNumber, std::string name);
         virtual ~AstIdentifierNode();
 
         virtual void acceptVisitor(Visitor *vis);
@@ -23,8 +23,9 @@ class AstIdentifierNode: public AstExprNode
 
 inline AstIdentifierNode::~AstIdentifierNode() = default;
 
-inline AstIdentifierNode::AstIdentifierNode(std::string name)
+inline AstIdentifierNode::AstIdentifierNode(size_t lineNumber, std::string name)
 :
+    AstExprNode(lineNumber),
     d_name(name)
 {}
 

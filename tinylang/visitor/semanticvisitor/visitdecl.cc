@@ -7,12 +7,15 @@ void SemanticVisitor::visit(AstVarDeclNode *node)
     
     // Adding Identifier declaration to symbol table
     if (!d_symbolTable->addIdentifier(varName, varType))
-        throw semantic_error("variable " + varName + " is already defined in this scope");
+        throw semantic_error("variable " + varName + " in line "
+                + to_string(node->lineNumber()) 
+                + " is already defined in this scope");
 
     // Semantic Analysis on expression on RHS
     node->right()->acceptVisitor(this);
 
     // Type checking
     if (varType != d_typeToMatch)
-        throw semantic_error("type mismatch in variable declaration");
+        throw semantic_error("type mismatch in variable declaration in line "
+                + to_string(node->lineNumber()));
 }

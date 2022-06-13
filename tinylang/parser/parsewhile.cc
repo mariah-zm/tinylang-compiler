@@ -20,5 +20,5 @@ AstWhileStmtNode *Parser::parseWhile()
 
     AstBlockNode *block = parseBlock();
 
-    return new AstWhileStmtNode{expr, block};
+    return new AstWhileStmtNode{d_lexer->lineNumber(), expr, block};
 }

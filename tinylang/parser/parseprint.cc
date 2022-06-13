@@ -3,5 +3,5 @@
 AstPrintStmtNode *Parser::parsePrint()
 {
     AstExprNode *expr = parseExpr();
-    return new AstPrintStmtNode{expr};
+    return new AstPrintStmtNode{d_lexer->lineNumber(), expr};
 }

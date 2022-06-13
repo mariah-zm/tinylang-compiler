@@ -25,10 +25,10 @@ AstIfStmtNode *Parser::parseIf()
     if (d_currentTok.type() == Token::ELSE)
     {
         AstBlockNode *elseBody = parseBlock();
-        return new AstIfStmtNode{condition, body, elseBody}; 
+        return new AstIfStmtNode{d_lexer->lineNumber(), condition, body, elseBody}; 
     }
     
     // Setting as false as we looked ahead for else
     d_isCurrentParsed = false;
-    return new AstIfStmtNode{condition, body};    
+    return new AstIfStmtNode{d_lexer->lineNumber(), condition, body};    
 }

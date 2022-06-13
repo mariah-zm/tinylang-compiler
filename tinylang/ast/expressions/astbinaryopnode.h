@@ -15,7 +15,8 @@ class AstBinaryOpNode: public AstExprNode
     AstExprNode *d_right;
 
     public:
-        AstBinaryOpNode(AstExprNode *left, std::string &value, AstExprNode *right);
+        AstBinaryOpNode(size_t lineNumber, AstExprNode *left, 
+                        std::string &value, AstExprNode *right);
         virtual ~AstBinaryOpNode();
 
         virtual void acceptVisitor(Visitor *vis);
@@ -27,9 +28,10 @@ class AstBinaryOpNode: public AstExprNode
 
 inline AstBinaryOpNode::~AstBinaryOpNode() = default;
 
-inline AstBinaryOpNode::AstBinaryOpNode(AstExprNode *left, std::string &value, 
-                                    AstExprNode *right)
+inline AstBinaryOpNode::AstBinaryOpNode(size_t lineNumber, AstExprNode *left,  
+                                    std::string &value, AstExprNode *right)
 :
+    AstExprNode(lineNumber),
     d_left(left),
     d_value(value),
     d_right(right)

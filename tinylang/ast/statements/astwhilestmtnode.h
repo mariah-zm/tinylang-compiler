@@ -14,7 +14,8 @@ class AstWhileStmtNode: public AstStatementNode
     AstBlockNode *d_body;
 
     public:
-        AstWhileStmtNode(AstExprNode *condition, AstBlockNode *body);
+        AstWhileStmtNode(size_t lineNumber, AstExprNode *condition, 
+                            AstBlockNode *body);
         virtual ~AstWhileStmtNode();
 
         virtual void acceptVisitor(Visitor *vis);
@@ -25,8 +26,11 @@ class AstWhileStmtNode: public AstStatementNode
 
 inline AstWhileStmtNode::~AstWhileStmtNode() = default;
 
-inline AstWhileStmtNode::AstWhileStmtNode(AstExprNode *condition, AstBlockNode *body)
+inline AstWhileStmtNode::AstWhileStmtNode(size_t lineNumber, 
+                                            AstExprNode *condition, 
+                                            AstBlockNode *body)
 :
+    AstStatementNode(lineNumber),
     d_condition(condition),
     d_body(body)
 {}

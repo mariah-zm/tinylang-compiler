@@ -10,10 +10,16 @@ class AstStatementNode: public AstNode
 {
     public:
         AstStatementNode() = default;
+        AstStatementNode(size_t lineNum);
         virtual ~AstStatementNode() = default;
 
         virtual void acceptVisitor(Visitor *vis) = 0;
 
 };
+
+inline AstStatementNode::AstStatementNode(size_t lineNum)
+:
+    AstNode(lineNum)
+{}
 
 #endif
