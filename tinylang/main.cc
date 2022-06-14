@@ -35,6 +35,9 @@ try
     InterpreterVisitor intVis = InterpreterVisitor{&symbolTable2};
     program->acceptVisitor(&intVis);
     cout << "\nInterpretation Execution Pass Complete." << endl;
+
+    // Deallocating memory allocated to the nodes in the AST
+    delete program;
 }
 catch (lexical_error &ex)
 {

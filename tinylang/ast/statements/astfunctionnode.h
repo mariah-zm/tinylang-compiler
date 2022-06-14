@@ -24,7 +24,11 @@ class AstFunctionNode: public AstStatementNode
 
 };
 
-inline AstFunctionNode::~AstFunctionNode() = default;
+inline AstFunctionNode::~AstFunctionNode()
+{
+    delete d_prototype;
+    delete d_body;
+}
 
 inline AstFunctionNode::AstFunctionNode
                 (AstFunctionPrototypeNode *prototype, AstBlockNode *body)

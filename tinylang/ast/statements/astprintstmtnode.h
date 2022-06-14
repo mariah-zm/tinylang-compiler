@@ -20,7 +20,10 @@ class AstPrintStmtNode: public AstStatementNode
         AstExprNode *expr();    // Getter
 };
 
-inline AstPrintStmtNode::~AstPrintStmtNode() = default;
+inline AstPrintStmtNode::~AstPrintStmtNode()
+{
+    delete d_expr;
+}
 
 inline AstPrintStmtNode::AstPrintStmtNode(size_t lineNumber, AstExprNode *expr)
 :

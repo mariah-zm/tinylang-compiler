@@ -20,7 +20,10 @@ class AstReturnStmtNode: public AstStatementNode
         AstExprNode *expr();    // Getter
 };
 
-inline AstReturnStmtNode::~AstReturnStmtNode() = default;
+inline AstReturnStmtNode::~AstReturnStmtNode()
+{
+    delete d_expr;
+}
 
 inline AstReturnStmtNode::AstReturnStmtNode(size_t lineNumber, AstExprNode *expr)
 :

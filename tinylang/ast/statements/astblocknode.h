@@ -23,7 +23,11 @@ class AstBlockNode: public AstStatementNode
         std::vector<AstStatementNode *> &statements();
 };
 
-inline AstBlockNode::~AstBlockNode() = default;
+inline AstBlockNode::~AstBlockNode()
+{
+    for (auto stmt: d_statements)
+        delete stmt;
+}
 
 inline void AstBlockNode::addStatementChild(AstStatementNode *statement)
 {

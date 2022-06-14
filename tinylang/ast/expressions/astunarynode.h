@@ -23,7 +23,10 @@ class AstUnaryNode: public AstExprNode
         AstExprNode *expr() const;
 };
 
-inline AstUnaryNode::~AstUnaryNode() = default;
+inline AstUnaryNode::~AstUnaryNode()
+{
+    delete d_expr;
+}
 
  inline AstUnaryNode::AstUnaryNode(size_t lineNumber, std::string &value, 
                                     AstExprNode *expr)

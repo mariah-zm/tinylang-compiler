@@ -27,7 +27,10 @@ class AstAssignmentNode: public AstStatementNode
 
 };
 
-inline AstAssignmentNode::~AstAssignmentNode() = default;
+inline AstAssignmentNode::~AstAssignmentNode()
+{
+    delete d_right;
+}
 
 inline AstAssignmentNode::AstAssignmentNode(size_t lineNumber, 
                                             std::string &name, 

@@ -27,7 +27,11 @@ class AstFunctionCallNode: public AstExprNode
 
 };
 
-inline AstFunctionCallNode::~AstFunctionCallNode() = default;
+inline AstFunctionCallNode::~AstFunctionCallNode()
+{
+    for (auto arg: d_args)
+        delete arg;
+}
 
 inline AstFunctionCallNode::AstFunctionCallNode(size_t lineNumber,
                         std::string &name, std::vector<AstExprNode *> &args)

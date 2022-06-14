@@ -26,7 +26,11 @@ class AstBinaryOpNode: public AstExprNode
         AstExprNode *right() const;
 };
 
-inline AstBinaryOpNode::~AstBinaryOpNode() = default;
+inline AstBinaryOpNode::~AstBinaryOpNode()
+{
+    delete d_left;
+    delete d_right;
+}
 
 inline AstBinaryOpNode::AstBinaryOpNode(size_t lineNumber, AstExprNode *left,  
                                     std::string &value, AstExprNode *right)

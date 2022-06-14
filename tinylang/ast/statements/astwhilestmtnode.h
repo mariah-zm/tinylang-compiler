@@ -24,7 +24,11 @@ class AstWhileStmtNode: public AstStatementNode
         AstBlockNode *body() const;
 };
 
-inline AstWhileStmtNode::~AstWhileStmtNode() = default;
+inline AstWhileStmtNode::~AstWhileStmtNode()
+{
+    delete d_condition;
+    delete d_body;
+}
 
 inline AstWhileStmtNode::AstWhileStmtNode(size_t lineNumber, 
                                             AstExprNode *condition, 

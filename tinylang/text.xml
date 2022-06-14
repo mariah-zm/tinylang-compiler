@@ -138,13 +138,6 @@
 			</Args>
 		</FunctionCall>
 	</Decl>
-	<Decl>
-		<Id Type="char">a</Id>
-		<BinExpr Op="*">
-			<CharLiteral>b</CharLiteral>
-			<CharLiteral>c</CharLiteral>
-		</BinExpr>
-	</Decl>
 	<Print>
 		<Id>y</Id>
 	</Print>

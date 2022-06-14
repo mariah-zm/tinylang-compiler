@@ -28,7 +28,12 @@ class AstIfStmtNode: public AstStatementNode
         AstBlockNode *elseBody();
 };
 
-inline AstIfStmtNode::~AstIfStmtNode() = default;
+inline AstIfStmtNode::~AstIfStmtNode()
+{
+    delete d_condition;
+    delete d_body;
+    delete d_elseBody;
+}
 
 inline AstIfStmtNode::AstIfStmtNode(size_t lineNumber, AstExprNode *condition, 
                                     AstBlockNode *body)

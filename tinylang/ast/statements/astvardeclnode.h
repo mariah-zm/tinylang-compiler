@@ -29,7 +29,11 @@ class AstVarDeclNode: public AstStatementNode
 
 };
 
-inline AstVarDeclNode::~AstVarDeclNode() = default;
+inline AstVarDeclNode::~AstVarDeclNode()
+{
+    delete d_left;
+    delete d_right;
+}
 
 inline AstVarDeclNode::AstVarDeclNode(size_t lineNumber, AstIdentifierNode *left, 
                                       Token::TokenType type, AstExprNode *right)

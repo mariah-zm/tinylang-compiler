@@ -31,7 +31,13 @@ class AstForStmtNode: public AstStatementNode
         AstBlockNode *body();
 };
 
-inline AstForStmtNode::~AstForStmtNode() = default;
+inline AstForStmtNode::~AstForStmtNode()
+{
+    delete d_init;
+    delete d_condition;
+    delete d_update;
+    delete d_body;
+}
 
 inline AstForStmtNode::AstForStmtNode(size_t lineNumber,
                                         AstVarDeclNode *init, 

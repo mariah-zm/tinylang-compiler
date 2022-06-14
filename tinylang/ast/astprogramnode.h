@@ -16,7 +16,7 @@ class AstProgramNode: public virtual AstNode
 
     public:
         AstProgramNode() = default;
-        virtual ~AstProgramNode() = default;
+        virtual ~AstProgramNode();
 
         void addStatement(AstStatementNode *statement);
 
@@ -25,6 +25,12 @@ class AstProgramNode: public virtual AstNode
         std::vector<AstStatementNode *> &statements();
 
 };
+
+inline AstProgramNode::~AstProgramNode()
+{
+    for (auto stmt: d_statements)
+        delete stmt;
+}
 
 inline void AstProgramNode::addStatement(AstStatementNode *statement)
 {
