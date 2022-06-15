@@ -60,7 +60,6 @@ class Token
 
         TokenType d_type;
         std::string d_value;
-        float d_numVal;
 
     public:
         Token() = default;

@@ -6,7 +6,7 @@ Lexer::Lexer(string fileName)
 
     // If file couldn't be opened
     if (!d_programFile) 
-        throw lexical_error(
+        throw runtime_error(
             string("lexer couldn't be initialised. Failed to open file ") 
                 + fileName);
 }

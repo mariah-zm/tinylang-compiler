@@ -135,7 +135,6 @@ class Lexer
     size_t d_lineNumber = 0;
 
     public:
-        Lexer(const Lexer &lexer);      // Copy constructor
         Lexer(std::string fileName);
 
         Token getNextToken();

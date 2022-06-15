@@ -33,8 +33,9 @@ Token Lexer::getNextToken()
         if (!d_currentLine.empty())
             currentVal = d_currentLine.at(0);
         else 
-            break;
+            break;  // end of token once '\n', i.e. end of line, is reached
 
+        // Resolve input and next transition
         Input::InputType input = getInputType(currentVal);   
         d_currentState = s_transitions.d_transitions[d_currentState][input];
 
@@ -72,7 +73,7 @@ Token Lexer::getNextToken()
         }
 
         // Resetting current state after token has been removed from stack
-        d_currentState = S0;
+        d_currentState = s_transitions.d_starting;
 
         Token::TokenType tokenType = getTokenType(topState);
 
