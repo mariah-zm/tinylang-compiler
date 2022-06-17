@@ -40,3 +40,4 @@ Makefile
 *.cmake
 *.xml
 CMakeCache.txt
+CMakeFiles
