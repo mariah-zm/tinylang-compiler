@@ -8,7 +8,7 @@
 
 class XmlVisitor: public Visitor
 {
-    int d_indent = 0;
+    size_t d_indent = 0;
     std::string d_fileName;
     std::ofstream d_file;
 

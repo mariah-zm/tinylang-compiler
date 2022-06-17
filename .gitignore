@@ -33,7 +33,7 @@
 *.exe
 *.out
 *.app
-*/main
+*/tinylang
 
 #Generated Files
 Makefile
