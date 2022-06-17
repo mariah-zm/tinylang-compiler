@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/mariah/Desktop/University/second-year/second-sem/CPS2000/tinylang-compiler/tinylang/src/identifier/identifier.h
+ostream
+-
+../type/type.h
+/home/mariah/Desktop/University/second-year/second-sem/CPS2000/tinylang-compiler/tinylang/src/type/type.h
+
+/home/mariah/Desktop/University/second-year/second-sem/CPS2000/tinylang-compiler/tinylang/src/identifier/identifier.ih
+identifier.h
+/home/mariah/Desktop/University/second-year/second-sem/CPS2000/tinylang-compiler/tinylang/src/identifier/identifier.h
+
+/home/mariah/Desktop/University/second-year/second-sem/CPS2000/tinylang-compiler/tinylang/src/identifier/opsub.cc
+identifier.ih
+/home/mariah/Desktop/University/second-year/second-sem/CPS2000/tinylang-compiler/tinylang/src/identifier/identifier.ih
+
+/home/mariah/Desktop/University/second-year/second-sem/CPS2000/tinylang-compiler/tinylang/src/token/token.h
+string
+-
+map
+-
+
+/home/mariah/Desktop/University/second-year/second-sem/CPS2000/tinylang-compiler/tinylang/src/type/type.h
+string
+-
+iostream
+-
+../token/token.h
+/home/mariah/Desktop/University/second-year/second-sem/CPS2000/tinylang-compiler/tinylang/src/token/token.h
+

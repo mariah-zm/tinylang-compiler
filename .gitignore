@@ -34,3 +34,9 @@
 *.out
 *.app
 */main
+
+#Generated Files
+Makefile
+*.cmake
+*.xml
+CMakeCache.txt

@@ -1,0 +1,3 @@
+/home/mariah/Desktop/University/second-year/second-sem/CPS2000/tinylang-compiler/tinylang/CMakeFiles/rebuild_cache.dir
+/home/mariah/Desktop/University/second-year/second-sem/CPS2000/tinylang-compiler/tinylang/CMakeFiles/edit_cache.dir
+/home/mariah/Desktop/University/second-year/second-sem/CPS2000/tinylang-compiler/tinylang/CMakeFiles/main.dir
