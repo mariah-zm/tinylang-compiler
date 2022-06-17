@@ -162,4 +162,4 @@ set(SOURCE_FILES
     ${SYMBOL_TABLE_SOURCE} ${TOKEN_SOURCE} ${TYPE_SOURCE} ${XML_VISITOR_SOURCE} 
     ${SEMANTIC_VISITOR_SOURCE} ${INTERPRETER_VISITOR_SOURCE})
 
-add_executable(main src/main.cc ${SOURCE_FILES})
+add_executable(tinylang src/main.cc ${SOURCE_FILES})
