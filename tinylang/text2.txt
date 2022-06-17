@@ -1,1 +1,3 @@
-let ans : bool == true;
+fn func(x : bool, y : char z : int) -> {
+
+}

@@ -1,0 +1,11 @@
+<Program>
+	<FunctionDecl Name="test" ReturnType="int">
+		<Params>
+		</Params>
+		<Block>
+			<Return>
+				<Id>hello</Id>
+			</Return>
+		</Block>
+	</FunctionDecl>
+</Program>

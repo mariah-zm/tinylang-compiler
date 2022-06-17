@@ -19,7 +19,7 @@ AstFunctionCallNode *Parser::parseFunctionCall(std::string fnName)
 
     // Consuming )
     if (d_currentTok.type() != Token::CLOSE_BR)
-        throw syntax_error("expected \')\' in line " 
+        throw syntax_error("expected \')\' or \',\' in line " 
                 + to_string(d_lexer->lineNumber()));
 
     return new AstFunctionCallNode(d_lexer->lineNumber(), fnName, args);

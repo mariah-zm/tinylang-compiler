@@ -2,14 +2,12 @@
 
 Identifier *SymbolTable::findIdentifier(string idenName)
 {
-    size_t scopeSize = d_scopeStack.size();
-    
-    for (size_t idx = scopeSize - 1; idx >= 0; idx--)
+    for (size_t idx = d_scopeStack.size(); idx > 0; idx--)
     {
         try
         {
             // if this does not throw ex variable is found in this scope
-            return & d_scopeStack[idx].at(idenName); 
+            return &d_scopeStack[idx-1].at(idenName); 
         }
         catch (out_of_range &ex)
         {

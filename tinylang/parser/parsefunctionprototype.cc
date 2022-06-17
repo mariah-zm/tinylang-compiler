@@ -30,12 +30,17 @@ AstFunctionPrototypeNode *Parser::parseFunctionPrototype()
         d_currentTok = getNextToken();
 
         if (d_currentTok.type() != Token::IDENTIFIER)
-            throw syntax_error("expected parameter name in line " 
+        {
+            if (d_currentTok.type() != Token::CLOSE_BR)
+                throw syntax_error("expected parameter name in line " 
                     + to_string(d_lexer->lineNumber()));
+            else
+                break;
+        }    
             
         name = d_currentTok.value();
 
-        // Consuming:
+        // Consuming :
         d_currentTok = getNextToken();
 
         if (d_currentTok.type() != Token::COLON)
@@ -58,10 +63,10 @@ AstFunctionPrototypeNode *Parser::parseFunctionPrototype()
 
         if (d_currentTok.type() == Token::COMMA)
             continue;
-         else if (d_currentTok.type() == Token::CLOSE_BR)
+        else if (d_currentTok.type() == Token::CLOSE_BR)
             break;
         else
-            throw syntax_error("expected \',\' OR \')\' in line " 
+            throw syntax_error("expected \')\' or \',\' in line " 
                     + to_string(d_lexer->lineNumber()));
     }   
 
@@ -72,7 +77,7 @@ AstFunctionPrototypeNode *Parser::parseFunctionPrototype()
         throw syntax_error("expected \'->\' in line " 
                 + to_string(d_lexer->lineNumber()));
     
-    // Gettin return type
+    // Getting return type
     d_currentTok = getNextToken();
 
     if (!d_currentTok.isType())
