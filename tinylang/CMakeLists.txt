@@ -157,9 +157,9 @@ set(INTERPRETER_VISITOR_SOURCE
         src/visitor/interpretervisitor/visitunary.cc
         src/visitor/interpretervisitor/visitwhile.cc)
 
-set(SOURCE_FILE 
+set(SOURCE_FILES
     ${AST_SOURCE} ${IDENTIFIER_SOURCE} ${LEXER_SOURCE} ${PARSER_SOURCE} 
     ${SYMBOL_TABLE_SOURCE} ${TOKEN_SOURCE} ${TYPE_SOURCE} ${XML_VISITOR_SOURCE} 
     ${SEMANTIC_VISITOR_SOURCE} ${INTERPRETER_VISITOR_SOURCE})
 
-add_executable(main src/main.cc ${SOURCE_FILE})
+add_executable(main src/main.cc ${SOURCE_FILES})
