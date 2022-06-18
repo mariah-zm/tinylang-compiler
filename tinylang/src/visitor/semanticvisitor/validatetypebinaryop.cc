@@ -7,15 +7,15 @@ void SemanticVisitor::validateTypeOp(AstBinaryOpNode *node) const
         case Type::INT:
         {
             if (node->value() == "and" || node->value() == "or")
-                throw semantic_error("cannot use type 'int' with operation "
-                    + node->value() + " in line " + to_string(node->lineNumber()));
+                throw semantic_error("cannot use type 'int' with operation \'"
+                    + node->value() + "\' in line " + to_string(node->lineNumber()));
             break;
         }
         case Type::FLOAT:
         {
             if (node->value() == "and" || node->value() == "or")
-                throw semantic_error("cannot use type 'float' with operation "
-                    + node->value() + " in line " + to_string(node->lineNumber()));
+                throw semantic_error("cannot use type 'float' with operation \'"
+                    + node->value() + "\' in line " + to_string(node->lineNumber()));
             break;
         }
         case Type::BOOL:
@@ -29,8 +29,8 @@ void SemanticVisitor::validateTypeOp(AstBinaryOpNode *node) const
         {
             if (node->value().find_first_of("+-/*") != string::npos
                 || node->value() == "and" || node->value() == "or")
-                throw semantic_error("cannot use type 'char' with operation "
-                    + node->value() + " in line " + to_string(node->lineNumber()));
+                throw semantic_error("cannot use type 'char' with operation \'"
+                    + node->value() + "\' in line " + to_string(node->lineNumber()));
             break;
         }
         default: ; // default case required for no warnings

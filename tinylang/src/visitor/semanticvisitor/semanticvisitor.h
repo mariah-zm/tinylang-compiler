@@ -39,7 +39,7 @@ class SemanticVisitor: public Visitor
     private:
         void validateTypeOp(AstBinaryOpNode *node) const;
         void validateTypeOp(AstUnaryNode *node) const;
-        void checkReturn(std::vector<AstStatementNode *> const &stmts) const;
+        void checkReturn(AstBlockNode *block) const;
 
 };
 

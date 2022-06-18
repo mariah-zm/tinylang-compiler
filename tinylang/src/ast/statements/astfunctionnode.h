@@ -13,7 +13,7 @@ class AstFunctionNode: public AstStatementNode
     AstBlockNode *d_body;
 
     public:
-        AstFunctionNode(AstFunctionPrototypeNode *prototype, AstBlockNode *body);
+        AstFunctionNode(size_t lineNum, AstFunctionPrototypeNode *prototype, AstBlockNode *body);
         virtual ~AstFunctionNode();
 
         virtual void acceptVisitor(Visitor *vis);
@@ -31,8 +31,9 @@ inline AstFunctionNode::~AstFunctionNode()
 }
 
 inline AstFunctionNode::AstFunctionNode
-                (AstFunctionPrototypeNode *prototype, AstBlockNode *body)
+                (size_t lineNum, AstFunctionPrototypeNode *prototype, AstBlockNode *body)
 :
+    AstStatementNode(lineNum),
     d_prototype(prototype),
     d_body(body)
 {}

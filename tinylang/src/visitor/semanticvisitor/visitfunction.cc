@@ -11,8 +11,7 @@ void SemanticVisitor::visit(AstFunctionNode *node)
     if(!d_symbolTable.addFunction(node))
         throw semantic_error("a function with the name " 
             + node->prototype()->name() + " in line " 
-            + to_string(node->lineNumber())
-            + " has already been defined in this scope");
+            + to_string(node->lineNumber()) + " has already been defined");
 
     node->prototype()->acceptVisitor(this);
     node->body()->acceptVisitor(this);
@@ -20,7 +19,7 @@ void SemanticVisitor::visit(AstFunctionNode *node)
     // Checking if function contains return statement
     try 
     {
-        checkReturn(node->body()->statements());
+        checkReturn(node->body());
     }
     catch (semantic_error &ex)
     {

@@ -6,16 +6,16 @@ void SemanticVisitor::validateTypeOp(AstUnaryNode *node) const
     {
         case Type::INT:
         {
-            if (node->value() == "!")
-                throw semantic_error("cannot use type 'int' with operation "
-                    + node->value() + " in line " + to_string(node->lineNumber()));
+            if (node->value() == "not")
+                throw semantic_error("cannot use type 'int' with operation \'"
+                    + node->value() + "\' in line " + to_string(node->lineNumber()));
             break;
         }
         case Type::FLOAT:
         {
-            if (node->value() == "!")
-                throw semantic_error("cannot use type 'float' with operation "
-                    + node->value() + " in line " + to_string(node->lineNumber()));
+            if (node->value() == "not")
+                throw semantic_error("cannot use type 'float' with operation \'"
+                    + node->value() + "\' in line " + to_string(node->lineNumber()));
             break;
         }
         case Type::BOOL:

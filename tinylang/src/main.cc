@@ -11,28 +11,30 @@ try
 
     string fileName = argv[1];
 
-    Lexer lexer = Lexer{fileName};
+    // Parsing ----------------------------------------------------------------
 
-    cout << "Begin Parsing..." << endl;
+    Lexer lexer = Lexer{fileName};
     Parser parser = Parser{&lexer};
     AstProgramNode *program = parser.parse();
-    cout << "Parsing Complete." << endl;
 
-    cout << "\nBegin XML Generation..." << endl;
+    // XML Generation ----------------------------------------------------------
+
     XmlVisitor xmlVis = XmlVisitor{fileName};
     program->acceptVisitor(&xmlVis);
-    cout << "XML Generation Complete. Written to: " << xmlVis.fileName() << endl;
+    cout << "XML Generated written to: " << xmlVis.fileName() << endl;
     xmlVis.close();
 
-    cout << "\nBegin Semantic Analysis..." << endl;
+    cout << "\n..............................\n" << endl;
+
+    // Semantic Analysis -------------------------------------------------------
+
     SemanticVisitor semVis = SemanticVisitor{};
     program->acceptVisitor(&semVis);
-    cout << "Semantic Analysis Complete." << endl;
 
-    cout << "\nBegin Interpretation Execution Pass...\n" << endl;
+    // Interpreter Pass --------------------------------------------------------
+
     InterpreterVisitor intVis = InterpreterVisitor{};
     program->acceptVisitor(&intVis);
-    cout << "\nInterpretation Execution Pass Complete." << endl;
 
     // Deallocating memory allocated to the nodes in the AST
     delete program;
