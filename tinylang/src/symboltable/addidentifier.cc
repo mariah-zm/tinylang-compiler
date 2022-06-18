@@ -1,6 +1,6 @@
 #include "symboltable.ih"
 
-bool SymbolTable::addIdentifier(string name, Identifier iden)
+bool SymbolTable::addIdentifier(string name, Literal lit)
 {
     try 
     {
@@ -9,7 +9,7 @@ bool SymbolTable::addIdentifier(string name, Identifier iden)
     }
     catch (out_of_range &ex)
     {
-        d_scopeStack.back().insert(pair<string, Identifier>(name, iden));
+        d_scopeStack.back().insert(pair<string, Literal>(name, lit));
         return true;
     }
 }

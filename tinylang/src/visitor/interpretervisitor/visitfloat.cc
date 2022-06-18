@@ -2,6 +2,6 @@
 
 void InterpreterVisitor::visit(AstFloatLiteralNode *node)
 {
-    // Setting current value (iden) to value in node
-    d_currentIden = Identifier{node->value()};
+    // Setting current literal value to value in node
+    d_currentLit = Literal{node->value()};
 }

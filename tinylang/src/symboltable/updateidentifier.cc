@@ -1,7 +1,7 @@
 #include "symboltable.ih"
 
-void SymbolTable::updateIdentifier(string idenName, Identifier newVal)
+void SymbolTable::updateIdentifier(string idenName, Literal newVal)
 {
-    Identifier *identifier = findIdentifier(idenName);
-    *identifier = newVal;
+    Literal *literal = findIdentifier(idenName);
+    *literal = newVal;
 }

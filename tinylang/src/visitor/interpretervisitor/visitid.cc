@@ -2,6 +2,6 @@
 
 void InterpreterVisitor::visit(AstIdentifierNode *node)
 {
-    // Setting current iden to iden of variable
-    d_currentIden = Identifier{*d_symbolTable->findIdentifier(node->name())};
+    // Setting current literal to the literal of the variable
+    d_currentLit = Literal{*d_symbolTable->findIdentifier(node->name())};
 }

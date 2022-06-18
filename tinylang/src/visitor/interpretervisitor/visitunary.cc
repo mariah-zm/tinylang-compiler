@@ -5,7 +5,7 @@ void InterpreterVisitor::visit(AstUnaryNode *node)
     node->expr()->acceptVisitor(this);
 
     if (node->value() == "-")
-        d_currentIden = -d_currentIden;
+        d_currentLit = -d_currentLit;
     else
-        d_currentIden = Identifier{!d_currentIden};
+        d_currentLit = Literal{!d_currentLit};
 }

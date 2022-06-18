@@ -1,6 +1,6 @@
-#include "identifier.ih"
+#include "literal.ih"
 
-bool operator>=(Identifier const &left, Identifier const &right)
+bool operator>=(Literal const &left, Literal const &right)
 {
     switch (left.d_type.type())
     {

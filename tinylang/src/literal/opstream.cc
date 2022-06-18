@@ -1,6 +1,6 @@
-#include "identifier.ih"
+#include "literal.ih"
 
-ostream &operator<<(std::ostream &out, Identifier const &iden)
+ostream &operator<<(std::ostream &out, Literal const &iden)
 {
     switch (iden.d_type.type())
     {

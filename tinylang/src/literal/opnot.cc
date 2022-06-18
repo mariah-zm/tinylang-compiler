@@ -1,6 +1,6 @@
-#include "identifier.ih"
+#include "literal.ih"
 
-bool operator!(Identifier const &iden)
+bool operator!(Literal const &iden)
 {
     switch (iden.d_type.type())
     {

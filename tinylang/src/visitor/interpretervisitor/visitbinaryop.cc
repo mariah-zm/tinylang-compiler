@@ -4,34 +4,34 @@ void InterpreterVisitor::visit(AstBinaryOpNode *node)
 {
     // Resolving identifier of expression on LHS
     node->left()->acceptVisitor(this);
-    Identifier leftIden = d_currentIden;
+    Literal leftLit = d_currentLit;
 
     // Resolving identifier of expression on RHS
     node->right()->acceptVisitor(this);
-    Identifier rightIden = d_currentIden;
+    Literal rightLit = d_currentLit;
 
     if (node->value() == "+")
-        d_currentIden = leftIden + rightIden;
+        d_currentLit = leftLit + rightLit;
     else if (node->value() == "-")
-        d_currentIden = leftIden - rightIden;
+        d_currentLit = leftLit - rightLit;
     else if (node->value() == "*")
-        d_currentIden = leftIden * rightIden;
+        d_currentLit = leftLit * rightLit;
     else if (node->value() == "/")
-        d_currentIden = leftIden / rightIden;
+        d_currentLit = leftLit / rightLit;
     else if (node->value() == "and")
-        d_currentIden = Identifier{leftIden.andOp(rightIden)};
+        d_currentLit = Literal{leftLit.andOp(rightLit)};
     else if (node->value() == "or")
-        d_currentIden = Identifier{leftIden.orOp(rightIden)};
+        d_currentLit = Literal{leftLit.orOp(rightLit)};
     else if (node->value() == ">")
-        d_currentIden = Identifier{leftIden > rightIden};
+        d_currentLit = Literal{leftLit > rightLit};
     else if (node->value() == "<")
-        d_currentIden = Identifier{leftIden < rightIden};
+        d_currentLit = Literal{leftLit < rightLit};
     else if (node->value() == ">=")
-        d_currentIden = Identifier{leftIden >= rightIden};
+        d_currentLit = Literal{leftLit >= rightLit};
     else if (node->value() == "<=")
-        d_currentIden = Identifier{leftIden <= rightIden};
+        d_currentLit = Literal{leftLit <= rightLit};
     else if (node->value() == "==")
-        d_currentIden = Identifier{leftIden == rightIden};
+        d_currentLit = Literal{leftLit == rightLit};
     else if (node->value() == "!=")
-        d_currentIden = Identifier{leftIden != rightIden};    
+        d_currentLit = Literal{leftLit != rightLit};    
 }

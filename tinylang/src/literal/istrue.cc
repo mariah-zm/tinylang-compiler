@@ -1,6 +1,6 @@
-#include "identifier.ih"
+#include "literal.ih"
 
-bool Identifier::isTrue() const
+bool Literal::isTrue() const
 {
     if (d_type != Type::BOOL)
         throw runtime_error("invalid type for function call");

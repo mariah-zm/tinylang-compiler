@@ -26,24 +26,24 @@ set(AST_SOURCE
         src/ast/literals/astfloatliteralnode.cc
         src/ast/literals/astintliteralnode.cc)
 
-set(IDENTIFIER_SOURCE 
-        src/identifier/identifier.cc
-        src/identifier/istrue.cc
-        src/identifier/opadd.cc
-        src/identifier/opand.cc
-        src/identifier/opdiv.cc
-        src/identifier/opet.cc
-        src/identifier/opgt.cc
-        src/identifier/opgte.cc
-        src/identifier/opmul.cc
-        src/identifier/opnegate.cc
-        src/identifier/opnet.cc
-        src/identifier/opnot.cc
-        src/identifier/opor.cc
-        src/identifier/opst.cc
-        src/identifier/opste.cc
-        src/identifier/opstream.cc
-        src/identifier/opsub.cc)
+set(LITERAL_SOURCE 
+        src/literal/literal.cc
+        src/literal/istrue.cc
+        src/literal/opadd.cc
+        src/literal/opand.cc
+        src/literal/opdiv.cc
+        src/literal/opet.cc
+        src/literal/opgt.cc
+        src/literal/opgte.cc
+        src/literal/opmul.cc
+        src/literal/opnegate.cc
+        src/literal/opnet.cc
+        src/literal/opnot.cc
+        src/literal/opor.cc
+        src/literal/opst.cc
+        src/literal/opste.cc
+        src/literal/opstream.cc
+        src/literal/opsub.cc)
 
 
 set(LEXER_SOURCE 
@@ -158,7 +158,7 @@ set(INTERPRETER_VISITOR_SOURCE
         src/visitor/interpretervisitor/visitwhile.cc)
 
 set(SOURCE_FILES
-    ${AST_SOURCE} ${IDENTIFIER_SOURCE} ${LEXER_SOURCE} ${PARSER_SOURCE} 
+    ${AST_SOURCE} ${LITERAL_SOURCE} ${LEXER_SOURCE} ${PARSER_SOURCE} 
     ${SYMBOL_TABLE_SOURCE} ${TOKEN_SOURCE} ${TYPE_SOURCE} ${XML_VISITOR_SOURCE} 
     ${SEMANTIC_VISITOR_SOURCE} ${INTERPRETER_VISITOR_SOURCE})
 

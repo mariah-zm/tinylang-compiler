@@ -17,7 +17,7 @@ void InterpreterVisitor::visit(AstFunctionCallNode *node)
     for (auto arg: node->args())
     {
         arg->acceptVisitor(this);
-        d_symbolTable->addIdentifier(paramNames.at(0), d_currentIden);
+        d_symbolTable->addIdentifier(paramNames.at(0), d_currentLit);
         paramNames.erase(paramNames.begin());
     }
 

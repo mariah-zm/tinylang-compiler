@@ -9,8 +9,8 @@ bool SymbolTable::addIdentifier(string name, Type type)
     }
     catch (out_of_range &ex)
     {
-        Identifier iden = Identifier{type};
-        d_scopeStack.back().insert(pair<string, Identifier>(name, iden));
+        Literal literal = Literal{type};
+        d_scopeStack.back().insert(pair<string, Literal>(name, literal));
         return true;
     }
 }

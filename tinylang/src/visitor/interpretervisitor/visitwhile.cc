@@ -4,7 +4,7 @@ void InterpreterVisitor::visit(AstWhileStmtNode *node)
 {
     node->condition()->acceptVisitor(this);
 
-    while (d_currentIden.isTrue()) 
+    while (d_currentLit.isTrue()) 
     {
         node->body()->acceptVisitor(this);
         node->condition()->acceptVisitor(this);

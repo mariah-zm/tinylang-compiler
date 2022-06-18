@@ -1,6 +1,6 @@
-#include "identifier.ih"
+#include "literal.ih"
 
-bool Identifier::andOp(Identifier const &other)
+bool Literal::andOp(Literal const &other)
 {
     switch (d_type.type())
     {

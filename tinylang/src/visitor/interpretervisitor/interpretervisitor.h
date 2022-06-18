@@ -4,13 +4,13 @@
 #include "../visitor.h"
 #include "../../symboltable/symboltable.h"
 #include "../../type/type.h"
-#include "../../identifier/identifier.h"
+#include "../../literal/literal.h"
 
 class InterpreterVisitor: public Visitor
 {
     SymbolTable *d_symbolTable;
     
-    Identifier d_currentIden;
+    Literal d_currentLit;
 
     public:
         InterpreterVisitor(SymbolTable *symbolTable);

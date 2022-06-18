@@ -1,9 +1,9 @@
-#include "identifier.ih"
+#include "literal.ih"
 
-Identifier operator-(Identifier const &left, Identifier const &right)
+Literal operator-(Literal const &left, Literal const &right)
 {
     Type type;
-    Identifier::Value val;
+    Literal::Value val;
 
     switch (left.d_type.type())
     {
@@ -22,5 +22,5 @@ Identifier operator-(Identifier const &left, Identifier const &right)
         default: ; // - on BOOL not semantically allowed
     }
 
-    return Identifier{type, val};
+    return Literal{type, val};
 }

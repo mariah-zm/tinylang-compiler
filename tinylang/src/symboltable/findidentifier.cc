@@ -1,6 +1,6 @@
 #include "symboltable.ih"
 
-Identifier *SymbolTable::findIdentifier(string idenName)
+Literal *SymbolTable::findIdentifier(string idenName)
 {
     for (size_t idx = d_scopeStack.size(); idx > 0; idx--)
     {

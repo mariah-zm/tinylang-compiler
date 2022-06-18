@@ -1,6 +1,6 @@
-#include "identifier.ih"
+#include "literal.ih"
 
-Identifier::Identifier(Identifier const &other)
+Literal::Literal(Literal const &other)
 :
     d_type(other.d_type)
 {

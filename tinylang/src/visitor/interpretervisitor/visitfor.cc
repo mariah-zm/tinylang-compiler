@@ -8,7 +8,7 @@ void InterpreterVisitor::visit(AstForStmtNode *node)
     node->init()->acceptVisitor(this);
     node->condition()->acceptVisitor(this);
 
-    while (d_currentIden.isTrue())
+    while (d_currentLit.isTrue())
     {
         node->body()->acceptVisitor(this);
         node->update()->acceptVisitor(this);
