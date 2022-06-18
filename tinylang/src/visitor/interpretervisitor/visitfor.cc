@@ -3,7 +3,7 @@
 void InterpreterVisitor::visit(AstForStmtNode *node)
 {
     // Opening scope for loop brackets
-    d_symbolTable->openScope();
+    d_symbolTable.openScope();
 
     node->init()->acceptVisitor(this);
     node->condition()->acceptVisitor(this);
@@ -16,5 +16,5 @@ void InterpreterVisitor::visit(AstForStmtNode *node)
     }
 
     // Closing scope for loop brackets
-    d_symbolTable->closeScope();
+    d_symbolTable.closeScope();
 }

@@ -2,5 +2,5 @@
 
 void InterpreterVisitor::visit(AstFunctionNode *node)
 {
-    d_symbolTable->addFunction(node);
+    d_symbolTable.addFunction(node);
 }

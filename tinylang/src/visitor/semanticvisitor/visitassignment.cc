@@ -5,7 +5,7 @@ void SemanticVisitor::visit(AstAssignmentNode *node)
     // Checking if variable has been declared prior to use using try-catch
     try 
     {
-        Type leftType = d_symbolTable->findIdentifier(node->idenName())->type();
+        Type leftType = d_symbolTable.findIdentifier(node->idenName())->type();
        
         node->right()->acceptVisitor(this);
         

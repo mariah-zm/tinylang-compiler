@@ -8,12 +8,12 @@
 
 class InterpreterVisitor: public Visitor
 {
-    SymbolTable *d_symbolTable;
+    SymbolTable d_symbolTable;
     
     Literal d_currentLit;
 
     public:
-        InterpreterVisitor(SymbolTable *symbolTable);
+        InterpreterVisitor();
 
         virtual void visit(AstProgramNode *node) override;
         virtual void visit(AstAssignmentNode *node) override;
@@ -37,9 +37,9 @@ class InterpreterVisitor: public Visitor
 
 };
 
-inline InterpreterVisitor::InterpreterVisitor(SymbolTable *symbolTable)
+inline InterpreterVisitor::InterpreterVisitor()
 :
-    d_symbolTable(symbolTable)
+    d_symbolTable(SymbolTable{})
 {}
 
 #endif

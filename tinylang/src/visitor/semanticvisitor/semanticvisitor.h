@@ -7,14 +7,14 @@
 
 class SemanticVisitor: public Visitor
 {
-    SymbolTable *d_symbolTable;
+    SymbolTable d_symbolTable;
 
     bool d_requiresReturn = false;
     Type d_typeToReturn;
     Type d_typeToMatch;
 
     public:
-        SemanticVisitor(SymbolTable *symbolTable);
+        SemanticVisitor();
 
         virtual void visit(AstProgramNode *node) override;
         virtual void visit(AstAssignmentNode *node) override;
@@ -43,9 +43,9 @@ class SemanticVisitor: public Visitor
 
 };
 
-inline SemanticVisitor::SemanticVisitor(SymbolTable *symbolTable)
+inline SemanticVisitor::SemanticVisitor()
 :
-    d_symbolTable(symbolTable)
+    d_symbolTable(SymbolTable{})
 {}
 
 #endif

@@ -6,5 +6,5 @@ void InterpreterVisitor::visit(AstVarDeclNode *node)
     node->right()->acceptVisitor(this);
 
     string varName = node->left()->name();
-    d_symbolTable->addIdentifier(varName, d_currentLit);
+    d_symbolTable.addIdentifier(varName, d_currentLit);
 }

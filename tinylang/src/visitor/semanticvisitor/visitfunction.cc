@@ -5,10 +5,10 @@ void SemanticVisitor::visit(AstFunctionNode *node)
     d_requiresReturn = true;
 
     // Opening scope for function def
-    d_symbolTable->openScope();
+    d_symbolTable.openScope();
 
     // Adding function to symbol table
-    if(!d_symbolTable->addFunction(node))
+    if(!d_symbolTable.addFunction(node))
         throw semantic_error("a function with the name " 
             + node->prototype()->name() + " in line " 
             + to_string(node->lineNumber())
@@ -29,7 +29,7 @@ void SemanticVisitor::visit(AstFunctionNode *node)
     }
 
     // Closing scope for function def
-    d_symbolTable->closeScope();
+    d_symbolTable.closeScope();
 
     d_requiresReturn = false;
 }

@@ -2,10 +2,12 @@
 
 void InterpreterVisitor::visit(AstFunctionCallNode *node)
 {
-    AstFunctionNode *fnNode = d_symbolTable->findFnDef(node->fnName());
+    // Not checking for exceptions because we know semantic analysis phase
+    // passed
+    AstFunctionNode *fnNode = d_symbolTable.findFnDef(node->fnName());
 
     // Opening scope for function call
-    d_symbolTable->openScope();
+    d_symbolTable.openScope();
 
     vector<string> paramNames;
 
@@ -17,7 +19,7 @@ void InterpreterVisitor::visit(AstFunctionCallNode *node)
     for (auto arg: node->args())
     {
         arg->acceptVisitor(this);
-        d_symbolTable->addIdentifier(paramNames.at(0), d_currentLit);
+        d_symbolTable.addIdentifier(paramNames.at(0), d_currentLit);
         paramNames.erase(paramNames.begin());
     }
 
@@ -25,5 +27,5 @@ void InterpreterVisitor::visit(AstFunctionCallNode *node)
     fnNode->body()->acceptVisitor(this);
 
     // Closing scope for function call
-    d_symbolTable->closeScope();
+    d_symbolTable.closeScope();
 }

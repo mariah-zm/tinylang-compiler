@@ -1,5 +1,7 @@
 fn isGreater(x : float, y : float) -> bool {
-  else {
-    return false;
-  }
+  return x > y;
 }
+
+let x : int = 5;
+let y : int = sq(4);
+print isGreater(x, y);
