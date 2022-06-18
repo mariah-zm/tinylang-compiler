@@ -2,6 +2,8 @@
 
 void SemanticVisitor::visit(AstFunctionNode *node)
 {
+    d_requiresReturn = true;
+
     // Opening scope for function def
     d_symbolTable->openScope();
 
@@ -15,12 +17,19 @@ void SemanticVisitor::visit(AstFunctionNode *node)
     node->prototype()->acceptVisitor(this);
     node->body()->acceptVisitor(this);
 
-    AstStatementNode *lastStmt = node->body()->statements().back();
-
-    if (dynamic_cast<AstReturnStmtNode *> (lastStmt) == nullptr)
+    // Checking if function contains return statement
+    try 
+    {
+        checkReturn(node->body()->statements());
+    }
+    catch (semantic_error &ex)
+    {
         throw semantic_error("missing return statement in function " 
                             + node->prototype()->name());
+    }
 
     // Closing scope for function def
     d_symbolTable->closeScope();
+
+    d_requiresReturn = false;
 }

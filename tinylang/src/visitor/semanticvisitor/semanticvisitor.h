@@ -9,6 +9,7 @@ class SemanticVisitor: public Visitor
 {
     SymbolTable *d_symbolTable;
 
+    bool d_requiresReturn = false;
     Type d_typeToReturn;
     Type d_typeToMatch;
 
@@ -38,6 +39,7 @@ class SemanticVisitor: public Visitor
     private:
         void validateTypeOp(AstBinaryOpNode *node) const;
         void validateTypeOp(AstUnaryNode *node) const;
+        void checkReturn(std::vector<AstStatementNode *> const &stmts) const;
 
 };
 

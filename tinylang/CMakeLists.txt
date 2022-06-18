@@ -115,6 +115,7 @@ set(XML_VISITOR_SOURCE
 
 set(SEMANTIC_VISITOR_SOURCE 
         src/visitor/semanticvisitor/validatetypebinaryop.cc
+        src/visitor/semanticvisitor/checkreturn.cc
         src/visitor/semanticvisitor/validatetypeunaryop.cc
         src/visitor/semanticvisitor/visitassignment.cc
         src/visitor/semanticvisitor/visitbinaryop.cc
