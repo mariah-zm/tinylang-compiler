@@ -28,4 +28,7 @@ void InterpreterVisitor::visit(AstFunctionCallNode *node)
 
     // Closing scope for function call
     d_symbolTable.closeScope();
+
+    d_currentLit = d_LitToReturn;
+    d_return = false;
 }

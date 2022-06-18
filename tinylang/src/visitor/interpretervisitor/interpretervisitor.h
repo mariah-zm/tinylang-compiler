@@ -11,6 +11,8 @@ class InterpreterVisitor: public Visitor
     SymbolTable d_symbolTable;
     
     Literal d_currentLit;
+    Literal d_LitToReturn;
+    bool d_return = false;
 
     public:
         InterpreterVisitor();
